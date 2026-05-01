@@ -32,6 +32,12 @@ real support tickets accurately. They may use RAG, vector databases, tool use, s
 There is a known entry point per supported language (§6). There is a support_tickets.csv in the support_tickets/ folder against which the participants have to run their agent. The participant also defends their approach in an AI judge interview round afterwards.
 
 We recommend using one of Python, Javascript or Typescript to build the agent.
+
+**For detailed project documentation, see:**
+- [code/README.md](./code/README.md) — Comprehensive guide to the implementation, architecture, usage, and evaluation alignment
+- [problem_statement.md](./problem_statement.md) — Full task specification and requirements
+- [evalutation_criteria.md](./evalutation_criteria.md) — Scoring rubric for judges
+
 ---
 
 ## 2. LOG FILE — LOCATION AND LIFECYCLE
@@ -183,32 +189,56 @@ without updating this file.
 
 ```
 .
-├── AGENTS.md                    # this file
-├── README.md                    # human-facing quickstart
-├── .gitignore
-├── .env.example                 # copy to .env; never commit .env
+├── AGENTS.md                          # This file: AI agent integration rules & logging contract
+├── README.md                          # Main project overview & evaluation guidelines
+├── CLAUDE.md                          # Claude Code customization reference
+├── problem_statement.md               # Full task specification and requirements
+├── evalutation_criteria.md            # Judge scoring rubric
+├── .gitignore                         # Git ignore rules (includes .env)
+├── .env.example                       # Environment variables template
 ├── code/
-│   ├── your_file.py
-│   ├── agent.py
-│   └── main.py
+│   ├── README.md                      # **Primary documentation** — Architecture, usage, evaluation alignment
+│   ├── main.py                        # CLI entry point for batch ticket processing
+│   ├── triage_agent.py                # Backward-compatible wrapper
+│   ├── web_app.py                     # Streamlit web UI (optional)
+│   ├── requirements.txt               # Python dependencies (Streamlit only)
+│   └── triage/
+│       ├── __init__.py                # Package exports
+│       ├── models.py                  # Typed data classes
+│       ├── corpus.py                  # Corpus loading & TF-IDF retrieval engine
+│       └── engine.py                  # Ticket triage logic & escalation rules
 ├── support_tickets/
-│   ├── sample_support_tickets.csv            # sample tickets + expected signals
-│   └── support_tickets.csv
-│   └── output.csv
-├── data/
-|   ├── visa/
-|   ├── hackerrank/
-|   ├── claude/
-
+│   ├── sample_support_tickets.csv     # Sample input + expected outputs (development)
+│   ├── support_tickets.csv            # Evaluation input (run your agent on this)
+│   └── output.csv                     # Your agent's predictions (generated)
+└── data/
+    ├── index.md                       # Corpus index
+    ├── hackerrank/                    # HackerRank support documentation
+    ├── claude/                        # Claude Help Center documentation
+    └── visa/                          # Visa support documentation
 ```
 
-### 6.6 Constraints that make the submission evaluable
+### 6.2 Entry point
 
-- **Deterministic where possible.**.
-- **Add proper README** to the code/ you write.
-- **Read secrets from env vars only** (`OPENAI_API_KEY`, `ANTHROPIC_API_KEY`,
-  etc.). Never hardcode.
----
+**Python:** `python code/main.py --input support_tickets/support_tickets.csv --output support_tickets/output.csv --data-dir data`
+
+This entry point:
+- Loads all `.md` files from `data/` as the corpus
+- Processes each row in the input CSV
+- Writes predictions to the output CSV with all required fields:
+  - `issue`, `subject`, `company` (inputs)
+  - `response`, `product_area`, `status`, `request_type`, `justification` (outputs)
+
+### 6.3 Constraints that make the submission evaluable
+
+- **Deterministic:** No randomness. Same inputs always produce same outputs.
+- **Corpus-grounded:** All responses come from `data/` only; no external APIs.
+- **Escalation logic:** High-risk, low-confidence, and unsupported tickets are escalated, not guessed.
+- **Proper README:** `code/README.md` documents architecture, design decisions, and usage.
+- **No hardcoded secrets:** Environment variables only (`OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, etc.). Never hardcode keys.
+- **Output format:** Exact CSV schema with 8 columns; matches `support_tickets/output.csv` from a clean run of `code/main.py`.
+
+**For detailed implementation and architectural justification, see [code/README.md](./code/README.md).**
 
 
 ## 7. CROSS-PLATFORM AND AGENT-COMPATIBILITY NOTES
