@@ -75,8 +75,6 @@ ESCALATION_KEYWORDS: list[str] = [
     # Billing
     "refund", "pause subscription", "cancel subscription",
     "order id", "payment dispute", "chargeback",
-    # Outages (platform-wide)
-    "site is down", "all pages", "nothing is accessible",
     # Admin bypass
     "even though i am not", "even though i'm not", "restore my access",
     # Urgent cash / financial distress
