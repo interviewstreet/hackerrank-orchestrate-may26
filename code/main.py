@@ -49,12 +49,18 @@ def main():
     df = pd.read_csv(input_path, dtype=str).fillna("")
     print(f"[main] Loaded {len(df)} tickets from {input_path}")
 
+    # Support both lowercase and capitalized CSV headers.
+    col_map = {str(col).strip().lower(): col for col in df.columns}
+    issue_col = col_map.get("issue", "issue")
+    subject_col = col_map.get("subject", "subject")
+    company_col = col_map.get("company", "company")
+
     results = []
     for idx, row in tqdm(df.iterrows(), total=len(df), desc="Processing tickets"):
         ticket = {
-            "issue":   row.get("issue", ""),
-            "subject": row.get("subject", ""),
-            "company": row.get("company", None),
+            "issue":   row.get(issue_col, ""),
+            "subject": row.get(subject_col, ""),
+            "company": row.get(company_col, None),
         }
         output = run_pipeline(ticket, ticket_id=idx)
         results.append(output)
@@ -62,9 +68,9 @@ def main():
     out_df = pd.DataFrame()
     
     # Input columns
-    out_df["Issue"] = df["Issue"]
-    out_df["Subject"] = df["Subject"]
-    out_df["Company"] = df["Company"]
+    out_df["Issue"] = df[issue_col]
+    out_df["Subject"] = df[subject_col]
+    out_df["Company"] = df[company_col]
     
     # Output columns with proper capitalization
     out_df["Response"] = [r["response"] for r in results]

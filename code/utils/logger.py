@@ -39,7 +39,16 @@ def log_agent(ticket_id, agent: str, decision: str, detail: dict = None):
     })
 
 
-def log_llm_call(ticket_id, prompt: str, raw_response: str, parsed: dict):
+def log_llm_call(ticket_id_or_prompt, prompt_or_raw_response, raw_response_or_parsed, parsed: dict = None):
+    if parsed is None:
+        ticket_id = None
+        prompt = ticket_id_or_prompt
+        raw_response = prompt_or_raw_response
+        parsed = raw_response_or_parsed
+    else:
+        ticket_id = ticket_id_or_prompt
+        prompt = prompt_or_raw_response
+        raw_response = raw_response_or_parsed
     _write({
         "type": "runtime",
         "event": "llm_call",
