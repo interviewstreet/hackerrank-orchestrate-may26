@@ -5,6 +5,25 @@ from retriever import retrieve
 from agent import process_ticket
 from classifier import pre_classify
 
+VALID_PRODUCT_AREAS = {
+    "authentication",
+    "payments",
+    "account_access",
+    "card_usage",
+    "security",
+    "fraud_and_security",
+    "assessment_integrity",
+    "access_control",
+    "out_of_scope",
+}
+
+
+def normalize_area(area):
+    normalized = str(area or "").strip().lower().replace(" ", "_")
+    if normalized not in VALID_PRODUCT_AREAS:
+        return "security"
+    return normalized
+
 def main():
     parser = argparse.ArgumentParser(description="Support Ticket Triage Agent")
     parser.add_argument("--dry-run", action="store_true", help="Process only the first 3 rows")
@@ -59,11 +78,14 @@ def main():
                 print(f"error: {e}")
                 output = {
                     "status": "escalated",
-                    "product_area": "System Error",
+                    "product_area": "security",
                     "response": "I encountered an error while processing this request. Escalating to a human.",
-                    "justification": f"Exception: {str(e)}",
+                    "justification": "Unable to generate a reliable response from available context; escalated for safety.",
                     "request_type": "product_issue"
                 }
+
+        if isinstance(output, dict) and "product_area" in output:
+            output["product_area"] = normalize_area(output["product_area"])
 
         # Build a normalized output row with the contract fields only.
         result_row = {

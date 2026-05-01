@@ -100,6 +100,17 @@ ALLOWED_PRODUCT_AREAS = {
 
 ALLOWED_REQUEST_TYPES = {"product_issue", "feature_request", "bug", "invalid"}
 ALLOWED_STATUSES = {"replied", "escalated"}
+VALID_PRODUCT_AREAS = {
+    "authentication",
+    "payments",
+    "account_access",
+    "card_usage",
+    "security",
+    "fraud_and_security",
+    "assessment_integrity",
+    "access_control",
+    "out_of_scope",
+}
 RESPONSE_SCHEMA = {
     "type": "object",
     "properties": {
@@ -125,15 +136,21 @@ RESPONSE_SCHEMA = {
 }
 
 
+def normalize_area(area: str) -> str:
+    normalized = str(area or "").strip().lower().replace(" ", "_")
+    if normalized not in VALID_PRODUCT_AREAS:
+        return "security"
+    return normalized
+
+
 def _infer_product_area(ticket: dict, context_chunks: list[dict]) -> str:
-    haystack = f"{ticket.get('company', '')} {ticket.get('subject', '')} {ticket.get('issue', '')} " + " ".join(
-        c.get("text", "") for c in context_chunks[:3]
-    )
-    text = haystack.lower()
-    if any(keyword in text for keyword in ["login", "password", "sign in", "signin", "access", "account"]):
-        return "account_access"
-    if any(keyword in text for keyword in ["team", "workspace", "seat", "permission", "admin", "owner"]):
-        return "access_control"
+    company = str(ticket.get("company", "")).lower()
+    issue_text = f"{ticket.get('subject', '')} {ticket.get('issue', '')}".lower()
+    context_text = " ".join(c.get("text", "") for c in context_chunks[:3]).lower()
+    text = f"{company} {issue_text} {context_text}"
+
+    if any(keyword in f"{company} {issue_text}" for keyword in ["card", "visa", "payment", "billing", "refund", "charge", "merchant"]):
+        return "payments"
     if any(keyword in text for keyword in ["card", "visa", "payment", "billing", "refund", "charge", "merchant"]):
         return "payments"
     if any(keyword in text for keyword in ["prompt injection", "system prompt", "data exfiltration", "internal logic"]):
@@ -142,6 +159,10 @@ def _infer_product_area(ticket: dict, context_chunks: list[dict]) -> str:
         return "fraud_and_security"
     if any(keyword in text for keyword in ["test", "score", "assessment", "interview", "hiring", "next round"]):
         return "assessment_integrity"
+    if any(keyword in text for keyword in ["login", "password", "sign in", "signin", "access", "account"]):
+        return "account_access"
+    if any(keyword in text for keyword in ["team", "workspace", "seat", "permission", "admin", "owner"]):
+        return "access_control"
     return "out_of_scope"
 
 
@@ -173,10 +194,10 @@ def _fallback_output(ticket: dict, context_chunks: list[dict], escalated: bool, 
         "subject": str(ticket.get("subject", "")),
         "company": str(ticket.get("company", "None")),
         "response": response,
-        "product_area": product_area,
+        "product_area": normalize_area(product_area),
         "status": status,
         "request_type": request_type,
-        "justification": reason,
+        "justification": "Unable to generate a reliable response from available context; escalated for safety." if escalated else reason,
     }
 
 
@@ -200,13 +221,11 @@ def _normalize_output(raw: dict, ticket: dict) -> dict:
     subject = str(raw.get("subject") or ticket.get("subject") or "")
     company = str(raw.get("company") or ticket.get("company") or "None")
     response = str(raw.get("response") or "This request requires human review.")
-    product_area = str(raw.get("product_area") or "out_of_scope")
+    product_area = normalize_area(raw.get("product_area") or "out_of_scope")
     status = str(raw.get("status") or "escalated")
     request_type = str(raw.get("request_type") or "invalid")
     justification = str(raw.get("justification") or "Insufficient information to provide a grounded answer.")
 
-    if product_area not in ALLOWED_PRODUCT_AREAS:
-        product_area = "out_of_scope"
     if request_type not in ALLOWED_REQUEST_TYPES:
         request_type = "invalid"
     if status not in ALLOWED_STATUSES:
@@ -272,4 +291,4 @@ def process_ticket(ticket: dict, context_chunks: list[dict]) -> dict:
                 ticket,
             )
         except Exception:
-            return _fallback_output(ticket, context_chunks, escalated=True, reason="JSON parsing error after retry.")
+            return _fallback_output(ticket, context_chunks, escalated=True, reason="Unable to generate a reliable response from available context; escalated for safety.")

@@ -1,6 +1,23 @@
 import re
 from typing import Optional
 
+VALID_PRODUCT_AREAS = {
+    "authentication",
+    "payments",
+    "account_access",
+    "card_usage",
+    "security",
+    "fraud_and_security",
+    "assessment_integrity",
+    "access_control",
+    "out_of_scope",
+}
+
+
+def _normalize_product_area(area: str) -> str:
+    normalized = str(area or "").strip().lower().replace(" ", "_")
+    return normalized if normalized in VALID_PRODUCT_AREAS else "security"
+
 def pre_classify(ticket: dict) -> Optional[dict]:
     issue = ticket.get('issue', '').lower()
     subject = ticket.get('subject', '').lower()
@@ -28,9 +45,9 @@ def pre_classify(ticket: dict) -> Optional[dict]:
         if re.search(pattern, combined):
             return {
                 "status": "escalated",
-                "product_area": "Safety & Security",
+                "product_area": _normalize_product_area("security"),
                 "response": "This issue requires human support due to its sensitive nature. We are escalating your request to the appropriate team.",
-                "justification": f"Sensitivity trigger: matched pattern '{pattern}'",
+                "justification": f"Sensitive or unsupported issue detected; matched pattern '{pattern}' and escalated for human review.",
                 "request_type": "product_issue"
             }
 
@@ -40,9 +57,9 @@ def pre_classify(ticket: dict) -> Optional[dict]:
     if len(words) > 10 and not (words & common_english):
         return {
             "status": "escalated",
-            "product_area": "Language Support",
+            "product_area": _normalize_product_area("security"),
             "response": "I'm sorry, I am currently optimized for English support. I am escalating this to a human agent who can better assist you.",
-            "justification": "Potential non-English request detected.",
+            "justification": "Potential non-English request detected and escalated for human review.",
             "request_type": "product_issue"
         }
 
