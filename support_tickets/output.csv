@@ -1,1 +1,363 @@
-issue,subject,company,response,product_area,status,request_type,justification
+Status,Product_Area,Response,Justification,Request_Type
+Replied,connectors,"Summary: What happens if I update a Google Doc after adding it to a chat?
+
+The document continues to sync with the most up-to-date version in Google Drive.
+
+Point 1: What happens if I update a Google Doc after adding it to a chat?
+
+The document continues to sync with the most up-to-date version in Google Drive.
+
+Point 2: Organizational Policies
+
+Your organization may have its own internal policies regarding usage of Claude for Work plan. Please refer to your Primary Owner for guidance.",Domain:claude|Type:product_issue|Risk:LOW|Confidence:0.33|Reason:sufficient_confidence,product_issue
+Escalated,screen,"Summary: Prerequisites
+
+- You must have a published test in your HackerRank account.
+
+Point 1: Prerequisites
+
+- You must have a published test in your HackerRank account.
+
+- You must be the test owner or have editor access.
+
+Point 2: Prerequisites
+
+- You must have permission to access **Company Settings**.
+
+- You must have a valid and active company email address to use as the reply-to address.",Domain:hackerrank|Type:product_issue|Risk:HIGH|Confidence:0.29|Reason:high_risk,product_issue
+Escalated,support,"Summary: Want to learn more?
+
+For further information about the dispute rules or practices, please contact your acquirer/processor.
+
+Point 1: Want to learn more?
+
+For further information about the dispute rules or practices, please contact your acquirer/processor.
+
+Point 2: Learn how to prevent fraud
+
+Visa can help you protect your business
+
+[Visa card acceptance guidelines](/content/dam/VCOM/global/support-legal/documents/card-acceptance-guidelines-visa-merchants.pdf)",Domain:visa|Type:product_issue|Risk:MEDIUM|Confidence:0.24|Reason:medium_risk_low_confidence,product_issue
+Escalated,hackerrank_community,"Summary: Refund policy
+
+If you accidentally make a purchase or are not satisfied with your mock interview, contact [help@hackerrank.
+
+Point 1: Refund policy
+
+If you accidentally make a purchase or are not satisfied with your mock interview, contact [help@hackerrank.com](mailto:help@hackerrank.com). The support team will promptly review your request.
+
+Point 2: **Why and when to use HackerRank Interviews**
+
+HackerRank Interviews can be used to hire for roles at all levels but are especially beneficial for more Senior-level roles.",Domain:hackerrank|Type:bug|Risk:MEDIUM|Confidence:0.25|Reason:medium_risk_low_confidence,bug
+Escalated,integrations,"Summary: Prerequisites
+
+- Your organization has an Enterprise plan with HackerRank.
+
+Point 1: Prerequisites
+
+- Your organization has an Enterprise plan with HackerRank.
+
+- You have admin access to your HackerRank and OneLogin accounts.
+
+Point 2: Overview
+
+HackerRank integrates with Slack for scheduling interviews. You can quickly generate HackerRank interview links and receive interview reports within Slack.",Domain:hackerrank|Type:product_issue|Risk:MEDIUM|Confidence:0.28|Reason:medium_risk_low_confidence,product_issue
+Escalated,integrations,"Summary: Overview
+
+HackerRank integrates with Prelude for scheduling interviews.
+
+Point 1: Overview
+
+HackerRank integrates with Prelude for scheduling interviews. You can schedule HackerRank interviews directly from Prelude as part of your interview process for single or loop interviews.
+
+Point 2: New Integration Partner
+
+If you are interested in integrating with HackerRank, contact your HackerRank point of contact or [support@hackerrank.com.](mailto:support@hackerrank.com)",Domain:hackerrank|Type:product_issue|Risk:HIGH|Confidence:0.40|Reason:high_risk,product_issue
+Replied,screen,"Summary: Add time accommodation
+
+You can extend the test duration if needed.
+
+Point 1: Add time accommodation
+
+You can extend the test duration if needed. For more information, see [📄 Extend Test Duration for Candidates](/articles/4811403281).
+
+Point 2: Overview
+
+HackerRank integrates with Goodtime to add HackerRank interviews as a video interviewing option on your interview plan within Goodtime.",Domain:hackerrank|Type:bug|Risk:LOW|Confidence:0.22|Reason:sufficient_confidence,bug
+Replied,skillup,"Summary: Known limitations
+
+- Funnel card drill-downs are only available when the **All Time** filter is applied.
+
+Point 1: Known limitations
+
+- Funnel card drill-downs are only available when the **All Time** filter is applied.
+
+Point 2: New Integration Partner
+
+If you are interested in integrating with HackerRank, contact your HackerRank point of contact or [support@hackerrank.com.](mailto:support@hackerrank.com)",Domain:hackerrank|Type:product_issue|Risk:LOW|Confidence:0.31|Reason:sufficient_confidence,product_issue
+Replied,interviews,"Summary: **Why and when to use HackerRank Interviews**
+
+HackerRank Interviews can be used to hire for roles at all levels but are especially beneficial for more Senior-level roles.
+
+Point 1: **Why and when to use HackerRank Interviews**
+
+HackerRank Interviews can be used to hire for roles at all levels but are especially beneficial for more Senior-level roles.
+
+Point 2: Prerequisites
+
+- You must have created the test.
+
+- You must have already sent the invitation to the candidate.",Domain:hackerrank|Type:bug|Risk:LOW|Confidence:0.23|Reason:sufficient_confidence,bug
+Escalated,integrations,"Summary: Overview
+
+Oracle provides documentation on how to configure the service in your Taleo instance.
+
+Point 1: Overview
+
+Oracle provides documentation on how to configure the service in your Taleo instance. You can request it from your Taleo representative. Oracle's documentation includes a step-by-step activation guide and a detailed reference for the integration that will be useful for your...
+
+Point 2: Overview
+
+HackerRank integrates with Prelude for scheduling interviews. You can schedule HackerRank interviews directly from Prelude as part of your interview process for single or loop interviews.",Domain:hackerrank|Type:feature_request|Risk:HIGH|Confidence:0.29|Reason:high_risk,feature_request
+Replied,screen,"Summary: Send reminders
+
+You can schedule reminder emails for candidates who have not started the test.
+
+Point 1: Send reminders
+
+You can schedule reminder emails for candidates who have not started the test. The steps vary depending on whether the invitation has an expiry...
+
+Point 2: Overview
+
+HackerRank integrates with Zoho Recruit for Tests and Interviews. Recruiters managing candidate profiles in Zoho Recruit can use this integration to seamlessly carry out skill assessments of external candidates for different job requisitions without leaving the Zoho platform.
+
+Candidates...",Domain:hackerrank|Type:product_issue|Risk:LOW|Confidence:0.26|Reason:sufficient_confidence,product_issue
+Escalated,screen,"Summary: Prerequisites
+
+You must be the test owner or have **Editor** access.
+
+Point 1: Prerequisites
+
+You must be the test owner or have **Editor** access.",Domain:hackerrank|Type:bug|Risk:LOW|Confidence:0.15|Reason:low_confidence,bug
+Replied,engage,"Summary: Access Overview dashboard
+
+To access the **Overview** dashboard:
+
+1.
+
+Point 1: Access Overview dashboard
+
+To access the **Overview** dashboard:
+
+1.  Log in to your **Engage** account using your credentials.
+
+2.  Select an event to view its **Overview** dashboard.
+
+Point 2: Overview
+
+HackerRank integrates with Goodtime to add HackerRank interviews as a video interviewing option on your interview plan within Goodtime.",Domain:hackerrank|Type:product_issue|Risk:LOW|Confidence:0.28|Reason:sufficient_confidence,product_issue
+Replied,library,"Summary: Available plans
+
+HackerRank offers the following subscription plans:
+
+- Starter
+
+- Pro
+
+- Enterprise (Full access).
+
+Point 1: Available plans
+
+HackerRank offers the following subscription plans:
+
+- Starter
+
+- Pro
+
+- Enterprise (Full access)
+
+Point 2: Prerequisites
+
+You must be the test owner or have **Editor** access.",Domain:hackerrank|Type:product_issue|Risk:LOW|Confidence:0.22|Reason:sufficient_confidence,product_issue
+Replied,team-and-enterprise-plans,"Summary: Base URL
+
+All requests are sent to:
+
+```
+https://api.
+
+Point 1: Base URL
+
+All requests are sent to:
+
+```
+https://api.anthropic.com/v1/organizations/analytics/
+```
+
+Point 2: When to chat without extended thinking
+
+- Simple questions and everyday conversations
+- Basic information requests
+- General writing tasks",Domain:claude|Type:bug|Risk:LOW|Confidence:0.30|Reason:sufficient_confidence,bug
+Escalated,support,"Summary: Has your data been compromised?
+
+Contact your acquirer immediately.
+
+Point 1: Has your data been compromised?
+
+Contact your acquirer immediately.
+
+[View data breach guidelines](/content/dam/VCOM/download/merchants/cisp-what-to-do-if-compromised.pdf)",Domain:visa|Type:product_issue|Risk:HIGH|Confidence:0.19|Reason:high_risk,product_issue
+Replied,integrations,"Summary: Features
+
+Below is a list of features that the HackerRank - Teamtailor Integration offers:.
+
+Point 1: Features
+
+Below is a list of features that the HackerRank - Teamtailor Integration offers:
+
+Point 2: Prerequisites
+
+- You must have a published test in your HackerRank account.
+
+- You must be the test owner or have editor access.",Domain:hackerrank|Type:bug|Risk:LOW|Confidence:0.21|Reason:sufficient_confidence,bug
+Replied,screen,"Summary: Prerequisites
+
+- You must have at least one candidate who is currently attempting or has submitted the test.
+
+Point 1: Prerequisites
+
+- You must have at least one candidate who is currently attempting or has submitted the test.
+
+- You must be the test owner or have editor access.
+
+Point 2: Prerequisites
+
+- You must have created the test.
+
+- You must have already sent the invitation to the candidate.",Domain:hackerrank|Type:product_issue|Risk:LOW|Confidence:0.32|Reason:sufficient_confidence,product_issue
+Replied,support,"Summary: Want to learn more?
+
+For further information about the dispute rules or practices, please contact your acquirer/processor.
+
+Point 1: Want to learn more?
+
+For further information about the dispute rules or practices, please contact your acquirer/processor.
+
+Point 2: Get in touch
+
+Report a lost card by calling Visa at 000-800-100-1219.
+
+[Send an email](https://usa.visa.com/Forms/contact-us-form.html)",Domain:visa|Type:product_issue|Risk:LOW|Confidence:0.19|Reason:sufficient_confidence,product_issue
+Replied,connectors,"Summary: What happens if I update a Google Doc after adding it to a chat?
+
+The document continues to sync with the most up-to-date version in Google Drive.
+
+Point 1: What happens if I update a Google Doc after adding it to a chat?
+
+The document continues to sync with the most up-to-date version in Google Drive.
+
+Point 2: Keyboard shortcuts
+
+Shortcuts vary slightly by terminal and IDE. Press **`?`** inside a session for the exact list in your environment.",Domain:claude|Type:product_issue|Risk:LOW|Confidence:0.27|Reason:sufficient_confidence,product_issue
+Replied,claude,"Summary: Can I import or migrate this data to another Claude account?
+
+We do not support migrating data between separate accounts at this time.
+
+Point 1: Can I import or migrate this data to another Claude account?
+
+We do not support migrating data between separate accounts at this time.
+
+Point 2: What is Claude?
+
+Claude is a large language model (LLM) built by Anthropic. It's trained to be a helpful, honest, and harmless assistant with a conversational tone.",Domain:claude|Type:product_issue|Risk:LOW|Confidence:0.29|Reason:sufficient_confidence,product_issue
+Replied,general,"Summary: Get in touch
+
+Report a lost card by calling Visa at 000-800-100-1219.
+
+Point 1: Get in touch
+
+Report a lost card by calling Visa at 000-800-100-1219.
+
+[Send an email](https://usa.visa.com/Forms/contact-us-form.html)
+
+Point 2: Learn how to prevent fraud
+
+Visa can help you protect your business
+
+[Visa card acceptance guidelines](/content/dam/VCOM/global/support-legal/documents/card-acceptance-guidelines-visa-merchants.pdf)",Domain:visa|Type:product_issue|Risk:LOW|Confidence:0.25|Reason:sufficient_confidence,product_issue
+Replied,claude,"Summary: Can I import or migrate this data to another Claude account?
+
+We do not support migrating data between separate accounts at this time.
+
+Point 1: Can I import or migrate this data to another Claude account?
+
+We do not support migrating data between separate accounts at this time.
+
+Point 2: Is there an age requirement to use Claude?
+
+You must be at least 18 years old to use our services.",Domain:claude|Type:feature_request|Risk:LOW|Confidence:0.34|Reason:sufficient_confidence,feature_request
+Replied,screen,"Summary: Prerequisites
+
+- You must have created the test.
+
+Point 1: Prerequisites
+
+- You must have created the test.
+
+- You must have already sent the invitation to the candidate.
+
+Point 2: Prerequisites
+
+You must be the test owner or have **Editor** access.",Domain:hackerrank|Type:product_issue|Risk:LOW|Confidence:0.23|Reason:sufficient_confidence,product_issue
+Escalated,unknown,Unable to find relevant information in our knowledge base. Please contact support for further assistance.,Domain:visa|Type:product_issue|Risk:HIGH|Confidence:0.12|Reason:high_risk; low_confidence,product_issue
+Replied,connectors,"Summary: Can I add multiple files to a single chat?
+
+Yes.
+
+Point 1: Can I add multiple files to a single chat?
+
+Yes. You can add multiple Google Drive files to provide Claude with comprehensive context. The documents must fit within the conversation's context window.
+
+Point 2: Can I import or migrate this data to another Claude account?
+
+We do not support migrating data between separate accounts at this time.",Domain:claude|Type:bug|Risk:LOW|Confidence:0.32|Reason:sufficient_confidence,bug
+Escalated,integrations,"Summary: Features
+
+Below is a list of features that the HackerRank - Teamtailor Integration offers:.
+
+Point 1: Features
+
+Below is a list of features that the HackerRank - Teamtailor Integration offers:
+
+Point 2: Prerequisites
+
+- Your organization has an Enterprise plan with HackerRank.
+
+- You have admin access to your HackerRank and OneLogin accounts.",Domain:hackerrank|Type:product_issue|Risk:HIGH|Confidence:0.31|Reason:high_risk,product_issue
+Replied,claude-desktop,"Summary: Cowork requirements
+
+Cowork will be installed automatically when you download and install Claude Desktop for macOS.
+
+Point 1: Cowork requirements
+
+Cowork will be installed automatically when you download and install Claude Desktop for macOS.
+
+Point 2: What happens if I update a Google Doc after adding it to a chat?
+
+The document continues to sync with the most up-to-date version in Google Drive.",Domain:claude|Type:product_issue|Risk:LOW|Confidence:0.34|Reason:sufficient_confidence,product_issue
+Replied,general,"Summary: Get in touch
+
+Report a lost card by calling Visa at 000-800-100-1219.
+
+Point 1: Get in touch
+
+Report a lost card by calling Visa at 000-800-100-1219.
+
+[Send an email](https://usa.visa.com/Forms/contact-us-form.html)
+
+Point 2: Learn how to prevent fraud
+
+Visa can help you protect your business
+
+[Visa card acceptance guidelines](/content/dam/VCOM/global/support-legal/documents/card-acceptance-guidelines-visa-merchants.pdf)",Domain:visa|Type:product_issue|Risk:LOW|Confidence:0.24|Reason:sufficient_confidence,product_issue

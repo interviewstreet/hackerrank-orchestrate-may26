@@ -31,3 +31,4 @@ data/index/
 data/embeddings/
 *.sqlite
 *.db
+*.md
