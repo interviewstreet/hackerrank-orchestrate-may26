@@ -65,8 +65,12 @@ def main():
                     "request_type": "product_issue"
                 }
 
-        # Merge output into result row
-        result_row = row.to_dict()
+        # Build a normalized output row with the contract fields only.
+        result_row = {
+            "issue": ticket["issue"],
+            "subject": ticket["subject"],
+            "company": ticket["company"],
+        }
         result_row.update(output)
         results.append(result_row)
 
