@@ -1,0 +1,17 @@
+[project]
+name = "support-triage-agent"
+version = "0.1.0"
+description = "Multi-domain support triage agent for HackerRank Orchestrate hackathon"
+requires-python = ">=3.11"
+dependencies = [
+    "parlant==3.3.0",
+    "parlant-client==3.3.0",
+    "chromadb==0.5.23",
+    "sentence-transformers==3.3.1",
+    "python-dotenv==1.0.1",
+    "pandas==2.2.3",
+    "tqdm==4.67.1",
+]
+
+[tool.uv]
+package = false

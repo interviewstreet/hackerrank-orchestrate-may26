@@ -31,3 +31,8 @@ data/index/
 data/embeddings/
 *.sqlite
 *.db
+
+# uv
+.venv/
+code/chroma_db/
+parlant_data/
