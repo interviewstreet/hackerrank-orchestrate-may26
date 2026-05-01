@@ -7,12 +7,12 @@ Returns structured JSON.
 
 import json
 import re
-import anthropic
+from openai import OpenAI
 
-from config import ANTHROPIC_API_KEY, LLM_MODEL, LLM_TEMPERATURE, LLM_MAX_TOKENS, ESCALATION_RESPONSE
+from config import OPENAI_API_KEY, LLM_MODEL, LLM_TEMPERATURE, LLM_MAX_TOKENS, ESCALATION_RESPONSE
 from utils.logger import log_agent, log_llm_call
 
-client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+client = OpenAI(api_key=OPENAI_API_KEY)
 
 SYSTEM_PROMPT = """You are a strict support assistant. Your ONLY job is to answer support tickets using the provided context passages.
 
@@ -51,14 +51,16 @@ def run(query: str, chunks: list[dict]) -> dict:
     user_msg = f"Context passages:\n{context}\n\nUser ticket:\n{query}"
 
     try:
-        resp = client.messages.create(
+        resp = client.chat.completions.create(
             model=LLM_MODEL,
             max_tokens=LLM_MAX_TOKENS,
             temperature=LLM_TEMPERATURE,
-            system=SYSTEM_PROMPT,
-            messages=[{"role": "user", "content": user_msg}],
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": user_msg}
+            ],
         )
-        raw = resp.content[0].text.strip()
+        raw = resp.choices[0].message.content.strip()
         parsed = _parse_json(raw)
         log_llm_call(user_msg, raw, parsed)
         return parsed

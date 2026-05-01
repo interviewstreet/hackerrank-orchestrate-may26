@@ -1,8 +1,8 @@
 import os
 
 # ── API ────────────────────────────────────────────────────────────────────
-ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-LLM_MODEL         = "claude-sonnet-4-20250514"
+OPENAI_API_KEY    = os.environ.get("OPENAI_API_KEY", "")
+LLM_MODEL         = "gpt-4o"
 LLM_TEMPERATURE   = 0
 LLM_MAX_TOKENS    = 1024
 

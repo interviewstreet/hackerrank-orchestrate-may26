@@ -1,4 +1,4 @@
-anthropic==0.97.0
+openai>=1.40.0
 rank-bm25==0.2.2
 sentence-transformers==5.4.1
 pandas==3.0.2
