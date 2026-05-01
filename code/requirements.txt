@@ -1,0 +1,7 @@
+anthropic==0.97.0
+rank-bm25==0.2.2
+sentence-transformers==5.4.1
+pandas==3.0.2
+python-frontmatter==1.1.0
+tqdm==4.67.1
+numpy==2.2.6
