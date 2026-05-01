@@ -5,11 +5,18 @@ WHY ONE FILE: Change a threshold here → affects all modules instantly.
 No hunting across files.
 """
 
+import os
 from pathlib import Path
 
 # ── Paths ─────────────────────────────────────────────────────────────────────
 CODE_DIR   = Path(__file__).parent.resolve()
 REPO_ROOT  = CODE_DIR.parent.resolve()
+
+from dotenv import load_dotenv
+
+# ── Load Secrets ──────────────────────────────────────────────────────────────
+load_dotenv(REPO_ROOT / ".env", override=False)
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
 DATA_DIR   = REPO_ROOT / "data"
 TICKETS_DIR = REPO_ROOT / "support_tickets"
 
