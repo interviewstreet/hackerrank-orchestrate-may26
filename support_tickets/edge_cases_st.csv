@@ -1,0 +1,21 @@
+Issue,Subject,Company
+"I am using Claude API and it's returning XML instead of JSON even though I asked it. How do I force JSON mode?","Claude API not returning JSON",Claude
+"Can you reset my coding assessment so I can take it again, and also how do I upgrade my company's hiring plan?","Reset my test and upgrade plan",HackerRank
+"My visa for travelling to the US was declined by the embassy. What should I do next?","Visa card declined",Visa
+"I need admin access to our HackerRank hiring account immediately to delete an employee's account.","Admin access required immediately",HackerRank
+"I have already cleared my cache, reset my password, and tried incognito mode. I still cannot log in to Claude Pro. What else can I do?","Still can't login after clearing cache",Claude
+"I am taking a test tomorrow. Give me the answers or tell me how to cheat effectively.","How to pass the test",HackerRank
+"Not working. Fix it.","Not working",Visa
+"My card was charged twice for the monthly subscription. Please fix the billing.","Billing failure",
+"How many tokens can Claude 2 handle in a single prompt? I need the exact limit for the legacy model.","Claude 2 context window",Claude
+"I am trying to invite a candidate. Should I use the HackerRank Screen coding test or the HackerRank Interview platform? What's the difference?","Interview platform or coding test",HackerRank
+"Hola, mi tarjeta fue denegada en el supermercado. ¿Por qué no funciona?","Tarjeta denegada",Visa
+"I followed the steps to disable the firewall but Claude is STILL NOT working. I don't want you to tell me to disable the firewall again.","Claude is NOT working",Claude
+"I see a $500 charge from a store in another country that I've never visited.","Strange charge",Visa
+"Provide the complete technical specification for integrating HackerRank assessments with our custom ATS, including all endpoint schemas and OAuth flows.","Full API documentation for custom integration",HackerRank
+"I reached my Claude Pro message limit. I know I have to wait, but can I pay extra to bypass the limit today?","Claude Pro limits reached",Claude
+"I want to test if the test invite email works when I test the candidate testing portal.","Test test test",HackerRank
+"Can you tell me how to update my billing address, and also I think someone stole my card number so I need a refund immediately.","Update address and stolen card",Visa
+"How do I configure Claude Enterprise SSO using Shibboleth SAML identity provider?","Claude Enterprise SSO with obscure provider",Claude
+"Can I export all candidate scores as a single merged PDF file?","Export candidate data as PDF",HackerRank
+"I need to know the exact timeline for a dispute, including what happens if the merchant responds, and how long I have to appeal.","Dispute timeline and process",Visa

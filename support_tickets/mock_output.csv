@@ -1,0 +1,367 @@
+Issue,Subject,Company,Response,Product Area,Status,Request Type
+My HackerRank test link expired before I could start. I was invited last week but now it says the test is no longer available.,Test link expired,HackerRank,This requires human review.,security,Escalated,product_issue
+I want to know how to set an expiry time for a HackerRank test I created. Where do I find this setting?,How to set test expiry,HackerRank,This requires human review.,security,Escalated,product_issue
+The candidate I invited to take the test says they never received the email invite. How do I resend it?,Candidate did not receive test invite,HackerRank,"Based on our documentation: **Note:** Once you delete a candidate’s submission, the candidate can either retake the test using their original invitation link or you can send a new invitation. For more information, see [📄 Reinviting Candidates to a Test](/articles/1002936098).
+
+\",HackerRank,Replied,product_issue
+My HackerRank Screen test is showing zero submissions even though candidates have taken it. The dashboard seems broken.,Test dashboard showing wrong data,HackerRank,This requires human review.,security,Escalated,product_issue
+I accidentally deleted a question from my question library. Can I recover it?,Accidentally deleted a question,HackerRank,"Based on our documentation: You can restore archived questions if you need to use them again.
+
+To unarchive a question:
+
+1.  Go to the **Library** tab.
+
+2.  Select the **Tests** or **Interview** tab.
+
+3.  Select **My Company** as the source of questions from the **Library** drop-down.
+
+4.  Select the **Filter** icon and choose **Archived \> Show Archived Questions Only**. Only archived questions appear.",HackerRank,Replied,product_issue
+How do I add multiple recruiters to my HackerRank company account so they can manage assessments?,Adding multiple recruiters to account,HackerRank,This requires human review.,security,Escalated,product_issue
+My candidate flagged as suspicious during a proctoring session but I reviewed the video and believe it was a false positive. Can I override this?,Proctoring false positive,HackerRank,"Based on our documentation: 4.  Expand the **Photo ID** section to view the candidate’s photo.
+
+# Image Proctoring
+
+The **Image Proctoring** feature captures images of candidates at one-minute intervals during the test. By default, this feature is disabled. This feature within the **Test Integrity** settings is disabled by default for all the tests to monitor suspicious activity during the test.",HackerRank,Replied,product_issue
+I am trying to create a coding challenge with pair programming support. Is that available on HackerRank?,Pair programming challenge setup,HackerRank,This requires human review.,security,Escalated,product_issue
+I completed the HackerRank SkillUp course but my certificate has not appeared in my profile after 3 days.,SkillUp certificate not showing,HackerRank,This requires human review.,security,Escalated,product_issue
+How do I download the full candidate report including their code submissions and proctoring video?,Downloading candidate report,HackerRank,"Based on our documentation: Learn more on how to download **candidate **data from a **CodePair **interview from our support article: [Viewing a CodePair report](https://support.hackerrank.com/articles/6788713830-viewing-interview-reports)[.](https://support.hackerrank.com/hc/en-us/articles/115007328727-Viewing-a-CodePair-report)
+
+You can export or download the candidate's data following the below steps.
+
+- Go to the **Candidates** tab inside a **Test**. 
+
+- Click on the vertical ellipsis menu on the right side of a candidate's attempt and click on **Visit Profile.**",HackerRank,Replied,product_issue
+Can I schedule a HackerRank interview directly from the platform or do I need to use a third-party calendar tool?,Scheduling interviews on HackerRank,HackerRank,This requires human review.,security,Escalated,product_issue
+My company's ATS integration with HackerRank stopped syncing candidate results yesterday. We use Greenhouse.,ATS integration issue with Greenhouse,HackerRank,This requires human review.,security,Escalated,product_issue
+I want to restrict the coding test to only Python and Java. How do I remove other languages from the allowed list?,Restricting programming languages in test,HackerRank,"Based on our documentation: In the **Question** section, you can update the following:
+
+    - **Allowed Languages:** Select the programming languages that candidates can use during the test. Only the selected languages are available for coding questions.
+
+    - **Configuration for Coding Question:**
+
+      - **Show Status of Hidden Test Cases**: Select this option to show candidates whether they pass or fail hidden test cases after submission.
+
+      - **Show Output of Hidden Test Cases**: Select this option to display the actual output of hidden test cases and provide detailed feedback for the candidates.
+
+    - **Question Points**: Turn on this option to display the point value for each question. Disabling it may encourage candidates to focus on problem-solving rather than maximizing scores.",HackerRank,Replied,product_issue
+The plagiarism detection report says two candidates have similar code but I think it is a false positive. How do I contest this?,Plagiarism report dispute,HackerRank,"Based on our documentation: 4.  Scroll down to the question flagged for plagiarism and click to view the detailed report. 
+
+5.  The **Attempt Activity** section will display the flagged code. Review it and confirm or dismiss the plagiarism flag.
+
+6.  Click **Yes** or **No** based on the review:
+
+    - Yes retains the plagiarism flag.
+
+    - No removing it.
+
+7.  Use the **View Matches** option to see code similarities, and click **View** in the **Output Diff** column for detailed differences.
+
+### Code Similarity and Output Diff
+
+The Match Percentage shows the degree of similarity between candidates’ code. Use the **View Matches** option to see highlighted differences in the codes, which helps identify potential plagiarism. Based on the percentage, flags are categorized as follows:
+
+- High: ≥ 90%
+
+- Medium: 80%–90%",HackerRank,Replied,product_issue
+I'm a candidate who took a HackerRank test last month. My score was 78 but the company said I got 45. Please investigate.,Score discrepancy reported by company,HackerRank,This requires human review.,security,Escalated,product_issue
+My Claude account was charged for a Pro plan but I cancelled before the billing date. I need a refund.,Charged after cancellation,Claude,"Based on our documentation: ---
+
+## What should I do if I can't access the account I'm requesting a refund for?
+
+If you're unable to log in to the account associated with your payment (for example, if you can't access the email account you used to sign up), you'll need to **[contact our Support team](https://support.claude.com/en/articles/9015913-how-to-get-support)** using another email and 'cc' the email address tied to the account you can't access. Write back to cancel your paid plan and request a refund so our team can assist.  
+​﻿
+
+## I paid for my plan on Claude for iOS -- what's the process for requesting a refund?",Claude,Replied,product_issue
+Claude is giving me incorrect information about recent events. It seems to be hallucinating facts about things that happened last week.,Claude hallucinating recent information,Claude,"Based on our documentation: # Claude is providing incorrect or misleading responses. What’s going on?
+
+_Last updated: 2026-03-16T21:21:17Z_
+
+In an attempt to be a helpful assistant, Claude can occasionally produce responses that are incorrect or misleading.
+
+This is known as ""hallucinating"" information, and it’s a byproduct of some of the current limitations of frontier Generative AI models, like Claude. For example, in some subject areas, Claude might not have been trained on the most-up-to-date information and may get confused when prompted about current events. Another example is that Claude can display quotes that may look authoritative or sound convincing, but are not grounded in fact. In other words, Claude can write things that might look correct but are very mistaken.",Claude,Replied,product_issue
+I cannot log in to my Claude account. The password reset email is not arriving even after multiple attempts.,Cannot log into Claude account,Claude,"Based on our documentation: # Logging in to your Claude account
+
+_Last updated: 2026-04-03T20:03:20Z_
+
+When you open Claude on a web browser ([claude.ai](http://claude.ai)), the desktop app, or a mobile app, you will see two different options for logging in to your Claude account.
+
+![Embedded media](https://downloads.intercomcdn.com/i/o/lupk8zyo/1893216804/f2209c3ec6cf4fc2e803d13bbc9d/40520c9e-ff82-4a7c-adca-5a064fe18d8c?expires=1776783600&signature=c3d18b8ce76705d67619052851a390751aa6568256d9b1dedd21e02dcf4dd776&req=dSguFct%2Fm4lfXfMW1HO4zXg5CYSL6xGyzWhrqpWiTMkQcurkB9oT19QDgw6g%0AqpDlggBBTtX27xKXI64%3D%0A)
+
+## Continue with Google",Claude,Replied,product_issue
+How do I connect Claude to my company's internal data using the API? We want to build a custom assistant.,Integrating Claude API with internal data,Claude,"Based on our documentation: # How can I access the Claude API?
+
+_Last updated: 2026-03-16T21:17:36Z_
+
+Organizations interested in building with the Claude API can create a [Claude Console account](https://platform.claude.com). The Claude Console is where you can create API keys, add users to your team, set up billing, and experiment with Claude on the Workbench. Please note that access to the API is subject to our [Commercial Terms of Service](https://www.anthropic.com/legal/commercial-terms).
+
+Read more about [building with the Claude API here](https://claude.com/platform/api).",Claude,Replied,product_issue
+My Claude Desktop app on Windows keeps crashing every time I try to attach a file to a conversation.,Claude Desktop crashing on file attach,Claude,"Based on our documentation: ---
+
+## Current limitations
+
+- Claude can only read from and write to files that are currently open in Excel, PowerPoint, or Word.
+- Claude cannot create, open, close, or switch files directly from the add-ins—the files and add-ins must be open with the feature turned on.
+- Chat history for cross-app sessions is not saved between sessions.
+
+---
+
+## Troubleshooting
+
+#### Claude doesn't see my open file
+
+Make sure the add-in is activated in the app (**Tools > Add-ins** on Mac or **Home > Add-ins** on Windows) and that working across apps is turned on in Claude Desktop settings.
+
+#### Changes aren't appearing in the other app",Claude,Replied,product_issue
+I am a teacher and I want to use Claude for my classroom. Do you have any educational pricing or special programs?,Claude for classroom and education pricing,Claude,"Based on our documentation: # FAQs on Using Claude for Education at Your University
+
+_Last updated: 2026-03-16T21:06:36Z_
+
+This guide helps you use Claude for Education through your university-sponsored account. Find resources and answers to frequently asked questions about getting started, optimizing usage, and troubleshooting issues.
+
+---
+
+## What Features Are Included in My University-Sponsored Education Plan?
+
+Your university-sponsored Claude for Education account includes:",Claude,Replied,product_issue
+How do I migrate my Claude Team workspace to an Enterprise plan? We just grew to 50 employees.,Upgrading Claude Team to Enterprise,Claude,"Based on our documentation: ## Create a new Team organization
+
+To get started with the Team plan, navigate to **[claude.ai/login](http://claude.ai/login)** and enter your work email address. Follow the onboarding prompts and select the Team plan.
+
+## Upgrade from an individual plan to the Team plan
+
+If you already have a free or paid Claude account associated with your work email and wish to create a Team plan, sign into your account, then visit **[claude.ai/upgrade](http://claude.ai/upgrade)**. Follow the steps to create your Team.",Claude,Replied,product_issue
+Claude stopped responding mid-conversation and now every new message just shows a spinning loader.,Claude not responding mid-conversation,Claude,"Based on our documentation: For users on paid plans with code execution enabled, Claude automatically manages long conversations by summarizing earlier messages when context limits are approached. This means most users will rarely encounter length limit errors during normal use. Your full chat history is preserved so Claude can reference it even after summarization. In rare cases where you still encounter this error (such as when sending a very large first message), you can:
+
+- Break your content into smaller chunks and process them separately
+- Summarize or extract key sections before sending to Claude
+- Use Claude to first identify the most relevant portions of your content
+- Start a new conversation
+
+## Login errors",Claude,Replied,product_issue
+I want to set up SSO for my organization's Claude Enterprise account. We use Okta as our identity provider.,SSO setup with Okta for Claude Enterprise,Claude,"Based on our documentation: # Prerequisites
+
+Before you begin, ensure you meet the following requirements:
+
+- Your organization has an active Enterprise plan with HackerRank.
+
+- You have access to the Okta Admin Console.
+
+# Setting up HackerRank Single Sign-On with Okta
+
+To set up HackerRank single sign-On with Okta:
+
+## Step 1: Copy the SSO unique ID from HackerRank
+
+1.  Log in to your **HackerRank for Work** account using your credentials.
+
+2.  Go to **Settings \> Company \> Single Sign On**.
+
+3.  Copy the **SSO unique ID** under the **Configure SSO** section.",Claude,Replied,product_issue
+Can Claude access the internet in real time? I need it to pull live data from our analytics dashboard.,Claude real-time internet access question,Claude,This requires human review.,general,Escalated,product_issue
+How do I export all conversations from my Claude account before I cancel my subscription?,Exporting Claude conversation history,Claude,"Based on our documentation: Before deleting Claude accounts with paid subscriptions (Pro or Max plans):
+
+1. Cancel your subscription from your **[Billing settings](https://claude.ai/settings/billing)**.
+2. Wait until the end of your current subscription period.
+3. Once the subscription lapses, proceed with account deletion.
+
+Click ""Delete account"" and follow the prompts. **Please note that deleting your account is permanent** and you will no longer have access to saved chats. If you wish to keep your data, we recommend exporting it before deletion by following the steps listed here: **[How can I export my Claude data?](https://support.claude.com/en/articles/9450526-how-can-i-export-my-claude-data)**",Claude,Replied,product_issue
+The Claude mobile app on iOS is not syncing my conversation history from the web version.,Claude iOS app not syncing history,Claude,"Based on our documentation: ---
+
+## Troubleshooting
+
+#### Claude isn't offering to use my apps
+
+- Make sure you're using the latest version of the Claude iOS app. See [How to update Claude for iOS](https://support.anthropic.com/en/articles/11825384-how-to-update-claude-for-ios) for instructions.
+- Try being more specific in your request (refer to the examples listed above).
+- Restart Claude for iOS and try again.
+
+#### Permission prompts don't appear
+
+- Check that the app for which Claude needs permissions is installed and set up on your phone.
+- Verify iOS system permissions by navigating to Settings > Privacy & Security.
+- Ensure Claude for iOS has the necessary permissions enabled.
+
+#### Features aren't working as expected",Claude,Replied,product_issue
+I tried to use the Claude API on Amazon Bedrock but I get an access denied error. My IAM permissions look correct.,Claude on Amazon Bedrock access denied,Claude,"Based on our documentation: # How do I get access to Claude in Amazon Bedrock?
+
+_Last updated: 2026-03-16T21:16:50Z_
+
+Get started with Claude in Amazon Bedrock by visiting the [Amazon Bedrock console](https://console.aws.amazon.com/bedrock/). For a step-by-step walkthrough on how to request Claude model access in the Amazon Bedrock console, [view this blog](https://aws.amazon.com/blogs/aws/anthropics-claude-3-5-sonnet-model-now-available-in-amazon-bedrock-the-most-intelligent-claude-model-yet/).",Claude,Replied,product_issue
+Can I use Claude to process patient records? I need to know about HIPAA compliance and data handling.,Claude HIPAA compliance question,Claude,"Based on our documentation: > **Note:** If your organization has a HIPAA-ready Enterprise plan, Claude Code is included in your seat but is not covered under the HIPAA-ready offering. See **[HIPAA-ready Enterprise plans](https://support.claude.com/en/articles/13296973-hipaa-ready-enterprise-plans)** for details.",Claude,Replied,product_issue
+My Claude Pro plan is not showing the extended context window feature. I am still on the standard limit.,Claude Pro context window not extended,Claude,"Based on our documentation: # How large is the context window on paid Claude plans?
+
+_Last updated: 2026-04-16T13:28:07Z_
+
+Claude’s context window size is 200K, meaning it can ingest 200K+ tokens (about 500 pages of text or more) when using a paid Claude plan.
+
+When using Claude Code with a Pro, Max, Team, or Enterprise plan, Opus 4.7 supports a 1M token context window. Pro users need to enable extra usage to access Opus 4.7 in Claude Code. Sonnet 4.6 also supports a 1M context window for all paid Claude plans on Claude Code, but extra usage must be enabled to access it (except for usage-based Enterprise plans).",Claude,Replied,product_issue
+My Visa debit card was declined at a grocery store but I have sufficient balance in my account.,Visa card declined with sufficient funds,Visa,"Based on our documentation: # Why was my card declined?
+
+_Last updated: 2026-03-16T21:11:50Z_
+
+There are several reasons your card may have been declined when trying to process this transaction. While we don't receive detailed information from issuing banks regarding the specific reasons for a decline, there are several common factors that may contribute to this issue. A few ideas to try are:
+
+## Ensure Supported Billing Location
+
+Please review our list of [supported billing locations](https://www.anthropic.com/supported-countries) to confirm that your payment method's billing address and origin country are eligible for processing. Ensure that your payment method’s billing address matches the origin country.
+
+## Verify Billing Address",Visa,Replied,product_issue
+I noticed an unfamiliar transaction of $230 on my Visa statement from a merchant I have never heard of.,Unrecognized transaction on Visa statement,Visa,"Based on our documentation: ### Check and save your receipts
+
+Always double-check the information on the sales receipts, including the currency you are being charged, before you make payment. Keep a copy of all sales receipts.
+
+### When You’re Home
+
+### Check your receipts
+
+Go through your receipts and make sure they reconcile with your monthly statement.
+
+### Contact your card issuer if you note a discrepancy
+
+If you see a charge you don’t recognise or if you notice any inconsistencies, contact your bank immediately.
+
+------------------------------------------------------------------------
+
+## Global Customer Assistance Service
+
+## Lost your Visa card? Call +1 303 967 1090 from anywhere in the world.",Visa,Replied,product_issue
+How do I activate a new Visa credit card that I just received in the mail?,Activating a new Visa card,Visa,"Based on our documentation: \*Please note, Visa does not set up, service or have access to cardholder or merchant accounts. This is done through our client financial institutions (the banks). Each financial institution has its own criteria for issuing Visa cards, how it manages statements, etc.
+
+## Get in touch
+
+Report a lost card by calling Visa at 000-800-100-1219.
+
+[Send an email](https://usa.visa.com/Forms/contact-us-form.html)",Visa,Replied,product_issue
+My Visa card was stolen while I was traveling abroad. How do I get an emergency replacement card?,Visa card stolen abroad,Visa,"Based on our documentation: ### Memorise your PIN
+
+Whether you are using a magnetic strip or chip card, know your credit card PIN before travelling overseas. If you have forgotten your PIN, reapply for a new one.
+
+### Make a copy of everything in your wallet
+
+Keep a record of card account numbers and telephone numbers for reporting lost or stolen cards. But remember to keep this information in a safe place. Always keep your credit card number and the three-digit CVV2 code on the back of your Visa card confidential.
+
+### Get in touch with your bank
+
+Check that your bank or credit card company has updated contact information. Tell them where and when you’ll be travelling – so that your card isn’t flagged for unusual activity.
+
+### Know the emergency numbers for lost or stolen cards",Visa,Replied,product_issue
+I want to dispute a charge from an online retailer who charged me twice for the same order.,Double charge dispute on Visa card,Visa,"Based on our documentation: ### Credit cards
+
+### How do I log in to my account to pay my bill, check my balance, etc.?
+
+To log in to your credit card account, please visit your issuer or bank website. The website and freephone number (only free when dialling from within the USA) may be located on the front or back of your Visa card. If you need any further support, please call Visa using the drop-down menu above.
+
+### How do I dispute a charge?
+
+To dispute a charge, please contact your issuer or bank using the freephone number (only free when dialling from within the USA) located on the front or back of your Visa card. In many cases, your issuer or bank will require detailed information regarding the transaction before resolving the disputed charge.
+
+### Why was my card declined?",Visa,Replied,product_issue
+My Visa card is being blocked for international transactions even though I have international payments enabled.,Visa international payments blocked,Visa,This requires human review.,general,Escalated,product_issue
+How do I set up travel notifications on my Visa card before I go to Europe next month?,Setting up Visa travel notifications,Visa,This requires human review.,general,Escalated,product_issue
+I received a fraud alert SMS for my Visa card but I made that purchase myself. How do I confirm it was me?,Confirming legitimate Visa transaction,Visa,"Based on our documentation: [Go to CyberSource](http://www.cybersource.com/)
+
+------------------------------------------------------------------------
+
+## Suspect fraud?
+
+Trust your instincts! If a sale seems too good to be true, it probably is. We hear all too often that what a merchant thought was a great sale turned out to be fraud. So take the time to check out that huge order that is being shipped halfway around the world to a customer with whom you have never done business. A little bit of extra work may protect you from being the victim of a fraud scheme.
+
+[Download the card acceptance guidelines for Visa merchants](/content/dam/VCOM/global/support-legal/documents/card-acceptance-guidelines-visa-merchants.pdf)
+
+### What to do if you are suspicious",Visa,Replied,product_issue
+My Visa card limit was reduced without any notification. I need to know why this happened.,Visa credit limit reduced without notice,Visa,"Based on our documentation: \*Please note, Visa does not set up, service or have access to cardholder or merchant accounts. This is done through our client financial institutions (the banks). Each financial institution has its own criteria for issuing Visa cards, how it manages statements, etc.
+
+## Get in touch
+
+Report a lost card by calling Visa at 000-800-100-1219.
+
+[Send an email](https://usa.visa.com/Forms/contact-us-form.html)",Visa,Replied,product_issue
+Can I use my Visa card for contactless payments at stores? I recently got a new card and I am not sure if it supports this.,Visa contactless payment availability,Visa,"Based on our documentation: - [Accepting with card present](#1)
+- [Accepting with card absent](#2)
+- [Fraud prevention tools](#3)
+- [Suspect fraud?](#4)
+
+## Accepting with card present
+
+If you accept cards in person, there are steps you need to take.
+
+### Swipe the card
+
+Swipe the card through a magnetic card reader, insert the card into a chip-reading device, or wave the card in front of a Visa payWave contactless payment terminal to request the transaction authorisation.
+
+Note: Many Visa cards have a chip that communicates information to a point-of-sale terminal with a chip-reading device. If a chip-reading device is available, preference must always be given to chip card processing before attempting to swipe the magnetic-stripe. The card should remain in the terminal until the transaction is complete.",Visa,Replied,product_issue
+I am a small business owner and I want to know how to accept Visa payments on my website without a POS terminal.,Accepting Visa payments online as small business,Visa,"Based on our documentation: ## Fraud prevention tools
+
+Use only secure, validated payment applications
+
+### Chip-activated terminals
+
+A unique, one-time authorisation code protects chip card transactions.
+
+[Learn about Visa Chip Cards](https://www.visa.com/chip/merchants/grow-your-business/payment-technologies/credit-card-chip/index.jsp)
+
+### Verified by Visa 
+
+The cardholder enters a password to verify their identity, which is confirmed by the card issuer in real time.
+
+[Learn about Verified by Visa](/run-your-business/small-business-tools/payment-technology/visa-secure.html)
+
+### Cybersource
+
+Services for processing online payments, streamlining fraud management and simplifying payment security.
+
+[Go to CyberSource](http://www.cybersource.com/)",Visa,Replied,product_issue
+My Visa virtual card for online shopping stopped working after I reported my physical card lost. Are they linked?,Visa virtual card deactivated after physical card report,Visa,"Based on our documentation: \*Please note, Visa does not set up, service or have access to cardholder or merchant accounts. This is done through our client financial institutions (the banks). Each financial institution has its own criteria for issuing Visa cards, how it manages statements, etc.
+
+## Get in touch
+
+Report a lost card by calling Visa at 000-800-100-1219.
+
+[Send an email](https://usa.visa.com/Forms/contact-us-form.html)",Visa,Replied,product_issue
+I was charged a foreign transaction fee on a purchase I made in USD from a US website. Should that apply?,Unexpected foreign transaction fee on Visa,Visa,This requires human review.,general,Escalated,product_issue
+How do I add my Visa card to Apple Pay? I followed the steps but the bank verification keeps failing.,Adding Visa card to Apple Pay,Visa,"Based on our documentation: - [Accepting with card present](#1)
+- [Accepting with card absent](#2)
+- [Fraud prevention tools](#3)
+- [Suspect fraud?](#4)
+
+## Accepting with card present
+
+If you accept cards in person, there are steps you need to take.
+
+### Swipe the card
+
+Swipe the card through a magnetic card reader, insert the card into a chip-reading device, or wave the card in front of a Visa payWave contactless payment terminal to request the transaction authorisation.
+
+Note: Many Visa cards have a chip that communicates information to a point-of-sale terminal with a chip-reading device. If a chip-reading device is available, preference must always be given to chip card processing before attempting to swipe the magnetic-stripe. The card should remain in the terminal until the transaction is complete.",Visa,Replied,product_issue
+My Visa card gets declined at ATMs in my city but works fine in stores. The bank says everything is fine.,Visa card declined at ATM only,Visa,"Based on our documentation: # Why was my card declined?
+
+_Last updated: 2026-03-16T21:11:50Z_
+
+There are several reasons your card may have been declined when trying to process this transaction. While we don't receive detailed information from issuing banks regarding the specific reasons for a decline, there are several common factors that may contribute to this issue. A few ideas to try are:
+
+## Ensure Supported Billing Location
+
+Please review our list of [supported billing locations](https://www.anthropic.com/supported-countries) to confirm that your payment method's billing address and origin country are eligible for processing. Ensure that your payment method’s billing address matches the origin country.
+
+## Verify Billing Address",Visa,Replied,product_issue
+I forgot to download my HackerRank test report before the candidate data was archived. Can I recover it?,Recovering archived HackerRank test report,HackerRank,This requires human review.,security,Escalated,product_issue
+Claude gave advice in a conversation that I want to report as potentially harmful. How do I flag it for review?,Reporting harmful Claude response,Claude,"Based on our documentation: ## How to report content to us
+
+We are committed to our users’ safety across our products. We provide users with a reporting tool that is accessible within Claude by clicking on the ‘thumbs down’ button on Claude’s response. This will begin the reporting process. We also provide additional reporting options [here](https://support.claude.com/en/articles/7996906-reporting-blocking-and-removing-content-from-claude). You can also make a complaint to us about harmful material or other aspects of the online safety standards [here](https://docs.google.com/forms/d/e/1FAIpQLScZbBlN2JjMFE6IygxBOEhISAEtXbbe3P5e1wJY766UiEVj5Q/viewform).
+
+## How to refer a matter to the eSafety Commissioner",Claude,Replied,product_issue
+I completed a HackerRank SkillUp course but the certificate PDF will not download. It just shows a blank page.,SkillUp certificate PDF not downloading,HackerRank,This requires human review.,security,Escalated,product_issue
+My Claude Enterprise admin console is not loading. It shows a 503 error since this morning.,Claude Enterprise admin console error,Claude,"Based on our documentation: ## Login errors
+
+If you see a generic error message when attempting to log in to your Claude account (e.g, ""There was an error logging you in""), try the following troubleshooting steps:
+
+- Ensure you’re not using a VPN when accessing Claude.
+- Disable any browser extensions that you currently have active.
+- Clear your browser’s cache and cookies.
+
+If you're still seeing an error, check **[our status page](http://status.claude.com)** for active incidents.
+
+## Capacity constraints
+
+Capacity issues occur when Claude’s infrastructure experiences high demand system-wide. When capacity is constrained, you may see this message when chatting with Claude: *""Due to unexpected capacity constraints, Claude is unable to respond to your message. Please try again soon.""*",Claude,Replied,product_issue
+I want to pause my Visa card temporarily while I look for it at home without cancelling it permanently.,Temporarily pausing Visa card,Visa,This requires human review.,general,Escalated,product_issue

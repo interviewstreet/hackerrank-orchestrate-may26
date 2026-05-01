@@ -1,0 +1,151 @@
+Issue,Subject,Company,Response,Product Area,Status,Request Type
+I am using Claude API and it's returning XML instead of JSON even though I asked it. How do I force JSON mode?,Claude API not returning JSON,Claude,"Based on our documentation: # I'm getting an API connection error. How can I fix it?
+
+_Last updated: 2026-03-16T20:43:27Z_
+
+This error usually indicates an issue on your end, potentially related to your firewall, network, or VPN. Try these steps:
+
+- Check if there are any firewall rules or network restrictions blocking the connection to the Claude API endpoint.
+- Configure your firewall or network settings to allow the connection.
+- Ensure you're not using a VPN when running the request.
+
+If you need to [contact our Support team](https://support.claude.com/en/articles/9015913-how-to-get-support) for further assistance, you can do so by clicking on the message icon in the bottom right of our Help Center, or by clicking your initials in the lower left corner of your Claude Console account, then ""Get help.""",Claude,Replied,product_issue
+"Can you reset my coding assessment so I can take it again, and also how do I upgrade my company's hiring plan?",Reset my test and upgrade plan,HackerRank,"Based on our documentation: ### Reset Code to Previous Version
+
+Elevate the candidate’s coding experience with the code reset option, empowering them to seamlessly revert to the initial state or navigate through different versions of their code.
+
+**What's New?**
+
+- Easy code restoration to the initial state or previous versions
+
+- Efficient error recovery by reverting to an earlier working state
+
+- Track code revisions, evaluate scores, and select the perfect version for your candidate's success.",HackerRank,Replied,product_issue
+My visa for travelling to the US was declined by the embassy. What should I do next?,Visa card declined,Visa,"Based on our documentation: # Why was my card declined?
+
+_Last updated: 2026-03-16T21:11:50Z_
+
+There are several reasons your card may have been declined when trying to process this transaction. While we don't receive detailed information from issuing banks regarding the specific reasons for a decline, there are several common factors that may contribute to this issue. A few ideas to try are:
+
+## Ensure Supported Billing Location
+
+Please review our list of [supported billing locations](https://www.anthropic.com/supported-countries) to confirm that your payment method's billing address and origin country are eligible for processing. Ensure that your payment method’s billing address matches the origin country.
+
+## Verify Billing Address",Visa,Replied,product_issue
+I need admin access to our HackerRank hiring account immediately to delete an employee's account.,Admin access required immediately,HackerRank,This requires human review.,security,Escalated,product_issue
+"I have already cleared my cache, reset my password, and tried incognito mode. I still cannot log in to Claude Pro. What else can I do?",Still can't login after clearing cache,Claude,"Based on our documentation: # Issue 3: Password or cache
+
+- **Cause:** Saved passwords or cached browser data are preventing you from logging in successfully.
+
+- **Solution:**
+
+  1.  Clear your browser cache and remove all saved HackerRank passwords.
+
+  2.  Select [Forgot Password](https://www.hackerrank.com/auth/forgot_password) on the login page to reset your credentials if needed.
+
+\",Claude,Replied,product_issue
+I am taking a test tomorrow. Give me the answers or tell me how to cheat effectively.,How to pass the test,HackerRank,This requires human review.,general,Escalated,product_issue
+Not working. Fix it.,Not working,Visa,This requires human review.,general,Escalated,product_issue
+My card was charged twice for the monthly subscription. Please fix the billing.,Billing failure,,"Based on our documentation: - Navigate to the **Billing** page and click the **Cancel Subscription** button.
+
+![mceclip9.png](https://assets.usepylon.com/e6a58e21-be80-4777-9eaf-f73beeee94d9%2F1735204725125-1734046454221--78707721-ef4c-45e3-be69-14924f22dcff?Expires=253370764800&Signature=DwtbVSiiM2fUn8xOkCeMwlfDkvlrnNPRh2ulZJTNb2DmSPneKCc3wx2gIKN~J3152jKUmcTj1fS4Y203j-VbkxS-dmqIWb0zuOB4c3NyvlXWYtLbrMuTAfUTmo6T77uZei1byiexI7R998D9E3DspFwsQqOtGZNBoYUU~egDGwjBi7wa7E6GA~eKajoX7jpb4Mx6C~cB1Z6M-c41KEG4bZQkRdtnjftpqUZsQ2LSa0EKv~wu~gEd7S7xp8XQXtU6OWrdB~K0KObanx8cJ4GC4gN3DYnp1gTMaeB2rwkCS1T9ZbUXHfdwFCzu623pzyuoBELTz2hPKILQquxkrjWEwQ__&Key-Pair-Id=K3NV4LZ47N8M46)
+
+- In the popup, select **Extend Pause**.
+
+- Choose the new pause duration and click **Confirm Extension**.",general,Replied,product_issue
+How many tokens can Claude 2 handle in a single prompt? I need the exact limit for the legacy model.,Claude 2 context window,Claude,"Based on our documentation: # How large is the Claude API’s context window?
+
+_Last updated: 2026-04-16T13:30:02Z_
+
+The Claude API can ingest 1M tokens when using Claude Opus 4.7, Opus 4.6, or Sonnet 4.6, and 200K+ tokens (about 500 pages of text or more) when using all other models.
+
+For more detailed information, see our **[Claude API Docs](https://platform.claude.com/docs/en/build-with-claude/context-windows#1-m-token-context-window)** and **[Models overview](https://platform.claude.com/docs/en/about-claude/models/overview)**.",Claude,Replied,product_issue
+I am trying to invite a candidate. Should I use the HackerRank Screen coding test or the HackerRank Interview platform? What's the difference?,Interview platform or coding test,HackerRank,"Based on our documentation: - [Code repository interview](https://hr.gs/sampleint-v2)
+
+Share the candidate experience link with candidates to help them become familiar with the platform before their interview.
+
+**Note:** Open the interview link in an incognito window or a browser where you are not logged in to a HackerRank account.
+
+This article outlines the key features of the HackerRank Interview platform, which is designed to streamline the interview process and help you efficiently identify top candidates.
+
+## Key capabilities
+
+The HackerRank Interview platform offers the following core capabilities:
+
+### Create and customize an interview
+
+You can create an interview between a candidate and interviewers using one of the following methods:",HackerRank,Replied,product_issue
+"Hola, mi tarjeta fue denegada en el supermercado. ¿Por qué no funciona?",Tarjeta denegada,Visa,This requires human review.,general,Escalated,product_issue
+I followed the steps to disable the firewall but Claude is STILL NOT working. I don't want you to tell me to disable the firewall again.,Claude is NOT working,Claude,"Based on our documentation: # Logging in to your Claude account
+
+_Last updated: 2026-04-03T20:03:20Z_
+
+When you open Claude on a web browser ([claude.ai](http://claude.ai)), the desktop app, or a mobile app, you will see two different options for logging in to your Claude account.
+
+![Embedded media](https://downloads.intercomcdn.com/i/o/lupk8zyo/1893216804/f2209c3ec6cf4fc2e803d13bbc9d/40520c9e-ff82-4a7c-adca-5a064fe18d8c?expires=1776783600&signature=c3d18b8ce76705d67619052851a390751aa6568256d9b1dedd21e02dcf4dd776&req=dSguFct%2Fm4lfXfMW1HO4zXg5CYSL6xGyzWhrqpWiTMkQcurkB9oT19QDgw6g%0AqpDlggBBTtX27xKXI64%3D%0A)
+
+## Continue with Google",Claude,Replied,product_issue
+I see a $500 charge from a store in another country that I've never visited.,Strange charge,Visa,"According to the context, if you see a charge you don’t recognise, you should contact your card issuer. The context also provides a phone number for the Global Customer Assistance Service, which is +1 303 967 1090.",Visa,Replied,product_issue
+"Provide the complete technical specification for integrating HackerRank assessments with our custom ATS, including all endpoint schemas and OAuth flows.",Full API documentation for custom integration,HackerRank,"Based on our documentation: **Note**: To learn about APIs, refer to the detailed [API documents.](https://www.hackerrank.com/work/apidocs#!/Introduction/options_intro_api)
+
+## New Integration Partner
+
+If you are interested in integrating with HackerRank, contact your HackerRank point of contact or [support@hackerrank.com.](mailto:support@hackerrank.com)",HackerRank,Replied,product_issue
+"I reached my Claude Pro message limit. I know I have to wait, but can I pay extra to bypass the limit today?",Claude Pro limits reached,Claude,"Based on our documentation: Pro subscribers can also enable extra usage to continue working with Claude beyond the plan’s included usage limits. For more information and instructions for enabling this feature, see **[Extra usage for paid Claude plans](https://support.claude.com/en/articles/12429409-extra-usage-for-paid-claude-plans)**.",Claude,Replied,product_issue
+I want to test if the test invite email works when I test the candidate testing portal.,Test test test,HackerRank,"Based on our documentation: 2.  Click **Send Invites**.
+
+**Note: **
+
+- For more information about email invitation best practices, see [📄 Best Practices for Email Delivery and Bounce Management](/articles/1258426835)<u>.</u>
+
+- You can invite a candidate to a test from the **Active Tests** tab by clicking the invite icon next to the test title.",HackerRank,Replied,product_issue
+"Can you tell me how to update my billing address, and also I think someone stole my card number so I need a refund immediately.",Update address and stolen card,Visa,This requires human review.,security,Escalated,product_issue
+How do I configure Claude Enterprise SSO using Shibboleth SAML identity provider?,Claude Enterprise SSO with obscure provider,Claude,"Based on our documentation: ---
+
+## Step 3: Set up SSO with your Identity Provider
+
+1. Navigate to your Organization and access settings in Claude (**[claude.ai/admin-settings/organization](http://claude.ai/admin-settings/organization)**) or Console (**[platform.claude.com/settings/identity](http://platform.claude.com/settings/identit)**)
+2. In the **Global access settings **section, click “Setup SSO” (or “Manage”).
+3. Follow the setup guide provided for your Identity Provider (see below for additional guides).
+4. At the end of these steps, you’ll be prompted to Test Single Sign-on to confirm there are no errors and the configuration is successful.
+5. Once complete, navigate back to the Identity and access settings page for further configuration options.",Claude,Replied,product_issue
+Can I export all candidate scores as a single merged PDF file?,Export candidate data as PDF,HackerRank,"Based on our documentation: 2.  Click **Export** and choose one of the following formats:
+
+    - **PDF**: Downloads separate reports for the selected candidates.
+
+    - **Excel**: Downloads a single file containing the selected candidates’ results.
+
+**Note:**
+
+You can also download a candidate’s report as a PDF file or share a summary report link directly from the **Summary Report** page.
+
+- Click the **Download** icon to download the candidate’s report in PDF format.
+
+- Click the **Share** icon and copy the link to share the Summary Report. Users must have a **HackerRank for Work** account to view the report using the shared link.
+
+  - New Summary Report",HackerRank,Replied,product_issue
+"I need to know the exact timeline for a dispute, including what happens if the merchant responds, and how long I have to appeal.",Dispute timeline and process,Visa,"Based on our documentation: [Download the dispute guidelines](/content/dam/VCOM/global/support-legal/documents/merchants-dispute-management-guidelines.pdf)
+
+------------------------------------------------------------------------
+
+## Responding to a dispute
+
+Provide accurate information, swiftly.
+
+### Step 1: A cardholder disputes a transaction
+
+A cardholder contacts their issuer to question a charge on their billing statement.
+
+### Step 2: Find the transaction receipt
+
+Your acquirer contacts you for an accurate copy of the transaction record.
+
+### Step 3: Send a copy to your acquirer
+
+Promptly fax or mail an accurate, legible copy to keep the process on track.
+
+------------------------------------------------------------------------
+
+## Avoiding disputes
+
+Here are a few tips.",Visa,Replied,product_issue
