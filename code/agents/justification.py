@@ -1,44 +1,92 @@
 """
-Justification Builder
-Assembles a human-readable, traceable justification for every decision.
-Includes: routing reason, retrieval evidence, safety rule (if triggered).
+Justification builder with standard structure.
 """
 
+import re
+from config import OPENAI_API_KEY, LLM_MODEL, LLM_TEMPERATURE, LLM_MAX_TOKENS, RETRIEVAL_THRESHOLD
 
-def run(
-    domain:       str,
-    router_meta:  dict,
-    chunks:       list[dict],
-    safety_rule:  str | None,
-    llm_result:   dict | None,
-    status:       str,
+
+def _deterministic_base(
+    domain: str,
+    router_meta: dict | None,
+    retrieval_score: float | None,
+    retrieval_threshold: float,
+    safety_trigger: str | None,
+    escalated: bool,
+    escalation_reason: str | None,
+    request_type: str = "product_issue",
+    product_area: str = "unknown",
+    chunks_exist: bool = True,
 ) -> str:
     parts = []
 
-    # 1. Routing
-    method = router_meta.get("method", "unknown")
-    conf   = router_meta.get("confidence", "")
-    parts.append(f"Domain routed to '{domain}' via {method} (confidence={conf}).")
+    if request_type == "invalid":
+        parts.append("Request classified as invalid.")
+        parts.append("Query outside supported domains.")
 
-    # 2. Retrieval evidence
-    if chunks:
-        top  = chunks[0]
-        meta = top.get("metadata", {})
-        parts.append(
-            f"Top retrieved article: '{meta.get('title', 'N/A')}' "
-            f"(score={top.get('score', 0):.3f}, source={meta.get('source_url', 'N/A')})."
-        )
+    if router_meta:
+        method = str(router_meta.get("method", "unknown")).lower()
+        if method == "company_field":
+            parts.append(f"Routed to {domain} via company field.")
+        elif method == "keyword":
+            parts.append(f"Routed to {domain} via keyword match.")
+        elif method == "llm_fallback":
+            parts.append(f"Routed to {domain} via LLM fallback.")
+        elif method == "injection_detect":
+            parts.append("Routed to unknown due to injection detection.")
+        elif method == "no_match":
+            parts.append("Routed to unknown via no_match.")
+        else:
+            parts.append(f"Routed to {domain} via {method}.")
     else:
-        parts.append("No relevant corpus documents retrieved.")
+        parts.append("Routed to unknown.")
 
-    # 3. Safety / escalation reason
-    if safety_rule:
-        parts.append(f"Escalated by rule [{safety_rule}].")
-    elif llm_result and llm_result.get("escalate"):
-        reason = llm_result.get("escalate_reason", "LLM flagged as unresolvable.")
-        parts.append(f"LLM escalation: {reason}")
+    if retrieval_score is None:
+        parts.append("Top retrieval score: none.")
+    else:
+        parts.append(f"Top retrieval score={retrieval_score:.3f}.")
 
-    # 4. Final status
-    parts.append(f"Final status: {status}.")
+    grounded = retrieval_score is not None and retrieval_score >= retrieval_threshold
+    parts.append("Grounding: PASS." if grounded else "Grounding: FAIL.")
+
+    safety = "PASS" if not safety_trigger or safety_trigger == "low" else "FLAG"
+    parts.append(f"Safety: {safety}.")
+
+    final_status = "escalated" if escalated and request_type != "invalid" else "replied"
+    parts.append(f"Final decision: {final_status}.")
+
+    if escalation_reason:
+        parts.append(f"Reason: {escalation_reason}.")
 
     return " ".join(parts)
+
+
+def refine_justification_with_llm(base_justification: str) -> str:
+    return base_justification
+
+
+def build_justification(
+    domain: str,
+    router_meta: dict | None,
+    retrieval_score: float | None,
+    retrieval_threshold: float,
+    safety_trigger: str | None,
+    escalated: bool,
+    escalation_reason: str | None,
+    request_type: str = "product_issue",
+    product_area: str = "unknown",
+    chunks_exist: bool = True,
+) -> str:
+    base = _deterministic_base(
+        domain,
+        router_meta,
+        retrieval_score,
+        retrieval_threshold,
+        safety_trigger,
+        escalated,
+        escalation_reason,
+        request_type,
+        product_area,
+        chunks_exist,
+    )
+    return base

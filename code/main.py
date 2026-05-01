@@ -27,6 +27,7 @@ def parse_args():
     parser.add_argument("--sample", action="store_true",  help="Run on sample CSV")
     parser.add_argument("--ingest", action="store_true",  help="Re-ingest corpus into local embeddings store")
     parser.add_argument("--file",   type=str, default=None, help="Custom input CSV path")
+    parser.add_argument("--trial", action="store_true",  help="Run on trial_*.csv with trial_*.csv output")
     return parser.parse_args()
 
 
@@ -65,18 +66,23 @@ def main():
         output = run_pipeline(ticket, ticket_id=idx)
         results.append(output)
 
-    out_df = pd.DataFrame()
-    
-    # Input columns
-    out_df["Issue"] = df[issue_col]
-    out_df["Subject"] = df[subject_col]
-    out_df["Company"] = df[company_col]
-    
-    # Output columns with proper capitalization
-    out_df["Response"] = [r["response"] for r in results]
-    out_df["Product Area"] = [r["product_area"] for r in results]
-    out_df["Status"] = [r["status"] for r in results]
-    out_df["Request Type"] = [r["request_type"] for r in results]
+    rows = []
+    for r in results:
+        rows.append({
+            "status": str(r.get("status", "escalated")).lower(),
+            "product_area": str(r.get("product_area", "unknown") or "unknown"),
+            "response": str(r.get("response", "") or ""),
+            "justification": str(r.get("justification", "") or ""),
+            "request_type": str(r.get("request_type", "product_issue") or "product_issue"),
+        })
+
+    out_df = pd.DataFrame(rows, columns=[
+        "status",
+        "product_area",
+        "response",
+        "justification",
+        "request_type",
+    ])
 
     os.makedirs(os.path.dirname(OUTPUT_CSV), exist_ok=True)
     out_df.to_csv(OUTPUT_CSV, index=False)

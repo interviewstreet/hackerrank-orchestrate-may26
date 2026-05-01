@@ -45,6 +45,11 @@ def run(query: str, company: str | None) -> dict:
         log_agent("router", f"rule-keyword → {best_domain}", {"scores": scores})
         return {"domain": best_domain, "method": "keyword", "confidence": best_score}
 
+    # FIX: If company is None and no keyword match, escalate to unknown without LLM fallback
+    if company is None and best_score == 0:
+        log_agent("router", "rule-no-match, company-None → unknown", {"scores": scores})
+        return {"domain": "unknown", "method": "no_match", "confidence": "none"}
+
     # Step 2 — LLM fallback
     domain = _llm_classify(query)
     return {"domain": domain, "method": "llm_fallback", "confidence": "llm"}

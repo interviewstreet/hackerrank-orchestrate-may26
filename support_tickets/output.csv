@@ -1,42 +1,30 @@
-Issue,Subject,Company,Response,Product Area,Status,Request Type
-I notice that people I assigned the test in October of 2025 have not received new tests. How long do the tests stay active in the system.,Test Active in the system,HackerRank,"Tests remain active only during the defined start and end time window. After the test expires, invited candidates cannot access the test, and you cannot invite new candidates. Please check the test expiration settings to ensure the test is still within the active period.",screen,replied,product_issue
-site is down & none of the pages are accessible,,,"I'm sorry to hear that you're experiencing issues accessing the site. Unfortunately, the provided context does not contain information about site outages or troubleshooting steps for when the site is down. I will escalate this issue to ensure it gets the attention it needs.",general-help,escalated,product_issue
-"I'm noticing that you all have many default versions of roles. (e.g. front end developer for react, angular, vue.js, etc.) What do you consider best practice 
-for when to create a new test versus create a variant of the test? What are the advantages and disadvantages of using variants?","When should I create a variant versus
- have a different test?",HackerRank,"Creating test variants is beneficial when you want to personalize assessments for different candidate profiles within the same test, such as adapting to different roles or skills. This approach eliminates the need to manage separate tests, improves efficiency, and ensures candidates are assessed on the most relevant content. Variants allow you to maintain a single test structure while tailoring the content to specific needs. However, if the assessments are fundamentally different in structure or purpose, creating separate tests might be more appropriate.",screen,replied,product_issue
-"Hi there
-
-We have sent a candidate a Hackerrank assessment already, but we have been informed that they require extra time. As the assessment is 105 minutes, they need an extra 50% extra time added (so around 53 minutes) in addition.
-
-Please can you provide step-by-step instruction on how we are to reinvite them.
-
-Do we find their profile in 'Candidates' , put in Add time 53 minutes and then click 'reinvite' and send the email? The email to the candidate says 105 minutes as the duration though still so not sure how we can check?
-
-Thanks","How to reinvite candidate to Hackerrank 
-assessment and add extra time",HackerRank,"To reinvite a candidate and add extra time to their HackerRank assessment, follow these steps:
-
-1. Log in to your **HackerRank for Work** account.
-2. Go to the **Tests** tab.
-3. Open the test from which you want to reinvite the candidate.
-4. Go to the **Candidates** tab.
-5. Select the checkbox next to the candidate you want to reinvite.
-6. Click **Invite selected**.
-7. In the **Send Test Invites** section, click **Re-invite** to send the test invitation again.
-
-To add extra time:
-1. Before the candidate starts the test, go to the **Tests** tab.
-2. Select the test you want to modify.
-3. Click **Invite**.
-4. Select **Time Accommodation** from the upper-right corner.
-5. Choose **50%** to extend the test duration by 50%.
-6. Select **Save**.
-
-The system updates the invite template with the modified duration. Ensure the candidate has not started the test before making these changes.",screen,replied,product_issue
-"i signed up using google login on hackerrank community , so i do not have a separate hackerrank password. please delete my account
-",,HackerRank,"To delete an account created using Google login, you need to contact HackerRank Support directly at help@hackerrank.com and request account deletion.",hackerrank_community,replied,product_issue
-"One of my claude conversations has some private info, i forgot to make a temporary chat, is there anything
- else that can be done? like delete etc?",,Claude,"You can delete your chats to remove them from your visible history. However, data may still be retained in backend systems. If you are using an Enterprise plan, you can set custom retention timelines for your organization’s data.",claude,replied,product_issue
-What is the name of the actor in Iron Man?,"Urgent, please help",None ,"I'm sorry, I can't assist with that question.",claude,replied,invalid
-I bought Visa Traveller's Cheques from Citicorp and they were stolen in Lisbon last night. What do I do?,,Visa,"If your Visa Traveller's Cheques were stolen, you should immediately contact the issuing bank to report the loss and request a refund. Since you bought them from Citicorp, you can reach them at their Freephone number 1-800-645-6556 or Collect at 1-813-623-1709. They are available Monday-Friday, 6:30 am to 2:30 pm EST. Automated cheque verification is available 24/7 if you select the English or Spanish option. Make sure to have your cheque serial numbers and purchase details ready when you contact them.",support,replied,product_issue
-Where can I report a lost or stolen Visa card from India?,Card stolen,Visa,"To report a lost or stolen Visa card from India, you can call Visa's Global Customer Assistance Service at +1 303 967 1090. They provide assistance 24/7 and can help you block your card and arrange for a replacement.",support.md,replied,product_issue
-Thank you for helping me,,,Your message seems incomplete. Could you please provide more details about your issue or request?,claude-mobile-apps,replied,invalid
+status,product_area,response,justification,request_type
+replied,claude-api-and-console,"Access to a Claude team workspace can only be restored by an Admin or Owner. Please contact your organization's Admin or Owner to have your access reinstated. If you are not the workspace owner or admin, you will need their assistance to regain access.",Routed to claude via company field. Top retrieval score=0.565. Grounding: PASS. Safety: PASS. Final decision: replied.,product_issue
+escalated,settings,This issue requires further investigation and has been escalated to support.,Routed to hackerrank via company field. Top retrieval score=0.558. Grounding: PASS. Safety: FLAG. Final decision: escalated. Reason: high-risk safety issue.,product_issue
+replied,support,This issue requires further investigation and has been escalated to support.,Routed to visa via company field. Top retrieval score=0.679. Grounding: PASS. Safety: PASS. Final decision: replied.,product_issue
+escalated,hackerrank_community,This issue requires further investigation and has been escalated to support.,Routed to hackerrank via company field. Top retrieval score=0.566. Grounding: PASS. Safety: PASS. Final decision: escalated.,product_issue
+escalated,settings,This issue requires further investigation and has been escalated to support.,Routed to hackerrank via company field. Top retrieval score=0.411. Grounding: PASS. Safety: PASS. Final decision: escalated.,product_issue
+escalated,unknown,This issue requires further investigation and has been escalated to support.,Routed to hackerrank via company field. Top retrieval score=0.696. Grounding: PASS. Safety: FLAG. Final decision: escalated. Reason: high-risk safety issue.,product_issue
+replied,hackerrank_community,This issue requires further investigation and has been escalated to support.,Routed to hackerrank via company field. Top retrieval score=0.463. Grounding: PASS. Safety: PASS. Final decision: replied.,product_issue
+replied,hackerrank_community,This issue requires further investigation and has been escalated to support.,Routed to hackerrank via company field. Top retrieval score=0.625. Grounding: PASS. Safety: PASS. Final decision: replied.,product_issue
+replied,hackerrank_community,This issue requires further investigation and has been escalated to support.,Routed to hackerrank via company field. Top retrieval score=0.419. Grounding: PASS. Safety: PASS. Final decision: replied.,product_issue
+escalated,screen,This issue requires further investigation and has been escalated to support.,Routed to hackerrank via company field. Top retrieval score=0.604. Grounding: PASS. Safety: FLAG. Final decision: escalated. Reason: high-risk safety issue.,product_issue
+replied,interviews,This issue requires further investigation and has been escalated to support.,Routed to hackerrank via company field. Top retrieval score=0.561. Grounding: PASS. Safety: PASS. Final decision: replied.,product_issue
+escalated,unknown,This issue requires further investigation and has been escalated to support.,Routed to unknown via no_match. Top retrieval score: none. Grounding: FAIL. Safety: PASS. Final decision: escalated.,product_issue
+replied,interviews,The current context does not provide specific steps for removing an interviewer from the platform. Please refer to the platform's user management documentation or contact support for assistance.,Routed to hackerrank via company field. Top retrieval score=0.538. Grounding: PASS. Safety: PASS. Final decision: replied.,product_issue
+replied,settings,This issue requires further investigation and has been escalated to support.,Routed to hackerrank via company field. Top retrieval score=0.632. Grounding: PASS. Safety: PASS. Final decision: replied.,product_issue
+replied,claude,This issue requires further investigation and has been escalated to support.,Routed to claude via company field. Top retrieval score=0.624. Grounding: PASS. Safety: PASS. Final decision: replied.,product_issue
+escalated,unknown,This issue requires further investigation and has been escalated to support.,Routed to unknown via pre_safe. Top retrieval score: none. Grounding: FAIL. Safety: FLAG. Final decision: escalated. Reason: high-risk safety issue.,product_issue
+replied,hackerrank_community,This issue requires further investigation and has been escalated to support.,Routed to hackerrank via company field. Top retrieval score=0.599. Grounding: PASS. Safety: PASS. Final decision: replied.,product_issue
+replied,hackerrank_community,"You can update the name on your certificate only once per account. To do this, open your certificate page, enter the correct name in the Full Name field, and click Regenerate Certificate. Confirm the change by clicking Update Name in the dialog. After this update, you cannot change the name again.",Routed to hackerrank via company field. Top retrieval score=0.780. Grounding: PASS. Safety: PASS. Final decision: replied.,product_issue
+escalated,support,This issue requires further investigation and has been escalated to support.,Routed to visa via company field. Top retrieval score=0.546. Grounding: PASS. Safety: FLAG. Final decision: escalated. Reason: high-risk safety issue.,product_issue
+escalated,claude,This issue requires further investigation and has been escalated to support.,Routed to claude via company field. Top retrieval score=0.613. Grounding: PASS. Safety: FLAG. Final decision: escalated. Reason: high-risk safety issue.,product_issue
+replied,safeguards,"To prevent Claude from crawling your website, you can refer to the article on how site owners can block the crawler. This article provides specific instructions on blocking data crawling by Claude.",Routed to claude via company field. Top retrieval score=0.661. Grounding: PASS. Safety: PASS. Final decision: replied.,product_issue
+replied,support,"You can use your Visa card to withdraw cash at over 2 million ATMs worldwide by using Visa’s ATM locator. If your card is lost, stolen, or damaged, Visa can work with your financial institution to expedite an emergency card delivery, usually within 1 to 3 days. For immediate assistance, contact Visa’s Global Customer Assistance Services for emergency cash services.",Routed to visa via company field. Top retrieval score=0.489. Grounding: PASS. Safety: PASS. Final decision: replied.,product_issue
+replied,claude,"When you allow Claude to use your data to improve the models, the data is automatically de-linked from your user ID before any review. Access is limited to a small number of personnel involved in model training, and the data is used solely to make Claude better for everyone. Your data is not used to contact people, build profiles, or sell the information to third parties. You maintain full control and can adjust your privacy settings at any time.",Routed to claude via company field. Top retrieval score=0.635. Grounding: PASS. Safety: PASS. Final decision: replied.,product_issue
+escalated,unknown,This issue requires further investigation and has been escalated to support.,Routed to unknown via pre_safe. Top retrieval score: none. Grounding: FAIL. Safety: FLAG. Final decision: escalated. Reason: high-risk safety issue.,product_issue
+replied,unknown,I cannot assist with that request.,Request classified as invalid. Query outside supported domains. Routed to unknown due to injection detection. Top retrieval score: none. Grounding: FAIL. Safety: FLAG. Final decision: replied.,invalid
+escalated,amazon-bedrock,This issue requires further investigation and has been escalated to support.,Routed to claude via company field. Top retrieval score=0.664. Grounding: PASS. Safety: PASS. Final decision: escalated.,product_issue
+escalated,hackerrank_community,This issue requires further investigation and has been escalated to support.,Routed to hackerrank via company field. Top retrieval score=0.577. Grounding: PASS. Safety: FLAG. Final decision: escalated. Reason: high-risk safety issue.,product_issue
+replied,claude-for-education,"To set up a Claude LTI key for your students, you need to sign in to Canvas as an administrator and navigate to Admin -> Developer Keys. Click '+ Developer Key' and then '+ LTI Key.' Enter the required information such as Key Name, Description, Redirect URIs, Title, Target Link URI, OpenID Connect Initiation Url, and JWK method. After saving, toggle the state to 'On.' Then, install the Claude LTI as an app by going to Admin -> Settings -> Apps, selecting '+ App,' and using the Configuration Type 'By Client ID.'",Routed to claude via company field. Top retrieval score=0.559. Grounding: PASS. Safety: PASS. Final decision: replied.,product_issue
+replied,support,This issue requires further investigation and has been escalated to support.,Routed to visa via company field. Top retrieval score=0.673. Grounding: PASS. Safety: PASS. Final decision: replied.,product_issue
