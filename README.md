@@ -107,7 +107,7 @@ You don't need to do anything to enable it — just use your AI tool normally. Y
 ## Submission
 
 Submit on the HackerRank Community Platform:
-<https://www.hackerrank.com/contests/hackerrank-orchestrate-may26/challenges/support-agent/submission>
+<https://www.hackerrank.com/ontests/hackerrank-orchestrate-may26/challenges/support-agent/submission>
 
 You will upload **three** files:
 
