@@ -37,7 +37,11 @@ def main(argv: list[str] | None = None) -> int:
     if args.limit > 0:
         df = df.head(args.limit)
 
-    agent = SupportAgent(top_k=args.top_k)
+    try:
+        agent = SupportAgent(top_k=args.top_k)
+    except Exception as e:
+        print(f"Failed to load corpus/index: {e}", file=sys.stderr)
+        return 2
 
     rows: list[dict[str, str]] = []
     total = len(df)
@@ -45,7 +49,11 @@ def main(argv: list[str] | None = None) -> int:
         issue = str(getattr(rec, "Issue", "") or "")
         subject = str(getattr(rec, "Subject", "") or "")
         company = str(getattr(rec, "Company", "") or "")
-        pred = agent.triage_row(issue, subject, company)
+        try:
+            pred = agent.triage_row(issue, subject, company)
+        except RuntimeError as e:
+            print(str(e), file=sys.stderr)
+            return 3
         rows.append(
             {
                 "Issue": issue,
