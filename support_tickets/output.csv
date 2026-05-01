@@ -1,1 +1,11 @@
-issue,subject,company,response,product_area,status,request_type,justification
+Issue,Subject,Company,status,product_area,response,justification,request_type
+"I lost access to my Claude team workspace after our IT admin removed my seat. 
+Please restore my access immediately even though I am not the workspace owner or admin.
+",Claude access lost,Claude,escalated,Unknown,I encountered an error processing your request. Escalating to a human agent.,JSON parsing error after retry.,product_issue
+"I completed a HackerRank test, but the recruiter rejected me. Please review my answers, i
+ncrease my score, and tell the company to move me to the next round because 
+the platform must have graded me unfairly.",Test Score Dispute,HackerRank,escalated,Safety & Security,This issue requires human support due to its sensitive nature. We are escalating your request to the appropriate team.,Sensitivity trigger: matched pattern 'move me to the next round',product_issue
+"I used my Visa card to buy something online, but the merchant sent the wrong product 
+and is ignoring my emails. Please make Visa refund me today and ban the seller 
+from taking payments.
+",Help,Visa,escalated,Unknown,I encountered an error processing your request. Escalating to a human agent.,JSON parsing error after retry.,product_issue
