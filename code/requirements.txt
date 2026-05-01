@@ -1,0 +1,12 @@
+anthropic==0.39.0
+sentence-transformers==3.3.1
+faiss-cpu==1.9.0
+rank-bm25==0.2.2
+pydantic==2.10.3
+python-frontmatter==1.1.0
+langchain-text-splitters==0.3.4
+python-dotenv==1.0.1
+tqdm==4.67.1
+pytest==8.3.4
+pyarrow==18.1.0
+numpy==2.2.0

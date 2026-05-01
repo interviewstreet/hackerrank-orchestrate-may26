@@ -1,0 +1,4 @@
+﻿Issue,Subject,Company
+Trailing whitespace ticket,subj,None 
+Empty subject ticket,,HackerRank
+Unknown company ticket,subj,OtherCorp
