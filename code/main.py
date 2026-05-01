@@ -50,12 +50,12 @@ def process_ticket(ticket: TicketInput, retriever, row_num: int, agent_logger: A
         if retriever.is_low_confidence(chunks):
             reason = f"No relevant docs found (score: {retriever.top_score(chunks):.2f})."
             output = make_escalation(reason, product_area, request_type)
-            agent_logger.ticket_turn(row_num, company, "escalated", request_type, product_area, True, reason, retriever.top_score(chunks), len(chunks))
+            agent_logger.ticket_turn(row_num, company, output.status, output.request_type, output.product_area, True, reason, retriever.top_score(chunks), len(chunks))
             return output
 
-        # 5. Generate Response (Template based)
+        # 5. Generate Response (LLM Synthesizer)
         output = generate_response(ticket, chunks, product_area, request_type)
-        agent_logger.ticket_turn(row_num, company, "replied", request_type, product_area, False, "", retriever.top_score(chunks), len(chunks))
+        agent_logger.ticket_turn(row_num, company, output.status, output.request_type, output.product_area, False, "", retriever.top_score(chunks), len(chunks))
         return output
 
     except Exception as e:
@@ -93,6 +93,10 @@ def run_batch(input_path: Path, output_path: Path, agent_logger: AgentLogger):
             })
             if output.status == "replied": replied += 1
             else: escalated += 1
+            
+            # Respect Gemini Free Tier limits (15 RPM = 1 request every 4 seconds)
+            if i < total:
+                time.sleep(4)
 
     pd.DataFrame(results, columns=OUTPUT_COLUMNS).to_csv(output_path, index=False)
     elapsed = time.time() - t0
