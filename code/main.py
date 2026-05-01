@@ -59,9 +59,18 @@ def main():
         output = run_pipeline(ticket, ticket_id=idx)
         results.append(output)
 
-    out_df = df.copy()
-    for field in ["status", "product_area", "response", "justification", "request_type"]:
-        out_df[field] = [r[field] for r in results]
+    out_df = pd.DataFrame()
+    
+    # Input columns
+    out_df["Issue"] = df["Issue"]
+    out_df["Subject"] = df["Subject"]
+    out_df["Company"] = df["Company"]
+    
+    # Output columns with proper capitalization
+    out_df["Response"] = [r["response"] for r in results]
+    out_df["Product Area"] = [r["product_area"] for r in results]
+    out_df["Status"] = [r["status"] for r in results]
+    out_df["Request Type"] = [r["request_type"] for r in results]
 
     os.makedirs(os.path.dirname(OUTPUT_CSV), exist_ok=True)
     out_df.to_csv(OUTPUT_CSV, index=False)
