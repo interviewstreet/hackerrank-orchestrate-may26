@@ -16,10 +16,15 @@ SAMPLE_CSV    = os.path.join(os.path.dirname(__file__), "..", "support_tickets",
 
 # ── Retrieval ──────────────────────────────────────────────────────────────
 EMBED_MODEL         = "all-MiniLM-L6-v2"
-CHUNK_SIZE          = 512        # tokens (approx chars / 4)
-CHUNK_OVERLAP       = 64
-TOP_K               = 5
-RETRIEVAL_THRESHOLD = 0.35       # cosine similarity floor
+
+CHUNK_SIZE          = 300      
+CHUNK_OVERLAP       = 50
+
+TOP_K               = 3       
+
+RETRIEVAL_THRESHOLD = 0.35     # base threshold
+LOW_CONF_THRESHOLD  = 0.25     # for fallback trigger
+MIN_SCORE           = 0.15     # filter weak chunks
 
 # ── Router ─────────────────────────────────────────────────────────────────
 ROUTER_CONFIDENCE_THRESHOLD = 2  # keyword score needed to skip LLM fallback
@@ -47,14 +52,62 @@ DOMAIN_KEYWORDS = {
 
 # ── Safety ─────────────────────────────────────────────────────────────────
 INJECTION_PATTERNS = [
+    # --- Instruction override ---
     r"ignore (previous|prior|all) instructions",
+    r"disregard (all|any|previous) (instructions|rules)",
+    r"forget (everything|all|your instructions)",
+    r"override (all|previous) (instructions|rules)",
+    r"bypass (all|any) (restrictions|filters|rules)",
+    r"do not follow (the )?above instructions",
+
+    # --- Role / persona hijack ---
     r"you are now",
-    r"disregard your",
     r"pretend (you are|to be)",
-    r"forget (everything|your instructions)",
+    r"act as (an? )?(unrestricted|jailbroken|dan\b|developer|system)",
+    r"assume the role of",
+    r"switch to (developer|admin|root) mode",
+    r"enter (debug|developer) mode",
+    r"simulate (a )?(different|new) persona",
     r"new persona",
-    r"act as (an? )?(unrestricted|jailbroken|dan\b)",
+    r"you are no longer",
+    r"from now on you are",
+
+    # --- Jailbreak / known attacks ---
     r"(jailbreak|prompt injection|override instructions)",
+    r"\bDAN\b",
+    r"do anything now",
+    r"unfiltered response",
+    r"no restrictions",
+    r"without following policies",
+
+    # --- System prompt / hidden info extraction ---
+    r"reveal (your|the) (system prompt|hidden instructions)",
+    r"show (me )?(your )?(prompt|instructions)",
+    r"what are your (rules|instructions|policies)",
+    r"print (your )?(system prompt|hidden prompt)",
+    r"dump (your )?(prompt|configuration)",
+    r"expose (your )?(prompt|rules)",
+
+    # --- Data exfiltration / secrets ---
+    r"(api[_-]?key|secret key|access token|private key)",
+    r"show (me )?(all )?(tokens|keys|credentials)",
+    r"leak (data|information|secrets)",
+    r"extract (hidden|private) data",
+    r"retrieve (internal|private) information",
+
+    # --- Tool / system manipulation ---
+    r"execute (shell|system|command)",
+    r"run (this|the following) command",
+    r"open (a )?(shell|terminal)",
+    r"access (filesystem|database|internal system)",
+    r"modify (system|instructions|rules)",
+
+    # --- Obfuscation / trick patterns ---
+    r"```.*ignore.*```",  # code block injection
+    r"<\s*script\s*>",    # HTML/script injection attempt
+    r"base64",
+    r"encoded (instructions|message)",
+    r"decode (this|the following)",
 ]
 
 SENSITIVE_KEYWORDS = {
