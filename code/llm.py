@@ -103,7 +103,12 @@ def get_client():
     if _CLIENT is None and HAS_ANTHROPIC:
         api_key = os.environ.get("ANTHROPIC_API_KEY", "")
         if api_key:
-            _CLIENT = anthropic.Anthropic(api_key=api_key)
+            # Support both modern and legacy Anthropic SDK constructors.
+            client_cls = getattr(anthropic, "Anthropic", None)
+            if client_cls is not None:
+                _CLIENT = client_cls(api_key=api_key)
+            else:
+                _CLIENT = anthropic.Client(api_key=api_key)
     return _CLIENT
 
 
@@ -160,6 +165,44 @@ def _parse_json(text: str) -> Optional[Dict[str, Any]]:
     return None
 
 
+
+
+def _fallback_response_from_context(context: str, company: str = "") -> Optional[str]:
+    """Build a concise response directly from retrieved documentation snippets."""
+    if not context or context.strip() == "No relevant documentation found.":
+        return None
+
+    # Remove retriever metadata headers and separators, keep content lines only.
+    lines = []
+    for raw in context.splitlines():
+        line = raw.strip()
+        if not line or line.startswith("[Source:") or line == "---":
+            continue
+        lines.append(line)
+
+    if not lines:
+        return None
+
+    text = " ".join(lines)
+    text = re.sub(r"\s+", " ", text).strip()
+    # Keep fallback deterministic and concise.
+    sentences = re.split(r"(?<=[.!?])\s+", text)
+    selected = [s.strip() for s in sentences if len(s.strip()) > 20][:2]
+    if not selected:
+        selected = [text[:380].rstrip()]
+
+    c = (company or "").lower()
+    support_url = ""
+    if "visa" in c:
+        support_url = "https://www.visa.co.in/support.html"
+    elif "claude" in c or "anthropic" in c:
+        support_url = "https://support.claude.com/en/"
+    elif "hackerrank" in c:
+        support_url = "https://support.hackerrank.com/"
+
+    tail = f" For account-specific help, contact official support: {support_url}" if support_url else ""
+    return "Based on the support documentation: " + " ".join(selected) + tail
+
 def classify_ticket(issue: str, subject: str, company: str, context: str) -> Optional[Dict[str, Any]]:
     prompt = CLASSIFICATION_PROMPT.format(
         subject=subject or "(none)",
@@ -183,10 +226,12 @@ def generate_response(issue: str, subject: str, company: str, context: str) -> s
     raw = _call_llm(prompt, max_tokens=MAX_TOKENS)
     if raw:
         return raw.strip()
+    fallback = _fallback_response_from_context(context, company)
+    if fallback:
+        return fallback
     return (
-        "Thank you for reaching out. Based on our support documentation, "
-        "we were unable to generate a specific response at this time. "
-        "Please contact our support team directly for further assistance."
+        "Thank you for reaching out. We could not find enough matching documentation to provide a precise answer. "
+        "Please contact the official support site for your platform for further assistance."
     )
 
 

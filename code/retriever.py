@@ -99,8 +99,10 @@ class CorpusIndex:
         if not texts:
             return
         if HAS_SKLEARN:
+            # Avoid sklearn ValueError on tiny corpora where max_df can prune all terms.
+            max_df = 1.0 if len(texts) < 3 else 0.95
             self._vectorizer = TfidfVectorizer(
-                ngram_range=(1, 2), min_df=1, max_df=0.95,
+                ngram_range=(1, 2), min_df=1, max_df=max_df,
                 sublinear_tf=True, strip_accents="unicode", analyzer="word",
             )
             self._matrix = self._vectorizer.fit_transform(texts)
@@ -132,8 +134,6 @@ class CorpusIndex:
         return self._keyword_search(query, top_k, domain_filter)
 
     def _sklearn_search(self, query, top_k, domain_filter):
-        # FIX: import numpy locally so cosine_similarity always resolves
-        import numpy as _np
         q_vec = self._vectorizer.transform([query])
         if domain_filter:
             idx_map = [i for i, c in enumerate(self.chunks) if c.domain == domain_filter]
