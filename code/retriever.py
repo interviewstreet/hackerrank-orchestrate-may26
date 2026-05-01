@@ -30,10 +30,10 @@ import re
 import time
 from pathlib import Path
 
-from rank_bm25 import BM25Okapi
-from rich.console import Console
+from rank_bm25 import BM25Okapi  # type: ignore
+from rich.console import Console  # type: ignore
 
-from config import (
+from config import (  # type: ignore
     CHUNK_OVERLAP_WORDS,
     CHUNK_SIZE_WORDS,
     COMPANIES,
@@ -41,7 +41,7 @@ from config import (
     MIN_BM25_SCORE,
     TOP_K_DOCS,
 )
-from models import DocChunk
+from models import DocChunk  # type: ignore
 
 console = Console()
 
@@ -234,6 +234,7 @@ class BM25Retriever:
         if not tokens:
             return []
 
+        assert self._index is not None
         scores = self._index.get_scores(tokens)
 
         # Pair scores with chunk metadata and optionally filter by company

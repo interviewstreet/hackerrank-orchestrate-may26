@@ -13,7 +13,7 @@ WHY:
 """
 
 from typing import Literal
-from models import TicketInput, TicketOutput, DocChunk
+from models import TicketInput, TicketOutput, DocChunk  # type: ignore
 
 
 def generate_response(
