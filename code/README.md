@@ -33,10 +33,14 @@ The agent achieved the following metrics on the full evaluation set (29 tickets)
 | **Throughput** | ~14.5 tickets/minute |
 | **Success Rate** | 100% (Zero unhandled exceptions) |
 
-![Status Distribution](results/status_distribution.png)
-![Domain Breakdown](results/domain_breakdown.png)
-![Request Type Distribution](results/request_type_breakdown.png)
-![Escalation by Domain](results/escalation_by_domain.png)
+<p align="center">
+  <img src="results/status_distribution.png" width="400" />
+  <img src="results/domain_breakdown.png" width="400" />
+</p>
+<p align="center">
+  <img src="results/request_type_breakdown.png" width="400" />
+  <img src="results/escalation_by_domain.png" width="400" />
+</p>
 
 ---
 
