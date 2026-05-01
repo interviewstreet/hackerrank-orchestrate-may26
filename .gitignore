@@ -1,0 +1,33 @@
+# secrets
+.env
+.env.local
+*.pem
+*.key
+
+# deps
+node_modules/
+.pnpm-store/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# build
+dist/
+build/
+*.tsbuildinfo
+
+# editor / os
+.DS_Store
+.idea/
+.vscode/
+Thumbs.db
+
+# local data / caches the participant may create
+data/index/
+data/embeddings/
+*.sqlite
+*.db
