@@ -111,25 +111,59 @@ INJECTION_PATTERNS = [
 ]
 
 SENSITIVE_KEYWORDS = {
-    "visa": [
-        "fraud", "unauthorized transaction", "stolen card", "chargeback",
-        "dispute", "cvv", "card number", " pan ", "settlement dispute",
-        "data breach", "identity theft", "account takeover", "phishing",
-    ],
-    "claude": [
-        "account hacked", "unauthorized access", "data breach", "gdpr",
-        "right to erasure", "legal action", "lawsuit", "ip violation",
-        "sso failure", "scim", "jit provisioning", "account suspended",
-        "copyright", "defamation",
-    ],
-    "hackerrank": [
-        "cheating", "plagiarism", "unfair disqualification", "wrongly flagged",
-        "gdpr", "delete my data", "data erasure", "billing dispute",
-        "contract", "ats sync failure", "candidate data leak",
-        "wrongful termination", "discrimination",
-    ],
-}
+    "visa": {
+        "high_risk": [
+            "fraud", "fraudulent", "unauthorized", "unauthorised",
+            "stolen card", "lost card", "card stolen",
+            "unauthorized transaction", "unknown transaction",
+            "someone used my card", "card hacked",
+            "identity theft", "phishing", "scam",
+            "data breach", "account takeover",
+            "chargeback", "dispute transaction",
+            "card details leaked", "cvv", "card number", "pan",
+        ],
+        "medium_risk": [
+            "billing issue", "double charge", "duplicate charge",
+            "refund not received", "payment failed",
+            "transaction failed", "incorrect charge",
+        ],
+    },
 
+    "claude": {
+        "high_risk": [
+            "account hacked", "unauthorized access",
+            "data breach", "privacy violation",
+            "gdpr", "right to erasure", "delete my data permanently",
+            "legal action", "lawsuit", "court case",
+            "ip violation", "copyright", "defamation",
+            "account suspended wrongly", "security issue",
+        ],
+        "medium_risk": [
+            "api not working", "model error", "rate limit",
+            "billing issue", "subscription issue",
+            "sso failure", "scim issue", "jit provisioning",
+            "login issue", "access issue",
+        ],
+    },
+
+    "hackerrank": {
+        "high_risk": [
+            "cheating", "plagiarism", "copied code",
+            "unfair disqualification", "wrongly flagged",
+            "data leak", "candidate data leak",
+            "gdpr", "delete my data", "data erasure",
+            "discrimination", "bias", "wrongful termination",
+            "legal complaint", "contract violation",
+        ],
+        "medium_risk": [
+            "test not loading", "assessment issue",
+            "submission failed", "compiler error",
+            "question bug", "incorrect result",
+            "billing issue", "payment problem",
+            "ats sync failure", "integration issue",
+        ],
+    },
+}
 ESCALATION_RESPONSE = (
     "Thank you for reaching out. Your issue requires attention from our "
     "specialist support team. A human agent will review your case and "
