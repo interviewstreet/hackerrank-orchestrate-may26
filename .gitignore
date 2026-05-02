@@ -31,3 +31,6 @@ data/index/
 data/embeddings/
 *.sqlite
 *.db
+
+# local faiss cache
+code/.cache/

@@ -1,0 +1,51 @@
+Issue,Subject,Company
+My HackerRank test link expired before I could start. I was invited last week but now it says the test is no longer available.,Test link expired,HackerRank
+I want to know how to set an expiry time for a HackerRank test I created. Where do I find this setting?,How to set test expiry,HackerRank
+The candidate I invited to take the test says they never received the email invite. How do I resend it?,Candidate did not receive test invite,HackerRank
+My HackerRank Screen test is showing zero submissions even though candidates have taken it. The dashboard seems broken.,Test dashboard showing wrong data,HackerRank
+I accidentally deleted a question from my question library. Can I recover it?,Accidentally deleted a question,HackerRank
+How do I add multiple recruiters to my HackerRank company account so they can manage assessments?,Adding multiple recruiters to account,HackerRank
+My candidate flagged as suspicious during a proctoring session but I reviewed the video and believe it was a false positive. Can I override this?,Proctoring false positive,HackerRank
+I am trying to create a coding challenge with pair programming support. Is that available on HackerRank?,Pair programming challenge setup,HackerRank
+I completed the HackerRank SkillUp course but my certificate has not appeared in my profile after 3 days.,SkillUp certificate not showing,HackerRank
+How do I download the full candidate report including their code submissions and proctoring video?,Downloading candidate report,HackerRank
+Can I schedule a HackerRank interview directly from the platform or do I need to use a third-party calendar tool?,Scheduling interviews on HackerRank,HackerRank
+My company's ATS integration with HackerRank stopped syncing candidate results yesterday. We use Greenhouse.,ATS integration issue with Greenhouse,HackerRank
+I want to restrict the coding test to only Python and Java. How do I remove other languages from the allowed list?,Restricting programming languages in test,HackerRank
+The plagiarism detection report says two candidates have similar code but I think it is a false positive. How do I contest this?,Plagiarism report dispute,HackerRank
+I'm a candidate who took a HackerRank test last month. My score was 78 but the company said I got 45. Please investigate.,Score discrepancy reported by company,HackerRank
+My Claude account was charged for a Pro plan but I cancelled before the billing date. I need a refund.,Charged after cancellation,Claude
+Claude is giving me incorrect information about recent events. It seems to be hallucinating facts about things that happened last week.,Claude hallucinating recent information,Claude
+I cannot log in to my Claude account. The password reset email is not arriving even after multiple attempts.,Cannot log into Claude account,Claude
+How do I connect Claude to my company's internal data using the API? We want to build a custom assistant.,Integrating Claude API with internal data,Claude
+My Claude Desktop app on Windows keeps crashing every time I try to attach a file to a conversation.,Claude Desktop crashing on file attach,Claude
+I am a teacher and I want to use Claude for my classroom. Do you have any educational pricing or special programs?,Claude for classroom and education pricing,Claude
+How do I migrate my Claude Team workspace to an Enterprise plan? We just grew to 50 employees.,Upgrading Claude Team to Enterprise,Claude
+Claude stopped responding mid-conversation and now every new message just shows a spinning loader.,Claude not responding mid-conversation,Claude
+I want to set up SSO for my organization's Claude Enterprise account. We use Okta as our identity provider.,SSO setup with Okta for Claude Enterprise,Claude
+Can Claude access the internet in real time? I need it to pull live data from our analytics dashboard.,Claude real-time internet access question,Claude
+How do I export all conversations from my Claude account before I cancel my subscription?,Exporting Claude conversation history,Claude
+The Claude mobile app on iOS is not syncing my conversation history from the web version.,Claude iOS app not syncing history,Claude
+I tried to use the Claude API on Amazon Bedrock but I get an access denied error. My IAM permissions look correct.,Claude on Amazon Bedrock access denied,Claude
+Can I use Claude to process patient records? I need to know about HIPAA compliance and data handling.,Claude HIPAA compliance question,Claude
+My Claude Pro plan is not showing the extended context window feature. I am still on the standard limit.,Claude Pro context window not extended,Claude
+My Visa debit card was declined at a grocery store but I have sufficient balance in my account.,Visa card declined with sufficient funds,Visa
+I noticed an unfamiliar transaction of $230 on my Visa statement from a merchant I have never heard of.,Unrecognized transaction on Visa statement,Visa
+How do I activate a new Visa credit card that I just received in the mail?,Activating a new Visa card,Visa
+My Visa card was stolen while I was traveling abroad. How do I get an emergency replacement card?,Visa card stolen abroad,Visa
+I want to dispute a charge from an online retailer who charged me twice for the same order.,Double charge dispute on Visa card,Visa
+My Visa card is being blocked for international transactions even though I have international payments enabled.,Visa international payments blocked,Visa
+How do I set up travel notifications on my Visa card before I go to Europe next month?,Setting up Visa travel notifications,Visa
+I received a fraud alert SMS for my Visa card but I made that purchase myself. How do I confirm it was me?,Confirming legitimate Visa transaction,Visa
+My Visa card limit was reduced without any notification. I need to know why this happened.,Visa credit limit reduced without notice,Visa
+Can I use my Visa card for contactless payments at stores? I recently got a new card and I am not sure if it supports this.,Visa contactless payment availability,Visa
+I am a small business owner and I want to know how to accept Visa payments on my website without a POS terminal.,Accepting Visa payments online as small business,Visa
+My Visa virtual card for online shopping stopped working after I reported my physical card lost. Are they linked?,Visa virtual card deactivated after physical card report,Visa
+I was charged a foreign transaction fee on a purchase I made in USD from a US website. Should that apply?,Unexpected foreign transaction fee on Visa,Visa
+How do I add my Visa card to Apple Pay? I followed the steps but the bank verification keeps failing.,Adding Visa card to Apple Pay,Visa
+My Visa card gets declined at ATMs in my city but works fine in stores. The bank says everything is fine.,Visa card declined at ATM only,Visa
+I forgot to download my HackerRank test report before the candidate data was archived. Can I recover it?,Recovering archived HackerRank test report,HackerRank
+Claude gave advice in a conversation that I want to report as potentially harmful. How do I flag it for review?,Reporting harmful Claude response,Claude
+I completed a HackerRank SkillUp course but the certificate PDF will not download. It just shows a blank page.,SkillUp certificate PDF not downloading,HackerRank
+My Claude Enterprise admin console is not loading. It shows a 503 error since this morning.,Claude Enterprise admin console error,Claude
+I want to pause my Visa card temporarily while I look for it at home without cancelling it permanently.,Temporarily pausing Visa card,Visa
