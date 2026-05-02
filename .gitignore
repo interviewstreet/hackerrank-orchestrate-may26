@@ -31,3 +31,10 @@ data/index/
 data/embeddings/
 *.sqlite
 *.db
+
+.agent/
+.agents/
+
+.venv/
+
+docs/

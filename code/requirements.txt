@@ -1,0 +1,17 @@
+# === Data & Output ===
+pandas>=2.2.3
+pydantic>=2.10.6
+
+# === Config & Secrets ===
+python-dotenv>=1.0.1
+
+# === Terminal & Logging ===
+rich>=13.7.1
+loguru>=0.7.3
+
+# === Search (Lean BM25) ===
+rank_bm25>=0.2.2
+
+# === Testing ===
+pytest>=8.3.5
+pytest-cov>=6.1.0
