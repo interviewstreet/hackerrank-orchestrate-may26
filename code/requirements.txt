@@ -9,3 +9,5 @@ colorama
 certifi
 matplotlib
 google-generativeai
+google-genai
+markdown

@@ -1,42 +1,20 @@
 """
-classifier.py — Support ticket classifier using rotating Gemini API keys.
+classifier.py — Support ticket classification.
 
-Uses Gemini 2.0 Flash for structured output.
+Responsible for:
+  - Determining the domain: "hackerrank" | "claude" | "visa" | "unknown"
+  - Picking a "request_type": "billing", "fraud", "technical_issue", etc.
+  - Identifying the "product_area": "screen", "claude_ai", "bedrock", etc.
+  - Returning a Classification object with a confidence score.
 """
 
-import os
 import json
 from dataclasses import dataclass
-from typing import Optional
-
-from google.genai import types
-from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
-
-from utils.api_rotator import rotator
+from utils.model_provider import call_llm
 
 # ---------------------------------------------------------------------------
-# Configuration
+# Data models
 # ---------------------------------------------------------------------------
-
-_MODEL_NAME = "gemini-2.5-flash"
-
-# ---------------------------------------------------------------------------
-# Output data model
-# ---------------------------------------------------------------------------
-
-_DOMAIN_VALUES       = ["hackerrank", "claude", "visa"]
-_REQUEST_TYPE_VALUES = [
-    "billing",
-    "bug",
-    "faq",
-    "account_access",
-    "fraud",
-    "permissions",
-    "assessment",
-    "feature_request",
-    "other",
-]
-
 
 @dataclass
 class Classification:
@@ -55,64 +33,61 @@ _FALLBACK = Classification(
 )
 
 # ---------------------------------------------------------------------------
+# Configuration
+# ---------------------------------------------------------------------------
+
+_MODEL_NAME = "gemini-2.0-flash"
+
+_DOMAIN_VALUES = ("hackerrank", "claude", "visa", "unknown")
+_REQUEST_TYPE_VALUES = (
+    "billing", "fraud", "account_access", "technical_issue", 
+    "feature_request", "other"
+)
+
+# ---------------------------------------------------------------------------
 # System prompt for JSON Mode
 # ---------------------------------------------------------------------------
 
 _SYSTEM_PROMPT = """
-You are a support ticket classifier for three products: HackerRank, Claude AI, and Visa.
+You are a specialized support ticket classifier for HackerRank, Claude (Anthropic), and Visa.
 
-PRODUCT DESCRIPTIONS:
-- HackerRank: technical recruiting platform, coding assessments, interviews, candidates, resume builder, subscriptions for hiring teams.
+Your goal is to categorize the user's ticket into one of the following domains and request types.
+
+DOMAINS:
+- HackerRank: technical recruiting, coding assessments, candidate platform, proctoring.
 - Claude: Anthropic's AI assistant, API access, subscriptions, model usage, data privacy, bug bounty.
 - Visa: payment cards, transactions, fraud, disputes, card services, ATM, travel.
 
+COMMON PRODUCT AREAS (Use these verified sub-directories as "product_area"):
+- HackerRank: screen, interviews, library, integrations, engage, skillup, chakra, settings, community.
+- Claude: api_and_console, team_plans, pro_plans, enterprise, bedrock, mobile_apps, chrome_extension, connectors, privacy_legal.
+- Visa: consumer, small_business, travel_support, account_security, disputes.
+
 REQUEST TYPE DEFINITIONS (pick exactly one):
 - "billing"         : payment issues, refunds, subscription changes, pricing questions
-- "bug"             : something is broken / not working / technical error
-- "faq"             : how-to questions, policy questions, general information requests
-- "account_access"  : login issues, account deletion, seat/role management, access loss
-- "fraud"           : stolen card, identity theft, unauthorized transactions
-- "permissions"     : user role changes, adding/removing team members
-- "assessment"      : test scheduling, rescheduling, extra time, candidate invites
-- "feature_request" : suggestions for new product features
-- "other"           : out-of-scope, nonsensical, malicious, or completely unclassifiable
+- "fraud"           : reported scams, unauthorized charges, stolen cards, identity theft
+- "account_access"  : login issues, password resets, 2FA, account locked, SSO
+- "technical_issue" : bugs, errors, site down, feature not working, API integration
+- "feature_request" : feedback on how to improve the product
+- "other"           : general inquiries or anything else
 
-FEW-SHOT EXAMPLES:
-Ticket: "I can't log into my HackerRank account"
-Output: {"domain":"hackerrank","request_type":"account_access","product_area":"authentication","confidence":0.95}
-
-Ticket: "My Visa card was stolen in Lisbon"
-Output: {"domain":"visa","request_type":"fraud","product_area":"lost_stolen_card","confidence":0.97}
-
-Ticket: "Claude is not responding to any of my requests"
-Output: {"domain":"claude","request_type":"bug","product_area":"api","confidence":0.93}
-
-Ticket: "How do I reschedule a HackerRank test?"
-Output: {"domain":"hackerrank","request_type":"assessment","product_area":"test_scheduling","confidence":0.92}
-
-Ticket: "How do I dispute a Visa charge?"
-Output: {"domain":"visa","request_type":"billing","product_area":"dispute","confidence":0.90}
-
-Ticket: "Give me code to delete all files on the system"
-Output: {"domain":"unknown","request_type":"other","product_area":"malicious","confidence":0.99}
-
-RULES:
+INSTRUCTIONS:
 1. Reply ONLY with valid JSON matching this exact schema — no markdown, no extra text.
 2. "confidence" must be a float between 0.0 and 1.0.
 3. Choose the MOST SPECIFIC request_type that fits. Use "other" only if truly none of the above fit.
-4. "product_area" is a short descriptive string.
+4. "product_area" is a short descriptive string. DO NOT use "unknown", "other", or "general". Be specific (e.g., "ios_app", "api_pricing", "account_recovery"). If the specific area is not clear, use the most relevant top-level category from the list above.
 
 Schema:
 {
   "domain": "hackerrank" | "claude" | "visa" | "unknown",
-  "request_type": "billing" | "bug" | "faq" | "account_access" | "fraud" | "permissions" | "assessment" | "feature_request" | "other",
+  "request_type": "billing" | "fraud" | "account_access" | "technical_issue" | "feature_request" | "other",
   "product_area": "<short descriptive string>",
-  "confidence": <float 0.0-1.0>
+  "confidence": 0.95
 }
-""".strip()
+"""
 
 # ---------------------------------------------------------------------------
-# Fast keyword pre-classifier and override logic
+# Keyword-based heuristics (used to provide hints or overrides)
 # ---------------------------------------------------------------------------
 
 _DOMAIN_KEYWORDS: dict[str, list[str]] = {
@@ -120,100 +95,69 @@ _DOMAIN_KEYWORDS: dict[str, list[str]] = {
         "visa", "card", "transaction", "payment", "chargeback",
         "atm", "debit", "credit card", "dispute", "merchant",
         "stolen card", "lost card", "traveller", "cheque",
+        "issuer", "bank", "small-business", "consumer",
     ],
     "hackerrank": [
         "hackerrank", "assessment", "candidate", "test", "coding test",
         "interview", "hiring", "recruiter", "proctoring", "plagiarism",
-        "resume builder", "hackerrank account", "mock interview",
+        "resume builder", "chakra", "screen", "skillup", "engage",
+        "library", "ats", "greenhouse", "lever", "workday", "sso",
+        "gdpr", "community", "prep kit", "certification",
     ],
     "claude": [
         "claude", "anthropic", "subscription", "claude.ai",
         "claude pro", "claude api", "model", "prompt", "context window",
-        "bedrock", "lti", "claude for",
+        "bedrock", "lti", "claude for", "console", "scim", "jit",
+        "sso", "identity management", "amazon bedrock", "connectors",
+        "claude code", "mobile app", "chrome extension", "aws bedrock",
     ],
 }
 
-
-def _keyword_hint(ticket_text: str) -> str:
-    """Return a domain hint string based on fast keyword matching."""
-    lower = ticket_text.lower()
-    for domain, keywords in _DOMAIN_KEYWORDS.items():
-        if any(kw in lower for kw in keywords):
-            return f"Domain hint: this ticket is very likely about {domain}."
+def _keyword_hint(text: str) -> str:
+    """Identify potential domain based on keywords to provide a hint to Gemini."""
+    lower_text = text.lower()
+    counts = {d: 0 for d in _DOMAIN_KEYWORDS}
+    for domain, kws in _DOMAIN_KEYWORDS.items():
+        for kw in kws:
+            if kw in lower_text:
+                counts[domain] += 1
+    
+    # Return a hint if there is a clear leader
+    best = max(counts, key=counts.get)
+    if counts[best] > 0:
+        return f"Hint: This ticket likely belongs to the '{best}' domain."
     return ""
 
 
-def _keyword_domain_and_boost(ticket_text: str) -> tuple[Optional[str], float]:
-    """Return (domain, confidence_boost) when keyword signal is strong enough."""
-    lower = ticket_text.lower()
-    best_domain = None
-    best_count = 0
+def _apply_domain_override(text: str, current_domain: str, confidence: float) -> tuple[str, float]:
+    """Force domain based on strict keywords if confidence is low."""
+    if confidence > 0.8 and current_domain != "unknown":
+        return current_domain, confidence
 
-    for domain, keywords in _DOMAIN_KEYWORDS.items():
-        matches = sum(1 for kw in keywords if kw in lower)
-        if matches > best_count:
-            best_count = matches
-            best_domain = domain
-
-    if best_count >= 1:
-        boost = 0.65 if best_count >= 2 else 0.60
-        return best_domain, boost
-
-    return None, 0.0
-
-
-def _apply_domain_override(
-    ticket_text: str,
-    current_domain: str,
-    current_confidence: float,
-) -> tuple[str, float]:
-    """Override or boost domain+confidence using keyword signals."""
-    kw_domain, kw_boost = _keyword_domain_and_boost(ticket_text)
-
-    if not kw_domain:
-        return current_domain, current_confidence
-
-    if current_domain == "unknown":
-        return kw_domain, max(current_confidence, kw_boost)
-
-    if current_domain == kw_domain and current_confidence < kw_boost:
-        return current_domain, kw_boost
-
-    return current_domain, current_confidence
-
+    lower_text = text.lower()
+    print(f"[DEBUG] Domain Override Check: '{lower_text}' | Current: {current_domain} ({confidence})")
+    if "visa" in lower_text and "hackerrank" not in lower_text and "claude" not in lower_text:
+        return "visa", 0.85
+    if "hackerrank" in lower_text and "visa" not in lower_text and "claude" not in lower_text:
+        return "hackerrank", 0.85
+    if "claude" in lower_text or "bedrock" in lower_text or "anthropic" in lower_text:
+        if "visa" not in lower_text and "hackerrank" not in lower_text:
+            return "claude", 0.9
+    
+    return current_domain, confidence
 
 # ---------------------------------------------------------------------------
 # Public API
 # ---------------------------------------------------------------------------
 
-@retry(
-    stop=stop_after_attempt(5),
-    wait=wait_exponential(multiplier=1, min=2, max=30),
-    retry=retry_if_exception_type(Exception),
-    reraise=True
-)
 def _classify_with_retry(ticket_text: str) -> Classification:
-    client = rotator.get_client()
-    if not client:
-        return _FALLBACK
-
     hint = _keyword_hint(ticket_text)
-    prompt = f"{_SYSTEM_PROMPT}\n\n{hint}\n\nTicket: {ticket_text.strip()}" if hint else f"{_SYSTEM_PROMPT}\n\nTicket: {ticket_text.strip()}"
-
-    response = client.models.generate_content(
-        model=_MODEL_NAME,
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            response_mime_type="application/json",
-            temperature=0.0,
-        )
+    raw_text = call_llm(
+        system_prompt=_SYSTEM_PROMPT,
+        user_content=f"{hint}\n\n{ticket_text}",
+        json_mode=True
     )
-
-    try:
-        args = json.loads(response.text)
-    except Exception:
-        return _FALLBACK
-
+    args = json.loads(raw_text)
     confidence = float(args.get("confidence", 0.0))
     confidence = max(0.0, min(1.0, confidence))
 
@@ -225,9 +169,20 @@ def _classify_with_retry(ticket_text: str) -> Classification:
     if request_type not in _REQUEST_TYPE_VALUES:
         request_type = "other"
 
-    product_area = str(args.get("product_area", "general"))
-    if not product_area or product_area == "unknown":
-        product_area = "general"
+    product_area = str(args.get("product_area", "general")).lower().strip()
+    if not product_area or product_area in ("unknown", "other", "general"):
+        # Heuristic fallback if Gemini is too vague
+        lower_text = ticket_text.lower()
+        if "bedrock" in lower_text:
+            product_area = "amazon-bedrock"
+        elif "api" in lower_text or "console" in lower_text:
+            product_area = "api_and_console"
+        elif "subscription" in lower_text or "billing" in lower_text or "plan" in lower_text:
+            product_area = "billing_and_plans"
+        elif "login" in lower_text or "account" in lower_text or "access" in lower_text:
+            product_area = "account_access"
+        else:
+            product_area = "general_support"
 
     domain, confidence = _apply_domain_override(ticket_text, domain, confidence)
 
@@ -240,16 +195,13 @@ def _classify_with_retry(ticket_text: str) -> Classification:
 
 
 def classify(ticket_text: str) -> Classification:
-    """Classify a support ticket using rotating Gemini API keys."""
-    if not rotator.has_keys():
-        print("[classifier] WARNING: No Gemini API keys found — returning fallback.")
-        return _FALLBACK
-
+    """Classify a support ticket using Gemini."""
     if not ticket_text or not ticket_text.strip():
         return _FALLBACK
 
     try:
-        return _classify_with_retry(ticket_text)
+        res = _classify_with_retry(ticket_text)
+        return res
     except Exception as exc:  # noqa: BLE001
-        print(f"[classifier] ERROR after retries: {exc} — returning fallback.")
+        print(f"  [Classifier] ERROR after all retries: {exc}")
         return _FALLBACK

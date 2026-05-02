@@ -37,16 +37,26 @@ class GeminiRotator:
             # Filter empty and initialize clients
             self.keys = [k.strip() for k in keys if k.strip()]
             self.clients = [genai.Client(api_key=k) for k in self.keys]
-            self.cycle = cycle(self.clients)
+            self._index = 0
             self._initialized = True
             
             if not self.keys:
                 print("[rotator] WARNING: No Gemini API keys found in .env!")
 
     def get_client(self) -> genai.Client:
-        """Returns the next client in the round-robin queue (thread-safe)."""
+        """Returns the current client (thread-safe)."""
         with self._lock:
-            return next(self.cycle)
+            if not self.clients: return None
+            return self.clients[self._index]
+
+    def rotate(self):
+        """Move to the next key (thread-safe)."""
+        with self._lock:
+            if self.clients:
+                self._index = (self._index + 1) % len(self.clients)
+
+    def key_count(self) -> int:
+        return len(self.keys)
 
     def has_keys(self) -> bool:
         return len(self.keys) > 0

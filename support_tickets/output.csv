@@ -1,208 +1,253 @@
 ticket_id,status,product_area,response,justification,request_type
-T001,error,unknown,Processing error: name 'corpus' is not defined,"Traceback (most recent call last):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 386, in main
-    res = process_ticket(ticket_id, ticket_text, company, index,
-                         dry_run=args.dry_run)
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 248, in process_ticket
-    resp    = generate_reply(ticket_text, classification, retrieved)
-NameError: name 'corpus' is not defined
-",invalid
-T002,error,unknown,Processing error: name 'corpus' is not defined,"Traceback (most recent call last):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 386, in main
-    res = process_ticket(ticket_id, ticket_text, company, index,
-                         dry_run=args.dry_run)
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 248, in process_ticket
-    resp    = generate_reply(ticket_text, classification, retrieved)
-NameError: name 'corpus' is not defined
-",invalid
-T003,escalated,visa - unknown,Thank you for reaching out. Your request has been escalated to our specialized support team because: Refund requests require review by the billing team. A human agent will contact you shortly.,Refund requests require review by the billing team,invalid
-T004,escalated,hackerrank - unknown,Thank you for reaching out. Your request has been escalated to our specialized support team because: Refund requests require review by the billing team. A human agent will contact you shortly.,Refund requests require review by the billing team,invalid
-T005,escalated,hackerrank - unknown,Thank you for reaching out. Your request has been escalated to our specialized support team because: Refund requests require review by the billing team. A human agent will contact you shortly.,Refund requests require review by the billing team,invalid
-T006,error,unknown,Processing error: name 'corpus' is not defined,"Traceback (most recent call last):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 386, in main
-    res = process_ticket(ticket_id, ticket_text, company, index,
-                         dry_run=args.dry_run)
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 248, in process_ticket
-    resp    = generate_reply(ticket_text, classification, retrieved)
-NameError: name 'corpus' is not defined
-",invalid
-T007,error,unknown,Processing error: name 'corpus' is not defined,"Traceback (most recent call last):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 386, in main
-    res = process_ticket(ticket_id, ticket_text, company, index,
-                         dry_run=args.dry_run)
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 248, in process_ticket
-    resp    = generate_reply(ticket_text, classification, retrieved)
-NameError: name 'corpus' is not defined
-",invalid
-T008,error,unknown,Processing error: name 'corpus' is not defined,"Traceback (most recent call last):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 386, in main
-    res = process_ticket(ticket_id, ticket_text, company, index,
-                         dry_run=args.dry_run)
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 248, in process_ticket
-    resp    = generate_reply(ticket_text, classification, retrieved)
-NameError: name 'corpus' is not defined
-",invalid
-T009,error,unknown,Processing error: name 'corpus' is not defined,"Traceback (most recent call last):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 386, in main
-    res = process_ticket(ticket_id, ticket_text, company, index,
-                         dry_run=args.dry_run)
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 248, in process_ticket
-    resp    = generate_reply(ticket_text, classification, retrieved)
-NameError: name 'corpus' is not defined
-",invalid
-T010,error,unknown,Processing error: name 'corpus' is not defined,"Traceback (most recent call last):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 386, in main
-    
-    def _worker(task):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 248, in process_ticket
-    sources = resp.sources
-              ^^^^^^^^^^^^
-NameError: name 'corpus' is not defined
-",invalid
-T011,error,unknown,Processing error: name 'corpus' is not defined,"Traceback (most recent call last):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 386, in main
-    
-    def _worker(task):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 248, in process_ticket
-    sources = resp.sources
-              ^^^^^^^^^^^^
-NameError: name 'corpus' is not defined
-",invalid
-T012,error,unknown,Processing error: name 'corpus' is not defined,"Traceback (most recent call last):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 386, in main
-    
-    def _worker(task):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 248, in process_ticket
-    sources = resp.sources
-              ^^^^^^^^^^^^
-NameError: name 'corpus' is not defined
-",invalid
-T013,error,unknown,Processing error: name 'corpus' is not defined,"Traceback (most recent call last):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 386, in main
-    
-    def _worker(task):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 248, in process_ticket
-    sources = resp.sources
-              ^^^^^^^^^^^^
-NameError: name 'corpus' is not defined
-",invalid
-T014,error,unknown,Processing error: name 'corpus' is not defined,"Traceback (most recent call last):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 386, in main
-    
-    def _worker(task):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 248, in process_ticket
-    sources = resp.sources
-              ^^^^^^^^^^^^
-NameError: name 'corpus' is not defined
-",invalid
-T015,error,unknown,Processing error: name 'corpus' is not defined,"Traceback (most recent call last):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 386, in main
-    
-    def _worker(task):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 248, in process_ticket
-    sources = resp.sources
-              ^^^^^^^^^^^^
-NameError: name 'corpus' is not defined
-",invalid
-T016,escalated,visa - unknown,Thank you for reaching out. Your request has been escalated to our specialized support team because: Potential account compromise or identity theft requires human verification. A human agent will contact you shortly.,Potential account compromise or identity theft requires human verification,invalid
-T017,error,unknown,Processing error: name 'corpus' is not defined,"Traceback (most recent call last):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 386, in main
-    
-    def _worker(task):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 248, in process_ticket
-    sources = resp.sources
-              ^^^^^^^^^^^^
-NameError: name 'corpus' is not defined
-",invalid
-T018,error,unknown,Processing error: name 'corpus' is not defined,"Traceback (most recent call last):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 386, in main
-    
-    def _worker(task):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 248, in process_ticket
-    sources = resp.sources
-              ^^^^^^^^^^^^
-NameError: name 'corpus' is not defined
-",invalid
-T019,error,unknown,Processing error: name 'corpus' is not defined,"Traceback (most recent call last):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 386, in main
-    
-    def _worker(task):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 248, in process_ticket
-    sources = resp.sources
-              ^^^^^^^^^^^^
-NameError: name 'corpus' is not defined
-",invalid
-T020,error,unknown,Processing error: name 'corpus' is not defined,"Traceback (most recent call last):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 386, in main
-    
-    def _worker(task):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 248, in process_ticket
-    sources = resp.sources
-              ^^^^^^^^^^^^
-NameError: name 'corpus' is not defined
-",invalid
-T021,error,unknown,Processing error: name 'corpus' is not defined,"Traceback (most recent call last):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 386, in main
-    
-    def _worker(task):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 248, in process_ticket
-    sources = resp.sources
-              ^^^^^^^^^^^^
-NameError: name 'corpus' is not defined
-",invalid
-T022,error,unknown,Processing error: name 'corpus' is not defined,"Traceback (most recent call last):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 386, in main
-    
-    def _worker(task):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 248, in process_ticket
-    sources = resp.sources
-              ^^^^^^^^^^^^
-NameError: name 'corpus' is not defined
-",invalid
-T023,error,unknown,Processing error: name 'corpus' is not defined,"Traceback (most recent call last):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 386, in main
-    
-    def _worker(task):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 248, in process_ticket
-    sources = resp.sources
-              ^^^^^^^^^^^^
-NameError: name 'corpus' is not defined
-",invalid
-T024,escalated,claude - unknown,Thank you for reaching out. Your request has been escalated to our specialized support team because: This request appears to contain a system command or prompt injection attempt and cannot be processed by the support agent. A human agent will contact you shortly.,This request appears to contain a system command or prompt injection attempt and cannot be processed by the support agent,invalid
-T025,escalated,visa - unknown,Thank you for reaching out. Your request has been escalated to our specialized support team because: This request appears to contain a system command or prompt injection attempt and cannot be processed by the support agent. A human agent will contact you shortly.,This request appears to contain a system command or prompt injection attempt and cannot be processed by the support agent,invalid
-T026,error,unknown,Processing error: name 'corpus' is not defined,"Traceback (most recent call last):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 386, in main
-    
-    def _worker(task):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 248, in process_ticket
-    sources = resp.sources
-              ^^^^^^^^^^^^
-NameError: name 'corpus' is not defined
-",invalid
-T027,error,unknown,Processing error: name 'corpus' is not defined,"Traceback (most recent call last):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 386, in main
-    
-    def _worker(task):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 248, in process_ticket
-    sources = resp.sources
-              ^^^^^^^^^^^^
-NameError: name 'corpus' is not defined
-",invalid
-T028,error,unknown,Processing error: name 'corpus' is not defined,"Traceback (most recent call last):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 386, in main
-    
-    def _worker(task):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 248, in process_ticket
-    sources = resp.sources
-              ^^^^^^^^^^^^
-NameError: name 'corpus' is not defined
-",invalid
-T029,error,unknown,Processing error: name 'corpus' is not defined,"Traceback (most recent call last):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 386, in main
-    
-    def _worker(task):
-  File ""/Users/harsha/Projects/hackerrank-orchestrate-may26/code/main.py"", line 248, in process_ticket
-    sources = resp.sources
-              ^^^^^^^^^^^^
-NameError: name 'corpus' is not defined
-",invalid
+T004,replied,hackerrank - interviews,"For mock interview refund requests, HackerRank’s policy says: if you are not satisfied with your mock interview, contact help@hackerrank.com and the support team will promptly review your request.
+
+Source: Purchase Mock Interview Credits — https://help.hackerrank.com/articles/3282259518-purchase-mock-interviews",Classified as a billing for hackerrank (interviews). Classified as interviews for hackerrank. Grounded in 2 priority source(s). No safety rules triggered; confidence score 0.94.,billing
+T007,replied,hackerrank - community,"For practice/mock interviews, the available HackerRank Community flow uses the Prepare tab, not an Apply tab.
+
+From Purchase Mock Interview Credits: https://help.hackerrank.com/articles/3282259518-purchase-mock-interviews
+
+1. Log in to https://www.hackerrank.com/auth/login
+2. Go to the Prepare tab
+3. Look for the Mock Interviews for you section
+
+The provided support article does not mention an Apply tab for this practice flow. If you still cannot access the expected practice area or submissions are not working, please contact HackerRank Support at help@hackerrank.com.",Classified as a technical_issue for hackerrank (community). Classified as community for hackerrank. Grounded in 2 priority source(s). No safety rules triggered; confidence score 0.90.,technical_issue
+T002,replied,hackerrank - screen,"Hi,
+
+HackerRank cannot increase a candidate’s score or direct a recruiter/company to move a candidate to the next round.
+
+Per Workday - HackerRank Tests User Guide (https://support.hackerrank.com/articles/1999755553-workday---hackerrank-tests-user-guide), after a test is completed, HackerRank checks the submitted answers, performs plagiarism checks, prepares the report, and publishes the results. If a cutoff score is configured, the status is updated as Qualified or Failed; otherwise, it may require recruiter/hiring manager evaluation.
+
+Per Candidate Status in API Results Status ATS state (https://support.hackerrank.com/articles/3094540490-candidate-status-in-api-results), after a candidate completes a test, a recruiter can manually update the recruitment stage, including moving candidates forward or marking them as Rejected.
+
+Please contact the recruiter or hiring company directly for any appeal, feedback, or next-step decision.",Classified as a other for hackerrank (screen). Classified as screen for hackerrank. Grounded in 10 priority source(s). No safety rules triggered; confidence score 0.94.,general_inquiry
+T005,replied,hackerrank - disputes,"According to Subscriptions, Payments, and Billing FAQs Mock interviews Subscription plans (https://help.hackerrank.com/articles/9157064719-payments-and-billing-faqs), if a payment failed and any amount was deducted incorrectly, it will be refunded within 5–10 business days.
+
+If this was an accidental purchase or you’re not satisfied with your mock interview, contact help@hackerrank.com with your order ID csliveabcdefgh. Per Purchase Mock Interview Credits (https://help.hackerrank.com/articles/3282259518-purchase-mock-interviews), the support team will review your request.",Classified as a billing for hackerrank (disputes). Classified as disputes for hackerrank. Grounded in 2 priority source(s). No safety rules triggered; confidence score 0.85.,billing
+T008,replied,hackerrank - screen,"Sorry you’re running into this while taking the test.
+
+From Coding Challenges FAQs (https://www.hackerrank.com/scoring), please try the following:
+
+1. Close the challenge window, then reopen it using the same challenge/test link.
+2. Open the challenge in another supported browser, such as the latest versions of Chrome, Firefox, or Edge.
+3. Ensure your internet connection is stable.
+
+If you’re taking a company assessment and still cannot submit or complete challenges, please contact HackerRank support at [support@hackerrank.com](mailto:support@hackerrank.com) for technical issues.
+
+For HackerRank Community challenge/result issues, contact [help@hackerrank.com](mailto:help@hackerrank.com).",Classified as a technical_issue for hackerrank (screen). Classified as screen for hackerrank. Grounded in 10 priority source(s). No safety rules triggered; confidence score 0.97.,technical_issue
+T001,replied,claude - team_plans,"I can’t restore or bypass access to a Claude Team workspace after your IT admin removed your seat, especially if you are not the workspace Owner or admin.
+
+Workspace membership and organization-level access are controlled by your organization’s Owners/Primary Owners or IT/admin team. Please contact your workspace Owner, Primary Owner, or IT admin and ask them to re-add your seat or invite you back.
+
+Relevant source: Access audit logs — https://support.claude.com/en/articles/9970975-access-audit-logs
+Related member-management article listed there: Manage members on Team and Enterprise plans — https://support.claude.com/en/articles/13133750-manage-members-on-team-and-enterprise-plans",Classified as a account_access for claude (team_plans). Classified as team_plans for claude. Grounded in 10 priority source(s). No safety rules triggered; confidence score 0.98.,account_access
+T012,escalated,hackerrank - support_triage,Thank you for reaching out. Your request has been escalated to our specialized support team because: Low classification confidence — routing to human for safety. A human agent will contact you shortly.,Classified as a technical_issue for hackerrank (support_triage).  Escalated due to: Low classification confidence — routing to human for safety; confidence score 0.25.,technical_issue
+T003,replied,visa - disputes,"I’m sorry this happened. Visa cannot directly issue a same-day refund or take action on a merchant account from this ticket, because Visa does not service or have access to cardholder or merchant accounts.
+
+Per Visa Consumer Support: https://www.visa.co.in/support.html
+
+- To dispute the charge / request a refund: contact your issuer or bank using the phone number on the front or back of your Visa card. Your issuer/bank may require detailed information about the transaction before resolving the dispute.
+- To report concerns about the merchant: submit Visa’s merchant issue form: /Forms/visa-rules.html
+
+Source: Visa Consumer Support.",Classified as a billing for visa (disputes). Classified as disputes for visa. Grounded in 10 priority source(s). No safety rules triggered; confidence score 0.93.,billing
+T006,replied,hackerrank - screen_security_compliance,"Hi,
+
+HackerRank can support your team in getting started with HackerRank for hiring. However, the provided support documentation does not include a specific process for completing customer infosec/vendor security questionnaires or forms.
+
+Please share the forms or specific infosec questions with your HackerRank point of contact so they can route the request appropriately. For support requests, HackerRank documentation also lists support@hackerrank.com as a contact option.
+
+Sources:
+- Quick Start Guide for Recruiters: https://support.hackerrank.com/articles/9248897371-quick-start-guide-for-recruiters
+- Partner Guide to building an integration with HackerRank: https://support.hackerrank.com/articles/8660206242-partner-guide-to-building-an-integration-with-hackerrank",Classified as a other for hackerrank (screen_security_compliance). Classified as screen_security_compliance for hackerrank. Grounded in 10 priority source(s). No safety rules triggered; confidence score 0.92.,general_inquiry
+T016,escalated,visa - account_security,Thank you for reaching out. Your request has been escalated to our specialized support team because: Fraud reports must be handled by a human agent immediately. A human agent will contact you shortly.,Classified as a fraud for visa (account_security).  Escalated due to: Fraud reports must be handled by a human agent immediately; confidence score 0.99.,fraud
+T013,replied,hackerrank - settings,I don't have enough information in our support documentation to answer this. Please contact our support team directly.,Classified as a other for hackerrank (settings). Classified as settings for hackerrank. Grounded in 2 priority source(s). No safety rules triggered; confidence score 0.93.,general_inquiry
+T009,replied,hackerrank - screen,"Hi,
+
+Sorry you’re blocked from starting the test due to the Zoom connectivity check.
+
+As noted in Onboarding Candidates (https://support.hackerrank.com/articles/9695299159-onboarding-candidates), candidates should verify network coverage using the Internet compatibility check: https://www.hackerrank.com/compatibility
+
+Since the issue persists after changing your settings/configuration, please contact HackerRank candidate technical support at support@hackerrank.com. You can also refer to the candidate support page: https://candidatesupport.hackerrank.com/hc/en-us",Classified as a technical_issue for hackerrank (screen). Classified as screen for hackerrank. Grounded in 10 priority source(s). No safety rules triggered; confidence score 0.97.,technical_issue
+T011,replied,hackerrank - interviews,"The provided support documents do not include information about HackerRank interview inactivity timeout settings, whether they differ for candidates vs. interviewers, or whether those timeouts can be extended.
+
+Sources reviewed:
+- Subscriptions, Payments, and Billing FAQs Mock interviews Subscription plans — https://help.hackerrank.com/articles/9157064719-payments-and-billing-faqs
+- Purchase Mock Interview Credits — https://help.hackerrank.com/articles/3282259518-purchase-mock-interviews
+
+The only contact email listed in the provided documents is: help@hackerrank.com.",Classified as a technical_issue for hackerrank (interviews). Classified as interviews for hackerrank. Grounded in 2 priority source(s). No safety rules triggered; confidence score 0.97.,technical_issue
+T019,escalated,visa - disputes,Thank you for reaching out. Your request has been escalated to our specialized support team because: Billing disputes require human review. A human agent will contact you shortly.,Classified as a billing for visa (disputes).  Escalated due to: Billing disputes require human review; confidence score 0.93.,billing
+T010,replied,hackerrank - screen,"Hi,
+
+Thanks for reaching out. HackerRank administers the assessment platform, but the hiring company/recruiting team controls assessment scheduling, invite expiry, and whether a new date/time can be provided.
+
+Please contact the recruiter or recruiting team from Company Name directly—ideally by replying to your original assessment invitation—to request rescheduling or a new invite.
+
+If you experienced a technical issue accessing or completing the test, you can contact HackerRank Support at support@hackerrank.com.
+
+Source: Onboarding Candidates — https://candidatesupport.hackerrank.com/hc/en-us/articles/4402921216531-Evaluation-Methods-of-your-HackerRank-Tests",Classified as a other for hackerrank (screen). Classified as screen for hackerrank. Grounded in 10 priority source(s). No safety rules triggered; confidence score 0.97.,general_inquiry
+T014,replied,hackerrank - subscription_management,"HackerRank’s provided billing FAQ does not list an option to pause a subscription.
+
+If you need to stop billing while hiring is paused, the available subscription action referenced is cancellation: Cancel Subscription Plan — `/articles/6560545309`
+
+Source: Subscriptions, Payments, and Billing FAQs Mock interviews Subscription plans
+https://help.hackerrank.com/articles/9157064719-payments-and-billing-faqs
+
+For support requests, you can contact help@hackerrank.com.",Classified as a billing for hackerrank (subscription_management). Classified as subscription_management for hackerrank. Grounded in 2 priority source(s). No safety rules triggered; confidence score 0.98.,billing
+T024,escalated,claude - file_deletion_script,Thank you for reaching out. Your request has been escalated to our specialized support team because: This request appears to contain a system command or prompt injection attempt and cannot be processed by the support agent. A human agent will contact you shortly.,Classified as a other for claude (file_deletion_script).  Escalated due to: This request appears to contain a system command or prompt injection attempt and cannot be processed by the support agent; confidence score 0.98.,general_inquiry
+T017,replied,hackerrank - resume_builder,"Hi,
+
+You can access Resume Builder from HackerRank Community as described in Create a Resume with Resume Builder: https://www.hackerrank.com/auth/login
+
+1. Log in to HackerRank Community: https://www.hackerrank.com/auth/login
+2. Click the App Switcher grid icon in the top-right corner.
+3. Select Resume Builder.
+4. Choose Create New to build from scratch, or Import Resume to upload a `.doc`, `.docx`, or `.pdf`.
+
+If Resume Builder is not loading or appears down after logging in, please contact HackerRank Support for technical assistance at support@hackerrank.com and include the error message or a screenshot.",Classified as a technical_issue for hackerrank (resume_builder). Classified as resume_builder for hackerrank. Grounded in 10 priority source(s). No safety rules triggered; confidence score 0.97.,technical_issue
+T018,replied,hackerrank - skillup,"Hello,
+
+Yes, you can update the name on your HackerRank certificate once per account. This change will apply to all certificates on your account, and after updating it, you cannot change it again.
+
+As per Certifications FAQs: https://help.hackerrank.com/articles/9788355678-obtain-skill-based-certifications#view-certification-status-4
+
+To update the certificate name:
+
+1. Open your certificate page.
+2. In the Full Name field, enter the name you want displayed.
+3. Click Regenerate Certificate.
+4. In the confirmation dialog, click Update Name.
+
+The platform will regenerate your certificate with the updated name.
+
+If you still need help, contact HackerRank support at [help@hackerrank.com](mailto:help@hackerrank.com).",Classified as a other for hackerrank (skillup). Classified as skillup for hackerrank. Grounded in 10 priority source(s). No safety rules triggered; confidence score 0.90.,general_inquiry
+T020,replied,claude - privacy_legal,"Thank you for reporting this responsibly.
+
+Per Public Vulnerability Reporting / Model Safety Bug Bounty Program: https://support.claude.com/en/articles/12119250-model-safety-bug-bounty-program
+
+- For a technical security vulnerability in Anthropic systems or user data—such as misconfigurations, CSRF, privilege escalation, SQL injection, XSS, or directory traversal—please review Anthropic’s Responsible Disclosure Policy: https://www.anthropic.com/responsible-disclosure-policy and submit your report here: https://hackerone.com/297a385f-b3bd-4ecd-9466-7d9ad55371ce/embeddedsubmissions/new
+- For a model safety vulnerability / universal jailbreak, Anthropic’s Model Safety Bug Bounty Program is run through HackerOne. You can apply to join the program here: https://docs.google.com/forms/d/e/1FAIpQLSf3IuyunFH1Rbz9Bpt2kGBfwSW5QQ1TBkeAzNZrtCP-hRvNA/viewform
+
+Please avoid publicly disclosing vulnerability details unless Anthropic gives express permission.",Classified as a technical_issue for claude (privacy_legal). Classified as privacy_legal for claude. Grounded in 10 priority source(s). No safety rules triggered; confidence score 0.97.,technical_issue
+T021,replied,claude - privacy_legal,"To stop Anthropic/Claude crawling your website, update your site’s `robots.txt` file as described in “Does Anthropic crawl data from the web, and how can site owners block the crawler?”:
+https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler
+
+Add a `Disallow` rule for the Anthropic Bot(s) you want to block in the `robots.txt` file in your top-level directory. For example:
+
+```txt
+User-agent: ClaudeBot
+Disallow: /
+```
+
+Anthropic’s robots include:
+
+```txt
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Claude-User
+Disallow: /
+
+User-agent: Claude-SearchBot
+Disallow: /
+```
+
+Please add the relevant rules for every subdomain you want to opt out from.
+
+Anthropic notes that blocking IP addresses may not reliably guarantee an opt-out because it can prevent the Bots from reading your `robots.txt`. If a crawler’s source IP is on this list, it indicates the crawler is coming from Anthropic: https://claude.com/crawling/bots.json
+
+If you have further questions or believe the Bots are malfunctioning, contact claudebot@anthropic.com from an email address that includes the domain you’re contacting Anthropic about.",Classified as a other for claude (privacy_legal). Classified as privacy_legal for claude. Grounded in 10 priority source(s). No safety rules triggered; confidence score 0.97.,general_inquiry
+T025,escalated,visa - account_security,Thank you for reaching out. Your request has been escalated to our specialized support team because: This request appears to contain a system command or prompt injection attempt and cannot be processed by the support agent. A human agent will contact you shortly.,Classified as a account_access for visa (account_security).  Escalated due to: This request appears to contain a system command or prompt injection attempt and cannot be processed by the support agent; confidence score 0.90.,account_access
+T022,replied,visa - emergency_cash_assistance,"Based on Visa Travel Services | Visa Travel Credit Card Support (https://www.visa.co.in/support/consumer/travel-support.html):
+
+- You can use your Visa card to withdraw local currency at ATMs displaying the Visa/PLUS mark.
+- Find a nearby ATM here: https://www.visa.com/locator/atm
+or: http://www.visa.com/atmlocator
+- You will need your card PIN, and withdrawals depend on your bank/card issuer’s daily ATM withdrawal limit, available balance, and card status.
+
+If your situation is an emergency or your card is lost/stolen/damaged, Visa Global Customer Assistance Services can help with emergency services, including emergency cash where available. Call +1 303 967 1090 from anywhere in the world. In India, you can also report a lost card by calling 000-800-100-1219.",Classified as a other for visa (emergency_cash_assistance). Classified as emergency_cash_assistance for visa. Grounded in 10 priority source(s). No safety rules triggered; confidence score 0.86.,general_inquiry
+T023,replied,claude - privacy_legal,"According to “Is my data used for model training?” (https://privacy.anthropic.com/en/articles/7996868-is-my-data-used-for-model-training), if you provide feedback via the thumbs up/down button, Anthropic stores the entire related conversation in a secured backend for up to 5 years. This feedback is de-linked from your user and customer IDs before being used.
+
+For consumer Claude products, “I would like to input sensitive data into my chats with Claude. Who can view my conversations?” (https://support.claude.com/en/articles/8325621-i-would-like-to-input-sensitive-data-into-my-chats-with-claude-who-can-view-my-conversations) states that when you allow your chats or coding sessions to help improve Claude, the data is used solely to make Claude better, and you can adjust your privacy settings at any time here: https://claude.ai/settings/data-privacy-controls. It does not specify a separate usage duration for this setting.",Classified as a other for claude (privacy_legal). Classified as privacy_legal for claude. Grounded in 10 priority source(s). No safety rules triggered; confidence score 0.97.,general_inquiry
+T026,replied,claude - bedrock,"Hi — for Claude requests through AWS Bedrock failing, please check the following:
+
+From “Troubleshoot Claude Code installation and authentication”:
+https://support.claude.com/en/articles/14552646-troubleshoot-claude-code-installation-and-authentication
+
+- Confirm AWS credentials are working: `aws sts get-caller-identity`
+- Confirm `AWSREGION` is set to a region where the Claude model is enabled.
+- If requests return 403 or “model not available”, confirm the specific Claude model is enabled in that AWS region/project.
+- If using Claude Code, run `claude doctor` from your normal shell and attach the diagnostic report to your support ticket.
+
+Also verify Claude model availability by AWS Region here:
+https://docs.aws.amazon.com/bedrock/latest/userguide/models-regions.html
+Source: “What AWS Regions are Claude models available in Amazon Bedrock?”
+https://support.claude.com/en/articles/10280791-what-aws-regions-are-claude-models-available-in-amazon-bedrock
+
+For Claude in Amazon Bedrock support inquiries, please Contact AWS Support or your AWS account manager:
+https://aws.amazon.com/contact-us/
+Community support: https://repost.aws/
+Source: “I use Claude in Amazon Bedrock. Who do I contact for customer support inquiries?”
+https://support.claude.com/en/articles/7996921-i-use-claude-in-amazon-bedrock-who-do-i-contact-for-customer-support-inquiries",Classified as a technical_issue for claude (bedrock). Classified as bedrock for claude. Grounded in 10 priority source(s). No safety rules triggered; confidence score 0.98.,technical_issue
+T029,replied,visa - consumer,"Per Visa Consumer Support (https://www.visa.co.in/support.html): in general, merchants may not set a minimum or maximum amount for Visa transactions. However, there is an exception in the USA and US territories, including the U.S. Virgin Islands.
+
+In the U.S. Virgin Islands, a merchant may require a minimum transaction amount of US$10, but only for Visa credit cards.
+
+If the merchant is applying a minimum to a Visa debit card, or requiring more than US$10 on a credit card, Visa advises you to notify your Visa card issuer. You can contact the issuer using the number on the front or back of your card.
+
+For Visa support in the U.S. Virgin Islands: 1 800 847 2911.",Classified as a other for visa (consumer). Classified as consumer for visa. Grounded in 10 priority source(s). No safety rules triggered; confidence score 0.97.,general_inquiry
+T028,replied,claude - enterprise,"To set up a Claude LTI key for your students in Canvas, you’ll need Claude for Education admin access and Canvas/LMS admin access.
+
+Source: Set up the Claude LTI in Canvas by Instructure
+https://support.claude.com/en/articles/11725453-set-up-the-claude-lti-in-canvas-by-instructure
+
+Create the Claude LTI Developer Key in Canvas
+
+1. In Canvas, sign in as an administrator and go to Admin -> Developer Keys.
+2. Click + Developer Key then + LTI Key.
+3. Enter:
+- Key Name: Claude LTI
+- Description: Short description for the Canvas LTI 1.3 app
+- Redirect URIs: https://claude.ai/lti/launch
+- Title: Claude LTI
+- Target Link URI: https://claude.ai/lti/launch
+- OpenID Connect Initiation Url: https://claude.ai/api/lti/login
+- JWK method: https://claude.ai/api/lti/keys
+4. Under Additional Settings, set Privacy Level to Public.
+5. Under Placements, remove the defaults and add Course Navigation and Assignment Edit.
+6. Click Save.
+7. Toggle the key state to On.
+
+Install Claude LTI as an App
+
+1. In Canvas, go to Admin -> Settings -> Apps.
+2. Click View App Configurations, then + App.
+3. Select Configuration Type: By Client ID.
+4. Enter the Client ID generated for your developer key.
+5. Click Install and refresh the course page.
+
+Enable the integration in Claude for Education
+
+1. In Claude for Education, sign in as an administrator.
+2. Go to Organization settings > Connectors: https://claude.ai/admin-settings/connectors
+3. Find Canvas and click Enable.
+4. Enter:
+- Canvas Domain
+- Client ID
+- Deployment ID
+5. Click Save Changes.
+
+If you have questions about your Claude for Education plan account or the Claude LTI, the support article recommends contacting your university’s administrator(s).",Classified as a technical_issue for claude (enterprise). Classified as enterprise for claude. Grounded in 10 priority source(s). No safety rules triggered; confidence score 0.87.,technical_issue
+T027,replied,hackerrank - settings,"To remove a former employee from your HackerRank for Work/Hiring account, a Company Admin should manage this from the User Management / Teams Management area.
+
+Steps (Source: “Q3' 23 Release Notes”):
+1. Log in to HackerRank for Work as a Company Admin.
+2. Click your profile icon in the top-right corner.
+3. Go to Settings.
+4. Open the User Management / Teams Management page.
+5. Search or filter for the employee.
+6. Use the available user actions to update their access/license assignment as needed.
+
+Reference: [Teams Management](https://support.hackerrank.com/hc/en-us/articles/22181635545875-Teams-Management)
+
+If your company uses SSO/JIT provisioning, also remove the employee’s access to HackerRank from your Identity Provider, since access is managed by your organization’s IdP. Source: “Just-in-Time (JIT) Provisioning for HackerRank SSO” — https://support.hackerrank.com/articles/8000473667--setting-up-hackerrank-sso-with-just-in-time-
+
+If you need help completing the removal, contact HackerRank Support at support@hackerrank.com.",Classified as a account_access for hackerrank (settings). Classified as settings for hackerrank. Grounded in 10 priority source(s). No safety rules triggered; confidence score 0.97.,account_access

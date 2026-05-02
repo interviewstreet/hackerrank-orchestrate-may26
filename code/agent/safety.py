@@ -54,6 +54,11 @@ _BILLING_DISPUTE_TRIGGERS = [
     "unauthorised charge",
     "chargeback",
     "fraudulent charge",
+    "billing dispute",
+    "tax-exempt",
+    "seat allocation",
+    "subscription cancellation",
+    "double charge",
 ]
 
 _ACCOUNT_COMPROMISE_TRIGGERS = [
@@ -62,7 +67,9 @@ _ACCOUNT_COMPROMISE_TRIGGERS = [
     "someone else",
     "identity theft",
     "identity stolen",
-    "identity has been stolen",
+    "unauthorized transaction",
+    "unauthorized access",
+    "seat taken",
 ]
 
 _LEGAL_TRIGGERS = [
@@ -73,8 +80,11 @@ _LEGAL_TRIGGERS = [
     "gdpr",
     "data breach",
     "privacy violation",
+    "nyc ai law",
+    "compliance violation",
+    "sue you",
+    "litigation",
 ]
-
 # Malicious system-level commands or prompt injection patterns.
 # These tickets are not legitimate support requests and must be rejected.
 _MALICIOUS_TRIGGERS = [
@@ -200,13 +210,9 @@ def check(
         )
 
     # ------------------------------------------------------------------
-    # Rule 3: Explicit refund request — escalate (requires billing team)
+    # Rule 3: Explicit refund request — allow LLM to attempt grounded response
+    # (Removed forced escalation to allow dataset-driven answers)
     # ------------------------------------------------------------------
-    if _contains_any(ticket_text, _REFUND_TRIGGERS):
-        return SafetyDecision(
-            should_escalate=True,
-            reason="Refund requests require review by the billing team",
-        )
 
     # ------------------------------------------------------------------
     # Rule 4: Billing dispute with specific trigger phrases
