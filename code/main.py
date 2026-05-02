@@ -5,13 +5,12 @@ import argparse
 import sys
 from pathlib import Path
 
-from dotenv import load_dotenv
 from tqdm import tqdm
 
 import config
 from agent import SupportAgent
 from corpus import build_company_product_areas, load_corpus
-from io_csv import open_output_writer, read_input_tickets
+from io_csv import open_output_writer, read_input_tickets, ticket_key
 from retriever import make_retriever
 
 
@@ -27,14 +26,20 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
                    help="Skip rows whose 'issue' is already in --output")
     p.add_argument("--no-embeddings", action="store_true",
                    help="Use TF-IDF instead of sentence-transformers")
-    p.add_argument("--model", default=config.ANTHROPIC_MODEL)
+    p.add_argument("--provider", choices=["auto", "anthropic", "openai"],
+                   default=config.LLM_PROVIDER,
+                   help="LLM provider (auto = anthropic primary, openai fallback)")
+    p.add_argument("--model", default=config.ANTHROPIC_MODEL,
+                   help="Anthropic model id (when provider uses anthropic)")
+    p.add_argument("--openai-model", default=config.OPENAI_MODEL,
+                   help="OpenAI model id (when provider uses openai)")
     p.add_argument("--dry-run", action="store_true",
                    help="Skip LLM calls; emit pre-rule outcomes only")
     return p.parse_args(argv)
 
 
 def main(argv: list[str] | None = None) -> int:
-    load_dotenv()
+    config.load_env_files()
     args = parse_args(argv)
 
     print(f"[setup] loading corpus from {args.data_dir}", file=sys.stderr)
@@ -51,7 +56,10 @@ def main(argv: list[str] | None = None) -> int:
                                use_embeddings=use_emb,
                                model_name=config.EMBED_MODEL_NAME)
     company_areas = build_company_product_areas(chunks)
-    agent = SupportAgent(retriever, company_areas, model=args.model)
+    agent = SupportAgent(retriever, company_areas,
+                         model=args.model,
+                         provider=args.provider,
+                         openai_model=args.openai_model)
 
     tickets = read_input_tickets(args.input)
     if args.limit:
@@ -62,7 +70,7 @@ def main(argv: list[str] | None = None) -> int:
                                              resume=args.resume)
     try:
         for t in tqdm(tickets, desc="triage", unit="ticket"):
-            if args.resume and t.issue in existing:
+            if args.resume and ticket_key(t.issue, t.subject, t.company) in existing:
                 continue
             if args.dry_run:
                 from agent import _normalize_company  # type: ignore

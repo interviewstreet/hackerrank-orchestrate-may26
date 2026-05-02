@@ -4,6 +4,7 @@ from __future__ import annotations
 import hashlib
 import os
 import pickle
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -53,20 +54,25 @@ class DenseRetriever:
 
     def _build(self) -> None:
         if self.use_embeddings:
-            self._build_embeddings()
-        else:
-            self._build_tfidf()
+            try:
+                self._build_embeddings()
+                return
+            except Exception as e:  # noqa: BLE001
+                print(f"[retriever] embeddings unavailable ({e}); using TF-IDF",
+                      file=sys.stderr)
+                self.use_embeddings = False
+        self._build_tfidf()
 
     def _build_embeddings(self) -> None:
+        from sentence_transformers import SentenceTransformer
+        self._qmodel = SentenceTransformer(self.model_name)
         sig = self._corpus_signature()
         cache_file = self.cache_dir / f"embeds_{sig}.npy"
         if cache_file.exists():
             self._embeddings = np.load(cache_file)
             return
-        from sentence_transformers import SentenceTransformer
-        model = SentenceTransformer(self.model_name)
         texts = [c.text for c in self.chunks]
-        embs = model.encode(
+        embs = self._qmodel.encode(
             texts, batch_size=64, show_progress_bar=True,
             convert_to_numpy=True, normalize_embeddings=True,
         )
@@ -81,9 +87,6 @@ class DenseRetriever:
         self._tfidf_matrix = self._tfidf.fit_transform(c.text for c in self.chunks)
 
     def _embed_query(self, query: str) -> np.ndarray:
-        from sentence_transformers import SentenceTransformer
-        if not hasattr(self, "_qmodel"):
-            self._qmodel = SentenceTransformer(self.model_name)
         v = self._qmodel.encode(
             [query], convert_to_numpy=True, normalize_embeddings=True,
         )

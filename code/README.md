@@ -10,8 +10,9 @@ ticket ──► pre-rules (regex)           ──► early return (escalate / 
        ──► language gate (non-English → escalate for None/Visa)
        ──► dense retrieval (MiniLM, single index, metadata filter)
        ──► coverage-floor check         ──► early escalate
-       ──► LLM (Sonnet 4.6, tool-forced JSON)
-       ──► verifier (sentence-level n-gram grounding)
+       ──► LLM (Anthropic primary, OpenAI fallback, tool-forced JSON)
+       ──► extractive fallback when no LLM key/quota is available
+       ──► verifier (citation + sentence grounding)
        ──► post-rules (confidence/citation/area allow-list)
        ──► RowOutput
 ```
@@ -22,7 +23,7 @@ ticket ──► pre-rules (regex)           ──► early return (escalate / 
 cd code/
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env  # set ANTHROPIC_API_KEY
+cp .env.example .env  # set ANTHROPIC_API_KEY and/or OPENAI_API_KEY
 ```
 
 ## Run
@@ -53,9 +54,9 @@ Reads input from `../support_tickets/support_tickets.csv` and writes to
 - **Single dense index, not BM25 + RRF.** Corpus is small (~3k chunks); MiniLM cosine is enough and avoids index-mismatch bugs under time pressure.
 - **Rules before LLM, rules after LLM.** Pre-rules catch sensitive cases (fraud, legal, refund demands, score appeals, prompt injection, outage). Post-rules enforce confidence floor, mandatory citations, and product_area allow-list. The LLM is only trusted on grounded support questions.
 - **Coverage floor check.** If retrieval similarity is below threshold we escalate before calling the LLM — this is the main hallucination defense.
-- **Sentence-level verifier.** Every response sentence must share a 5-gram with a cited chunk; otherwise it's stripped or the row is escalated.
+- **Grounding verifier.** Cited chunk IDs must come from retrieval; unsupported response sentences are stripped or the row is escalated.
 - **Determinism.** `temperature=0`, fixed `seed=42`, sorted tie-breaks, stable cosine sort, deterministic chunking.
-- **Secrets.** Read only from env (`ANTHROPIC_API_KEY`, `ANTHROPIC_MODEL`).
+- **Secrets.** Read only from env (`ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, model/provider settings). Local `.env`, `.env.local`, `code/.env`, and `code/.env.local` are supported.
 
 ## Files
 
@@ -68,7 +69,7 @@ Reads input from `../support_tickets/support_tickets.csv` and writes to
 | `escalation.py` | Pre/post rule tables |
 | `verifier.py` | Citation grounding check |
 | `prompts.py` | System prompt + few-shots |
-| `llm_client.py` | Anthropic tool-call wrapper |
+| `llm_client.py` | Anthropic/OpenAI tool-call wrapper |
 | `schemas.py` | Pydantic models |
 | `io_csv.py` | CSV reader/writer with strict header |
 | `eval.py` | Accuracy harness vs. gold sample |

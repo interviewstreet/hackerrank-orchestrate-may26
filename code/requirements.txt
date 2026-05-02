@@ -1,4 +1,5 @@
 anthropic>=0.39.0
+openai>=1.40.0
 pydantic>=2.7.0
 sentence-transformers>=2.7.0
 scikit-learn>=1.4.0

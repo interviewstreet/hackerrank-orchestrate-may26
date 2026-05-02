@@ -53,7 +53,7 @@ PRE_RULES: list[tuple[str, re.Pattern[str], str]] = [
                 r"give\s+me\s+the\s+code\s+to\s+(delete|destroy|wipe))"),
      "invalid_reply"),
     ("trivial_pleasantry",
-     re.compile(r"^\s*(thanks?(\s+you)?|thank\s+you|hi|hello|hey|ok|okay|"
+     re.compile(r"^\s*(thanks?(\s+you)?|thank\s+you(\s+for\s+.+)?|hi|hello|hey|ok|okay|"
                 r"happy\s+to\s+help|good(\s+morning|\s+evening)?)\s*[!.\s]*$",
                 re.IGNORECASE),
      "invalid_reply"),

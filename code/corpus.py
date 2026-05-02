@@ -41,6 +41,51 @@ def _chunk(text: str, target_chars: int, overlap: int) -> list[str]:
     return chunks
 
 
+def _product_area(company: str, rel: Path) -> str:
+    path = rel.as_posix().lower()
+    parts = rel.parts
+    raw = parts[1].lower() if len(parts) >= 3 else "general"
+
+    if company == "HackerRank":
+        if raw == "hackerrank_community":
+            return "community"
+        if raw == "interviews":
+            return "interview"
+        if raw in {"screen", "library", "integrations", "settings"}:
+            return raw
+        return "general"
+
+    if company == "Claude":
+        if "privacy" in path or "safeguards" in path:
+            return "privacy"
+        if "conversation-management" in path:
+            return "conversation_management"
+        if "billing" in path or "pro-and-max-plans" in path:
+            return "billing"
+        if "api" in path or "amazon-bedrock" in path:
+            return "api"
+        if "team-and-enterprise" in path or "identity-management" in path:
+            return "teams"
+        if "claude-code" in path:
+            return "claude_code"
+        return "general"
+
+    if company == "Visa":
+        if "travel" in path or "traveller" in path or "traveler" in path:
+            return "travel_support"
+        if "small-business" in path or "merchant" in path:
+            return "business_support"
+        if "fraud" in path or "stolen" in path or "identity" in path:
+            return "fraud"
+        if "dispute" in path or "charge" in path or "payment" in path:
+            return "payments"
+        if "card" in path:
+            return "card_services"
+        return "general_support"
+
+    return raw.replace("-", "_")
+
+
 def load_corpus(
     data_dir: Path,
     chunk_size_tokens: int = 400,
@@ -59,8 +104,7 @@ def load_corpus(
                 continue
             text = _strip_frontmatter(raw)
             rel = md_path.relative_to(data_dir)
-            parts = rel.parts
-            product_area = parts[1] if len(parts) >= 3 else "general"
+            product_area = _product_area(company, rel)
             chunks = _chunk(text, target_chars, overlap_chars)
             for i, ch in enumerate(chunks):
                 cid = f"{company}:{rel.as_posix()}:{i:03d}"

@@ -5,8 +5,6 @@ import argparse
 from collections import Counter
 from pathlib import Path
 
-from dotenv import load_dotenv
-
 import config
 from agent import SupportAgent
 from corpus import build_company_product_areas, load_corpus
@@ -16,12 +14,15 @@ from schemas import TicketInput
 
 
 def main(argv: list[str] | None = None) -> int:
-    load_dotenv()
+    config.load_env_files()
     p = argparse.ArgumentParser()
     p.add_argument("--sample", type=Path, default=config.SAMPLE_CSV)
     p.add_argument("--data-dir", type=Path, default=config.DATA_DIR)
     p.add_argument("--no-embeddings", action="store_true")
+    p.add_argument("--provider", choices=["auto", "anthropic", "openai"],
+                   default=config.LLM_PROVIDER)
     p.add_argument("--model", default=config.ANTHROPIC_MODEL)
+    p.add_argument("--openai-model", default=config.OPENAI_MODEL)
     args = p.parse_args(argv)
 
     chunks = load_corpus(args.data_dir, config.CHUNK_SIZE_TOKENS,
@@ -30,7 +31,9 @@ def main(argv: list[str] | None = None) -> int:
                                use_embeddings=not args.no_embeddings,
                                model_name=config.EMBED_MODEL_NAME)
     agent = SupportAgent(retriever, build_company_product_areas(chunks),
-                         model=args.model)
+                         model=args.model,
+                         provider=args.provider,
+                         openai_model=args.openai_model)
 
     gold = read_sample_gold(args.sample)
     print(f"[eval] {len(gold)} gold rows")
