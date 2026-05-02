@@ -31,3 +31,5 @@ data/index/
 data/embeddings/
 *.sqlite
 *.db
+qdrant_db/
+support_tickets/output.csv
