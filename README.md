@@ -1,134 +1,132 @@
-# HackerRank Orchestrate
+# HackerRank Orchestrate Support Agent
 
-Starter repository for the **HackerRank Orchestrate** 24-hour hackathon (May 1–2, 2026).
+AI-powered support agent that automatically resolves real customer tickets for **HackerRank**, **Claude**, and **Visa** using semantic search over a local knowledge base.
 
-Build a terminal-based AI agent that triages real support tickets across three product ecosystems; **HackerRank**, **Claude**, and **Visa** — using only the support corpus shipped in this repo.
-
-Read [`problem_statement.md`](./problem_statement.md) for the full task spec, input/output schema, and allowed values, and [`evalutation_criteria.md`](./evalutation_criteria.md) for how submissions are scored.
+Built for the HackerRank Orchestrate 24-hour hackathon (May 2026).
 
 ---
 
-## Contents
+## What it does
 
-1. [Repository layout](#repository-layout)
-2. [What you need to build](#what-you-need-to-build)
-3. [Where your code goes](#where-your-code-goes)
-4. [Quickstart](#quickstart)
-5. [Chat transcript logging](#chat-transcript-logging)
-6. [Submission](#submission)
-7. [Judge interview](#judge-interview)
-8. [Evaluation criteria](#evaluation-criteria)
+Given a CSV of support tickets (`support_tickets.csv`), the agent:
 
----
+1. **Escalates** high-risk or out-of-scope requests (identity theft, security issues, policy violations)
+2. **Classifies** each ticket by product area and request type
+3. **Retrieves** relevant documentation from a local corpus using **semantic vector search** (sentence-transformers + FAISS)
+4. **Generates** accurate, helpful responses grounded solely in the retrieved context — no hallucinations
 
-## Repository layout
-
-```
-.
-├── AGENTS.md                       # Rules for AI coding tools + transcript logging
-├── problem_statement.md            # Full task description and I/O schema
-├── README.md                       # You are here
-├── code/                           # ← Build your agent here
-│   └── main.py                     #   Entry point (rename/extend as you like)
-├── data/                           # Local-only support corpus (no network needed)
-│   ├── hackerrank/                 #   HackerRank help center
-│   ├── claude/                     #   Claude Help Center export
-│   └── visa/                       #   Visa consumer + small-business support
-└── support_tickets/
-    ├── sample_support_tickets.csv  # Inputs + expected outputs (for development)
-    ├── support_tickets.csv         # Inputs only (run your agent on these)
-    └── output.csv                  # Write your agent's predictions here
-```
-
----
-
-## What you need to build
-
-A terminal-based agent that, for each row in `support_tickets/support_tickets.csv`, produces:
-
-| Column         | Allowed values                                          |
-| -------------- | ------------------------------------------------------- |
-| `status`       | `replied`, `escalated`                                  |
-| `product_area` | most relevant support category / domain area            |
-| `response`     | user-facing answer grounded in the provided corpus      |
-| `justification`| concise explanation of the routing/answering decision   |
-| `request_type` | `product_issue`, `feature_request`, `bug`, `invalid`    |
-
-Hard requirements (from `problem_statement.md`):
-
-- Must be **terminal-based**.
-- Must use **only the provided support corpus** (no live web calls for ground-truth answers).
-- Must **escalate** high-risk, sensitive, or unsupported cases instead of guessing.
-- Must avoid hallucinated policies or unsupported claims.
-
-Beyond that you are free to bring your own approach — RAG, vector DBs, tool use, structured output, agent frameworks, classical ML, or anything else.
-
----
-
-## Where your code goes
-
-All of your work belongs in [`code/`](./code/). The repo ships with an empty `code/main.py` you can grow into your full agent — add more modules (`agent.py`, `retriever.py`, `classifier.py`, etc.) next to it as needed.
-
-Conventions:
-
-- Put a **README inside `code/`** describing how to install dependencies and run your agent.
-- Read secrets **from environment variables only** (`OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, …). Copy `.env.example` → `.env` (already gitignored) if you keep one. **Never hardcode keys.**
-- Be **deterministic** where possible. Seed any random sampling.
-- Write responses to `support_tickets/output.csv`.
+Outputs a complete `support_tickets/output.csv` with responses for all tickets.
 
 ---
 
 ## Quickstart
 
-Clone this repository:
-
 ```bash
-git clone git@github.com:interviewstreet/hackerrank-orchestrate-may26.git
+# Clone & setup
+git clone <repo-url>
 cd hackerrank-orchestrate-may26
+python3 -m venv venv
+source venv/bin/activate
+
+# Install dependencies
+cd code
+pip install -r requirements.txt
+
+# Configure Groq API key
+cp .env.example .env
+# Edit .env: GROQ_API_KEY=your_key_here
+
+# Run
+python main.py
 ```
 
-You are free to use any language or runtime. We recommend **Python**, **JavaScript**, or **TypeScript**.
+First run builds a **FAISS vector index** from the `../data/` corpus (~1,085 markdown files → 1,512 overlapping chunks). Subsequent runs load the cached index instantly.
 
 ---
 
-## Chat transcript logging
+## Key features
 
-This repo ships with an `AGENTS.md` that any modern AI coding tool (Cursor, Claude Code, Codex, Gemini CLI, Copilot, etc.) will read. It instructs the tool to append every conversation turn to a single shared log file:
-
-| Platform       | Path                                              |
-| -------------- | ------------------------------------------------- |
-| macOS / Linux  | `$HOME/hackerrank_orchestrate/log.txt`            |
-| Windows        | `%USERPROFILE%\hackerrank_orchestrate\log.txt`    |
-
-You don't need to do anything to enable it — just use your AI tool normally. You'll upload this `log.txt` as your chat transcript at submission time.
-
----
-
-## Submission
-
-Submit on the HackerRank Community Platform:
-<https://www.hackerrank.com/contests/hackerrank-orchestrate-may26/challenges/support-agent/submission>
-
-You will upload **three** files:
-
-1. **Code zip** — zip your `code/` directory and upload it. Exclude virtualenvs, `node_modules`, build artifacts, the `data/` corpus, and the `support_tickets/` CSVs.
-2. **Predictions CSV** — your agent's output for `support_tickets/support_tickets.csv` (i.e. the populated `output.csv`).
-3. **Chat transcript** — the `log.txt` from the path in [Chat transcript logging](#chat-transcript-logging).
+| Feature | Implementation |
+|---|---|
+| **Semantic search** | `all-MiniLM-L6-v2` embeddings + FAISS cosine similarity |
+| **Context preservation** | 500-word overlapping chunks (50-word overlap) |
+| **Large context window** | Top-5 chunks × 2,000 chars each (~10K total) |
+| **Deterministic output** | Temperature = 0.1 (Llama 3.1 8B via Groq) |
+| **Safety-first** | Pre-defined escalation patterns; no guessing on sensitive issues |
+| **Persistent index** | FAISS index saved to `code/vector_db/` (~20 MB) |
 
 ---
 
-## Judge interview
+## Project structure
 
-After a successful submission, your AI Judge interview will happen within a few hours after the hackathon ends. It will stay open for the next 4 hours. 
-
-The AI Judge will have access to your submission and may ask about your approach, decisions, and how you used AI while building your solution. The interview will be 30 minutes long, and keeping your camera on is mandatory.
-
-Results will be announced on May 15, 2026
+```
+.
+├── code/
+│   ├── main.py           # Entry point
+│   ├── config.py         # Settings & paths
+│   ├── corpus.py         # Load, chunk, and build FAISS index
+│   ├── retriever.py      # Semantic search over vector DB
+│   ├── classifier.py     # Ticket categorization
+│   ├── escalator.py      # Risk & scope detection
+│   ├── generator.py      # LLM response generation
+│   ├── pipeline.py       # Orchestration logic
+│   ├── vector_db/        # Persisted FAISS index (built on first run)
+│   │   ├── faiss.index
+│   │   └── documents.json
+│   ├── requirements.txt  # Dependencies
+│   └── README.md         # This folder's README
+├── data/                 # Support corpus (HackerRank, Claude, Visa)
+├── support_tickets/
+│   ├── support_tickets.csv   # Input tickets
+│   └── output.csv            # Agent predictions (generated)
+└── README.md            # You are here
+```
 
 ---
 
-## Evaluation criteria
+## How it works
 
-Submissions are scored across four dimensions: agent design (your `code/`), the AI Judge interview, output accuracy on `support_tickets/output.csv`, and AI fluency from your chat transcript.
+```
+Ticket (Issue + Subject + Company)
+         ↓
+   [Escalation check] → sensitive/high-risk? → ESCALATE
+         ↓
+   [Classifier] → product_area + request_type
+         ↓
+   [Retriever] → embed query → FAISS similarity search → top-5 chunks
+         ↓
+   [Generator] → prompt with context → Llama 3.1 8B → response
+         ↓
+   Written to output.csv
+```
 
-See [`evalutation_criteria.md`](./evalutation_criteria.md) for the full rubric.
+**RAG details:**
+
+- Documents split into 500-word chunks with 50-word overlap
+- Each chunk embedded to 384-D vector using `all-MiniLM-L6-v2`
+- FAISS `IndexFlatIP` stores all vectors (cosine similarity on normalized embeddings)
+- Domain filtering applied: results restricted to matching company (`hackerrank` / `claude` / `visa`)
+- Retrieved chunks truncated to 2,000 chars each, sent to LLM with strict grounding instruction
+
+---
+
+## Evaluation
+
+The agent is evaluated on:
+
+- **Accuracy** — responses correctly address the ticket using only provided corpus
+- **Appropriateness** — escalation decisions handle sensitive cases correctly
+- **Architecture** — code quality, design patterns, and engineering rigor
+- **AI fluency** — effective use of AI tools (logged in `log.txt`)
+
+See `problem_statement.md` and `evaluation_criteria.md` for full details.
+
+---
+
+## Notes
+
+- Terminal-based only — runs as a Python script, no web/GUI
+- Uses only local `data/` corpus — no live web searches
+- Responses limited to 2–3 sentences; escalates when context is insufficient
+- All API keys read from environment variables (`.env`);
+never committed

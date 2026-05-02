@@ -1,0 +1,3 @@
+groq
+sentence-transformers
+faiss-cpu
