@@ -31,3 +31,6 @@ data/index/
 data/embeddings/
 *.sqlite
 *.db
+
+# agent vectors
+chroma_db/

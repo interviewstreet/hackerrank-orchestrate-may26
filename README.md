@@ -80,14 +80,100 @@ Conventions:
 
 ## Quickstart
 
-Clone this repository:
+### 1. Set up environment
 
 ```bash
+# Clone the repository
 git clone git@github.com:interviewstreet/hackerrank-orchestrate-may26.git
 cd hackerrank-orchestrate-may26
+
+# Create a Python virtual environment
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+cd code
+pip install -r requirements.txt
 ```
 
-You are free to use any language or runtime. We recommend **Python**, **JavaScript**, or **TypeScript**.
+### 2. Configure API keys
+
+Copy the example environment file and add your Groq API key:
+
+```bash
+cp .env.example .env
+# Edit .env and set GROQ_API_KEY=your_key_here
+```
+
+### 3. Build the vector index (first run only)
+
+The agent uses **sentence-transformers** (`all-MiniLM-L6-v2`) and **FAISS** for semantic search over the support corpus. The first run will:
+
+1. Load all markdown documents from `../data/`
+2. Split them into **overlapping chunks** (500 words, 50-word overlap) to preserve context
+3. Generate **384-dimensional embeddings** for each chunk
+4. Build a **FAISS index** saved to `code/vector_db/` (~20 MB)
+
+Subsequent runs will load the pre-built index instantly.
+
+```bash
+python main.py
+```
+
+### 4. Output
+
+Results are written to `support_tickets/output.csv` with columns:
+`Issue`, `Subject`, `Company`, `Response`, `Product Area`, `Status`, `Request Type`.
+
+---
+
+## Architecture
+
+The agent uses a **RAG (Retrieval-Augmented Generation)** pipeline:
+
+1. **Escalation filter** — Detects high-risk or out-of-scope requests (identity theft, security vulnerabilities, dangerous actions).
+2. **Classifier** — Categorizes tickets by product area and request type (`product_issue`, `feature_request`, `bug`, `invalid`).
+3. **Retriever** — Embeds the ticket query using `all-MiniLM-L6-v2`; performs cosine similarity search against the FAISS vector index; returns top-5 most relevant chunks with domain filtering by company.
+4. **Generator** — Constructs a prompt with retrieved context (up to 5 chunks, ~10K chars total) and uses **Groq's Llama 3.1 8B** to produce a concise, grounded response.
+
+**Key optimizations:**
+
+- **Semantic search** — Vector embeddings handle paraphrasing and conceptual matches (unlike keyword/TF-IDF).
+- **Overlapping chunks** — 500-word chunks with 50-word overlap prevent context loss at boundaries.
+- **Large context window** — Top-5 chunks × 2000 chars each (~10K chars) provides sufficient grounding.
+- **Persistent index** — FAISS index cached on disk; no re-computation on subsequent runs.
+
+---
+
+## Project structure
+
+```
+.
+├── AGENTS.md                       # AI tool logging rules
+├── problem_statement.md            # Task specification
+├── README.md                       # This file
+├── code/                           # Agent implementation
+│   ├── main.py                     # Entry point
+│   ├── config.py                   # Settings and paths
+│   ├── corpus.py                   # Document loading, chunking, index builder
+│   ├── retriever.py                # FAISS-based semantic search
+│   ├── generator.py                # LLM response generation (Groq)
+│   ├── classifier.py               # Ticket categorization
+│   ├── escalator.py                # High-risk detection
+│   ├── pipeline.py                 # End-to-end orchestration
+│   ├── vector_db/                  # Persisted FAISS index (created on first run)
+│   │   ├── faiss.index             # Vector index (~2.3 MB)
+│   │   └── documents.json          # Chunk metadata & embeddings (~19 MB)
+│   └── requirements.txt            # Python dependencies
+├── data/                           # Support corpus (read-only)
+│   ├── hackerrank/                 # HackerRank help docs
+│   ├── claude/                     # Claude help docs
+│   └── visa/                       # Visa support docs
+└── support_tickets/
+    ├── sample_support_tickets.csv  # Sample tickets with expected signals
+    ├── support_tickets.csv         # Evaluation tickets (run agent on these)
+    └── output.csv                  # Agent predictions (generated)
+```
 
 ---
 
