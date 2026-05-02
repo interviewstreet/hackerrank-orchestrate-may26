@@ -140,16 +140,21 @@ class SupportAgent:
         pre = pre_check(ticket)
         if pre.decision == "escalated":
             allowed = self._allowed_areas(ticket.company)
+            if ticket.company == "None":
+                area = self._keyword_area(ticket, allowed) or ""
+            else:
+                area = (self._keyword_area(ticket, allowed)
+                        or self._default_area(ticket.company))
             return self._row(ticket, status="escalated",
                              response="Escalate to a human.",
-                             product_area=(self._keyword_area(ticket, allowed)
-                                           or self._default_area(ticket.company)),
+                             product_area=area,
                              request_type=self._guess_request_type(ticket),
                              justification=f"Pre-rule:{pre.rule}")
         if pre.decision == "invalid_reply":
+            area = "" if ticket.company == "None" else self._default_area(ticket.company)
             return self._row(ticket, status="replied",
                              response=pre.message,
-                             product_area=self._default_area(ticket.company),
+                             product_area=area,
                              request_type="invalid",
                              justification=f"Pre-rule:{pre.rule}")
 
