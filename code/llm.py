@@ -169,41 +169,44 @@ def _parse_json(text: str) -> Optional[Dict[str, Any]]:
 
 
 
-def _fallback_response_from_context(context: str, company: str = "") -> Optional[str]:
+def _fallback_response_from_context(context: str) -> Optional[str]:
     """Build a concise response directly from retrieved documentation snippets."""
     if not context or context.strip() == "No relevant documentation found.":
-        return None
+        return (
+            "Based on the available support corpus, I don’t have enough reliable details to give exact steps yet. "
+            "Please share the exact error text, where it occurred, and what you already tried so I can provide a precise solution."
+        )
 
-    # Remove retriever metadata headers and separators, keep content lines only.
     lines = []
+    skip_prefixes = (
+        "title:", "title_slug:", "source_url:", "article_slug:", "last_updated",
+        "breadcrumbs:", "final_url:", "description:", "article_id:"
+    )
+
     for raw in context.splitlines():
         line = raw.strip()
         if not line or line.startswith("[Source:") or line == "---":
             continue
+        if line.lower().startswith(skip_prefixes):
+            continue
+        if line.startswith("#"):
+            continue
         lines.append(line)
 
     if not lines:
-        return None
+        return (
+            "Based on the available support corpus, I don't have enough reliable details to answer this confidently. "
+            "Please share the exact error text and the action you were trying to perform."
+        )
 
     text = " ".join(lines)
     text = re.sub(r"\s+", " ", text).strip()
-    # Keep fallback deterministic and concise.
     sentences = re.split(r"(?<=[.!?])\s+", text)
     selected = [s.strip() for s in sentences if len(s.strip()) > 20][:2]
     if not selected:
-        selected = [text[:380].rstrip()]
+        selected = [text[:320].rstrip()]
 
-    c = (company or "").lower()
-    support_url = ""
-    if "visa" in c:
-        support_url = "https://www.visa.co.in/support.html"
-    elif "claude" in c or "anthropic" in c:
-        support_url = "https://support.claude.com/en/"
-    elif "hackerrank" in c:
-        support_url = "https://support.hackerrank.com/"
-
-    tail = f" For account-specific help, contact official support: {support_url}" if support_url else ""
-    return "Based on the support documentation: " + " ".join(selected) + tail
+    return "Based on the support documentation: " + " ".join(selected)
 
 def classify_ticket(issue: str, subject: str, company: str, context: str) -> Optional[Dict[str, Any]]:
     prompt = CLASSIFICATION_PROMPT.format(
@@ -228,7 +231,7 @@ def generate_response(issue: str, subject: str, company: str, context: str) -> s
     raw = _call_llm(prompt, max_tokens=MAX_TOKENS)
     if raw:
         return raw.strip()
-    fallback = _fallback_response_from_context(context, company)
+    fallback = _fallback_response_from_context(context)
     if fallback:
         return fallback
     return (
