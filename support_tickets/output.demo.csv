@@ -1,0 +1,105 @@
+issue,subject,company,status,product_area,response,justification,request_type
+I notice that people I assigned the test in October of 2025 have not received new tests. How long do the tests stay active in the system.,Test Active in the system,HackerRank,Replied,screen,"Tests in HackerRank remain active based on the expiration date you set when inviting candidates or configuring the test. You can define a start and end time (including time zone) to control when a test remains active.
+
+After a test expires:
+- Invited candidates cannot access the test
+- The Invite button is disabled
+- You cannot invite new candidates
+
+If the people you assigned the test in October 2025 have not received new tests, it's likely because the original test invitation has expired. You can set or modify the test expiration time to control how long test invitations remain active.
+
+To resolve this, you'll need to either:
+1. Modify the test expiration time to extend the active period, or
+2. Send new test invitations with an updated expiration date
+
+The expiration settings are configured when you invite candidates to a test, where you define how long the test invitation remains active.","The corpus directly addresses test expiration in HackerRank. Chunks 1 and 4 explain that tests remain active based on a configurable expiration date/time set by the user, and detail what happens after expiration (candidates cannot access, invite button disabled). This answers the user's question about how long tests stay active.",product_issue
+site is down & none of the pages are accessible,,None,Escalated,general_support,,trigger T-3: outage / service-down report; escalated for engineering follow-up.,bug
+"I'm noticing that you all have many default versions of roles. (e.g. front end developer for react, angular, vue.js, etc.) What do you consider best practice 
+for when to create a new test versus create a variant of the test? What are the advantages and disadvantages of using variants?","When should I create a variant versus
+ have a different test?",HackerRank,Replied,library,"**Best Practice: When to Use Test Variants vs. Separate Tests**
+
+**Use Test Variants when:**
+You need to assess candidates with different tech stacks or profiles within the same role using a single, streamlined setup. For example, if you're hiring front-end developers who may work with React, Angular, or Vue.js, variants let you create one assessment that adapts based on the candidate's input at login.
+
+**Advantages of Test Variants:**
+- **Efficiency**: Eliminates the need to manage multiple separate tests
+- **Personalization**: Delivers the correct version based on candidate profiles, roles, or skills
+- **Streamlined setup**: Single test with multiple variations, routed by a qualifying question
+- **Consistency**: Easier to maintain one assessment structure with different content variations
+
+**How Variants Work:**
+You create multiple variations within the same assessment and use variant logic to route candidates to the appropriate version based on their answers to a qualifying question. This is ideal for your scenario with React/Angular/Vue.js developers—all variations live in one test.
+
+**When to Create Separate Tests:**
+The corpus doesn't explicitly state when separate tests are preferred, but variants are designed specifically for situations like yours where you're assessing similar roles with different technical requirements.","The retrieved chunks directly address the user's question about when to use test variants versus separate tests. The corpus explains that variants are designed for assessing candidates with different tech stacks (like React, Angular, Vue.js) within a single test setup, and lists advantages including efficiency, personalization, and eliminating the need to manage separate tests.",product_issue
+"Hi there
+
+We have sent a candidate a Hackerrank assessment already, but we have been informed that they require extra time. As the assessment is 105 minutes, they need an extra 50% extra time added (so around 53 minutes) in addition.
+
+Please can you provide step-by-step instruction on how we are to reinvite them.
+
+Do we find their profile in 'Candidates' , put in Add time 53 minutes and then click 'reinvite' and send the email? The email to the candidate says 105 minutes as the duration though still so not sure how we can check?
+
+Thanks","How to reinvite candidate to Hackerrank 
+assessment and add extra time",HackerRank,Replied,interviews,"To add extra time and reinvite your candidate, follow these steps:
+
+**Adding Extra Time:**
+1. Log in to your HackerRank for Work account
+2. Go to the **Tests** tab
+3. Select the test the candidate was invited to
+4. Go to the **Candidates** tab
+5. Select the checkbox next to the candidate
+6. Click **More > Add Time**
+7. Enter **53** minutes (the additional time needed)
+8. Click **Confirm**
+
+**Reinviting the Candidate:**
+After adding the extra time, you can reinvite the candidate to retake the test. When you reinvite them, they will be able to access the test with the extended duration.
+
+**Important Notes:**
+- When you reinvite a candidate, their previous report is automatically deleted
+- If the candidate is currently in a test session, they must refresh the page to see the updated timer
+- If they've already completed the test, they must log in again to view the added time
+
+The process you described is correct—find their profile in the Candidates tab, add the extra time (53 minutes), then reinvite them. The extended time will be applied to their new attempt.","The corpus provides clear step-by-step instructions for adding extra time to candidates and reinviting them. The information comes from the HackerRank Screen documentation on managing tests and inviting candidates, which directly addresses the user's question.",product_issue
+"i signed up using google login on hackerrank community , so i do not have a separate hackerrank password. please delete my account",,HackerRank,Replied,settings,"To delete your HackerRank account that was created using Google login, you'll need to set a password first before you can proceed with deletion.
+
+Here's what to do:
+
+1. Go to the HackerRank Community login page and click ""Forgot Password?"" 
+2. Enter the email address associated with your account and follow the steps to set a password
+3. Once you have a password set, you can proceed to delete your account through your account settings
+4. During the deletion process, you'll need to select a reason and enter your newly created password to confirm
+
+Alternatively, if you prefer not to set a password or need assistance, you can contact HackerRank Support directly at help@hackerrank.com and request account deletion. They can help you delete your account even without a separate HackerRank password.","The corpus provides clear guidance on deleting accounts created with third-party login (Google). Chunk 3 states a password must be set first, Chunk 1 offers the alternative of contacting support for deletion, and Chunk 6 explains how to set a password via password reset. This fully answers the user's request.",product_issue
+"One of my claude conversations has some private info, i forgot to make a temporary chat, is there anything
+ else that can be done? like delete etc?",,Claude,Replied,conversation_management,"Yes, you can delete conversations that contain private information. Claude has a feature that allows you to delete or rename conversations.
+
+For detailed instructions on how to delete a conversation, please visit:
+https://privacy.anthropic.com/en/articles/11117329-how-can-i-delete-or-rename-a-conversation
+
+Additionally, for future reference, you can use incognito chats to prevent conversations from being saved to your chat history. Click the ghost icon to open an incognito chat, which creates a temporary conversation that isn't saved. Claude won't pull information from incognito chats when searching previous conversations.
+
+You can also prevent Claude from searching your past chats by going to Settings > Capabilities and turning off the ""Search and reference chats"" toggle in the Preferences section.","The corpus directly addresses the user's question about deleting conversations with private info. Chunk 2 provides a link to instructions on how to delete conversations, and Chunk 1 and 6 explain incognito chats and how to prevent Claude from searching past chats as preventive measures.",product_issue
+What is the name of the actor in Iron Man?,"Urgent, please help",None,Replied,uncategorized,"Thanks for reaching out. This question appears to be outside our support scope, so I can't assist directly.",non-support / chitchat content; replied with out-of-scope acknowledgement.,invalid
+I bought Visa Traveller's Cheques from Citicorp and they were stolen in Lisbon last night. What do I do?,,Visa,Replied,travelers_cheques,"I'm sorry to hear your Visa Traveller's Cheques were stolen in Lisbon. Here's what you need to do immediately:
+
+1. **Call Citicorp (your issuing bank) right away.** Your cheques can be replaced or refunded subject to certain terms and conditions. If you cannot find Citicorp's contact details, you can contact Visa about traveller's cheques at: /supporting-info/travelers-cheques-contact-us.html
+
+2. **Notify the police in Lisbon** about the theft.
+
+3. **Have this information ready** when you contact Citicorp:
+   - The cheque serial numbers
+   - Where and when you bought the cheques
+   - How and when the cheques were stolen (last night in Lisbon)
+   - The issuer name (Citicorp)
+
+The refund can usually be arranged within 24 hours, subject to certain terms and conditions being satisfied.
+
+For future reference, it's important to keep your purchase agreement and a record of cheque serial numbers separate from the cheques themselves.","The retrieved chunks from visa/support/consumer/travelers-cheques.md provide clear instructions for reporting lost or stolen traveller's cheques, including the need to contact the issuing bank (Citicorp in this case), notify police, and have specific information ready for the refund process. All factual claims are directly supported by the corpus.",product_issue
+Where can I report a lost or stolen Visa card from India?,Card stolen,Visa,Replied,consumer,"If your Visa card has been lost or stolen in India, you can report it by calling Visa at 000-800-100-1219.
+
+Alternatively, if you are traveling or need assistance from anywhere in the world, you can contact Visa's Global Customer Assistance Services (GCAS) at +1 303 967 1090. GCAS representatives provide multilingual assistance 24 hours a day, 365 days a year, and can help block your card within 30 minutes once reported to protect you against fraudulent transactions. They can also arrange emergency cash and card replacement services.
+
+For more information, you can visit Visa's Lost or Stolen card page at /support/consumer/lost-stolen-card.html or send an email through https://usa.visa.com/Forms/contact-us-form.html","The corpus provides specific phone numbers for reporting lost/stolen Visa cards from India (000-800-100-1219) and a global number (+1 303 967 1090), along with details about GCAS services, emergency assistance, and relevant support page URLs. All factual claims are directly traceable to the retrieved chunks.",product_issue
+Thank you for helping me,,None,Replied,general_support,"Thanks for reaching out. This question appears to be outside our support scope, so I can't assist directly.",non-support / chitchat content; replied with out-of-scope acknowledgement.,invalid

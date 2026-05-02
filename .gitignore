@@ -1,5 +1,6 @@
 # secrets
 .env
+.env.example
 .env.local
 *.pem
 *.key
@@ -29,5 +30,7 @@ Thumbs.db
 # local data / caches the participant may create
 data/index/
 data/embeddings/
+code/index/
+code/runs/
 *.sqlite
 *.db

@@ -1,0 +1,29 @@
+issue,subject,company,status,product_area,response,justification,request_type
+I notice that people I assigned the test in October of 2025 have not received new tests. How long do the tests stay active in the system.,Test Active in the system,HackerRank,Replied,screen,"Tests in HackerRank remain active based on the expiration settings you configure when inviting candidates or managing the test.
+
+You can define a start and end time (including time zone) to control when a test remains active. Candidates can attempt the test only during this active period. After the test expires:
+- Invited candidates cannot access the test
+- The Invite button is disabled
+- You cannot invite new candidates
+
+Additionally, when sending invitations, you can set an expiry date that defines how long a test invitation remains active. After the expiry time, the test invitation expires and candidates can no longer take the test.
+
+If your October 2025 invitations have expired, you'll need to check the expiration settings for that test and potentially extend the test expiration time or send new invitations with updated expiry dates. You can modify test expiration time through the test management settings in your HackerRank for Work account under the Tests tab.",The corpus provides clear information about test expiration settings in HackerRank. Chunks 1 and 4 explain that tests remain active based on configurable expiration dates and what happens after expiration. This directly answers the user's question about how long tests stay active.,product_issue
+site is down & none of the pages are accessible,,None,Escalated,general_support,,trigger T-3: outage / service-down report; escalated for engineering follow-up.,bug
+"I'm noticing that you all have many default versions of roles. (e.g. front end developer for react, angular, vue.js, etc.) What do you consider best practice 
+for when to create a new test versus create a variant of the test? What are the advantages and disadvantages of using variants?","When should I create a variant versus
+ have a different test?",HackerRank,Replied,library,"**Best Practice: When to Use Test Variants vs. Separate Tests**
+
+**Use Test Variants when:**
+You need to assess candidates with different tech stacks or profiles within the same role using a single, streamlined setup. For example, if you're hiring front-end developers who work with React, Angular, or Vue.js, test variants let you create one assessment that adapts based on the candidate's input at login.
+
+**Advantages of Test Variants:**
+- **Efficiency**: Eliminates the need to manage separate tests for similar roles
+- **Personalization**: Delivers the correct version based on candidate profiles, skills, or tech stack
+- **Streamlined setup**: Single assessment with multiple variations, routed by a qualifying question
+- **Easier management**: One test to maintain instead of multiple separate assessments
+
+**How It Works:**
+Test variants allow you to create multiple variations within the same assessment. You set up variant logic with a qualifying question that routes candidates to the appropriate version based on their answer (e.g., ""Which framework do you use: React, Angular, or Vue.js?"").
+
+For your front-end developer scenario with React, Angular, and Vue.js, test variants are the recommended approach—they're designed exactly for this use case of assessing different tech stacks within the same role.","The retrieved chunks directly address the user's question about when to use test variants versus separate tests. The corpus explains that test variants are designed for assessing candidates with different tech stacks (like React, Angular, Vue.js) within a single assessment, which matches the user's exact scenario. The advantages and workflow are clearly documented across multiple chunks.",product_issue
