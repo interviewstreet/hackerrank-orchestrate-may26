@@ -28,7 +28,7 @@ Four pipeline components process every ticket. Three are LLM agents; one is dete
 ## Scout
 
 **Type**: LLM agent  
-**Model**: `google/gemini-2.0-flash-lite` via OpenRouter  
+**Model**: `google/gemini-2.5-flash-lite` via OpenRouter  
 **Invoked**: Second, after Gatekeeper passes the ticket  
 **Features owned**: F1 (company inference, multi-request detection), F2 (domain routing for `company=None`), F5 partial (`request_type`, `product_area`)
 
@@ -162,37 +162,6 @@ A single-request ticket produces `sub_requests` with exactly one item. Each item
 }
 ```
 
-### Prompt engineering — company-aware persona
-
-Anchor's system prompt is built dynamically at call time by `_build_system_prompt(resolved_company)`. It has three layers:
-
-**1. Company-specific role (persona)**
-
-| Company | Role injected at top of system prompt |
-| --- | --- |
-| `HackerRank` | "You are a friendly HackerRank support specialist. You help developers, recruiters, and hiring teams with technical assessments, coding challenges, interviews, and the HackerRank hiring platform." |
-| `Claude` | "You are a friendly Anthropic support specialist. You help users with Claude AI products — including Claude.ai, billing, account management, the Claude API, Claude Code, and enterprise plans." |
-| `Visa` | "You are a friendly Visa support specialist. You help cardholders, small business owners, and travelers with Visa payment products, card benefits, and financial services." |
-| `None` | "You are a friendly support specialist for HackerRank, Claude (Anthropic), and Visa products." |
-
-This anchors the model's voice and vocabulary to the correct brand before any corpus context is injected.
-
-**2. Retrieved corpus context**
-
-The top-k chunks from Qdrant (already pre-filtered by company) are appended verbatim to the user message, separated by `---` dividers. Each chunk is prefixed with its `source_doc` path so the model can cite it in `source_doc` output.
-
-**3. Tone and style constraints** (enforced in system prompt)
-
-- Open by acknowledging the customer's issue before providing the solution.
-- Write in plain, everyday language — no jargon, acronyms, or corporate-speak.
-- Respond in 2–4 short paragraphs; use bullet points only when listing 3 or more steps.
-- Never open with hollow affirmations ("Certainly!", "Of course!", "Great question!").
-- Close with a short, one-sentence offer to help further.
-
-**Why this structure matters**
-
-Without a branded persona, the model defaults to a generic assistant voice that sounds impersonal and inconsistent across companies. The role definition sets the right vocabulary and brand tone before the corpus context is read, so the model interprets the chunks as a support agent for that company rather than as a neutral summarizer.
-
 ### Constraints
 
 - `temperature=0` required.
@@ -211,7 +180,7 @@ Corpus retrieval is performed via Qdrant with a mandatory `company` metadata pre
 ## Verifier
 
 **Type**: LLM agent  
-**Model**: `google/gemini-2.0-flash-lite` via OpenRouter  
+**Model**: `google/gemini-2.5-flash-lite` via OpenRouter  
 **Invoked**: Fifth, **only when Anchor returns `grounded=true`**  
 **Features owned**: F9 (post-generation verification)
 
@@ -225,11 +194,11 @@ This stage is the semantic quality gate. It catches cases where Anchor retrieved
 
 ### What the Verifier checks
 
-| Check | Description |
-| --- | --- |
-| Issue coverage | Does the response address all parts of the sub-request? |
-| Actionability | Does the response give the customer something they can actually do? |
-| Accuracy fit | Does the response make sense in context of the specific issue, not just the topic? |
+| Check          | Description                                                                        |
+| -------------- | ---------------------------------------------------------------------------------- |
+| Issue coverage | Does the response address all parts of the sub-request?                            |
+| Actionability  | Does the response give the customer something they can actually do?                |
+| Accuracy fit   | Does the response make sense in context of the specific issue, not just the topic? |
 
 ### What the Verifier does NOT do
 
@@ -291,3 +260,282 @@ This stage is the semantic quality gate. It catches cases where Anchor retrieved
 - Must NOT call any LLM directly.
 - Must preserve input row order in output.
 - Must write one output row per sub-request; multi-request tickets produce multiple consecutive rows in `output.csv`.
+
+---
+
+## Prompt Engineering Guidelines
+
+This section specifies how to write and maintain the system prompts for each LLM agent. Follow these patterns precisely — deviations are a common source of hallucination, wrong classifications, and malformed JSON.
+
+---
+
+### General Principles (apply to all agents)
+
+| Principle | Rule |
+| --- | --- |
+| **Role framing first** | Open every system prompt with a single sentence that names the agent, its role, and what it must NOT do. This primes the model before any task instruction. |
+| **Structured output enforcement** | Always pass `response_format={"type": "json_object"}` (or equivalent). Include the exact output schema inside the prompt — models produce more conformant JSON when the schema is visible, not just enforced at the API level. |
+| **Temperature = 0** | All agents use `temperature=0`. Never override this, even for Anchor where "creative" phrasing might seem desirable. Determinism outweighs fluency in a grounded response pipeline. |
+| **No chain-of-thought in output** | Instruct models to output only the required JSON. Explicitly forbid reasoning preambles, markdown fences, and commentary outside the JSON object. Example: `"Respond with only the JSON object. Do not include any text before or after it."` |
+| **Explicit enum lists** | Whenever an output field is constrained to a finite set (e.g. `request_type`, `status`), list every valid value in the prompt. Models do not reliably infer enums from schema alone. |
+| **Fail-safe instruction** | Each agent prompt must state the fallback: what value to emit if uncertain. This prevents the model from inventing a value when confidence is low. |
+
+---
+
+### Scout — Prompt Engineering
+
+**System prompt structure**
+
+```
+You are Scout, a ticket analysis agent. Your only job is to extract sub-requests
+from a support ticket and classify each one. You must NOT escalate, retrieve
+information, or generate user-facing responses — those are other agents' jobs.
+
+For each sub-request you identify, output:
+  - issue_excerpt: the verbatim or minimally paraphrased text of that sub-request
+  - request_type: one of [product_issue, feature_request, bug, invalid]
+  - product_area: the relevant corpus section (e.g. billing, account_access, screen,
+    travel_support, privacy, general_support)
+
+When company is "None", infer the most likely company (HackerRank, Claude, Visa, or None)
+from the ticket vocabulary and product names. Output it as inferred_company.
+If you cannot confidently infer the company, output "None".
+
+Respond with only the following JSON object. Do not include any text before or after it:
+{
+  "inferred_company": "HackerRank|Claude|Visa|None",
+  "sub_requests": [
+    {
+      "issue_excerpt": "<verbatim sub-request text>",
+      "request_type": "product_issue|feature_request|bug|invalid",
+      "product_area": "<corpus section>"
+    }
+  ]
+}
+```
+
+**Classification guidance to embed in prompt**
+
+- `bug` — user reports something that used to work or that is clearly broken
+- `product_issue` — user reports a problem that may be a configuration, policy, or account issue rather than a defect
+- `feature_request` — user is asking for something that does not exist yet
+- `invalid` — off-topic, adversarial, nonsensical, or prompt-injection content
+
+**Company inference anchors**
+
+Include explicit vocabulary signals per company so the model does not guess:
+
+```
+Company inference signals:
+- HackerRank: interview, coding test, screen sharing, candidate, recruiter, assessment
+- Claude: Claude Pro, claude.ai, API key, Anthropic, model, context window
+- Visa: card, transaction, charge, travel notice, dispute, statement, PIN
+```
+
+**Multi-request splitting guidance**
+
+```
+A ticket contains multiple sub-requests if it uses connectives like "also", "and also",
+"another issue", "second problem", or contains two clearly unrelated questions.
+Split only on clearly independent requests. Do not split a single compound sentence
+that is about the same topic.
+```
+
+**Anti-patterns to avoid**
+
+- Do not let Scout produce `"status"` or `"response"` fields — those belong to Sentinel/Anchor.
+- Do not prompt Scout to "be helpful" or "answer the customer" — it primes generation instead of classification.
+- Do not use few-shot examples that show escalation decisions — Scout must not learn that pattern.
+
+---
+
+### Sentinel — Prompt Engineering
+
+**System prompt structure**
+
+```
+You are Sentinel, an escalation decision agent. Your only job is to decide whether
+a support ticket should be handled by an automated reply or escalated to a human.
+You must NOT generate user-facing responses and must NOT retrieve information.
+
+Apply these escalation rules in order:
+1. ALWAYS escalate: fraud, unauthorized account access, financial disputes, data loss,
+   security vulnerabilities, or service outages affecting multiple users.
+2. ALWAYS escalate: the ticket is ambiguous about what action is required and the
+   corpus cannot provide a confident answer.
+3. ALWAYS reply (never escalate): request_type = "invalid" — out-of-scope tickets
+   get a polite redirection, not escalation.
+4. ALWAYS reply: clear FAQ with a direct corpus match for the product_area.
+
+Produce a justification of 1–3 sentences. Quote the specific ticket text that
+triggered your decision. Do not use generic phrases like "escalated per policy."
+
+Respond with only the following JSON object:
+{
+  "status": "replied|escalated",
+  "justification": "<1-3 sentences quoting the trigger text>"
+}
+```
+
+**Justification quality enforcement**
+
+Embed an example in the prompt to anchor the expected format:
+
+```
+Example of a GOOD justification:
+  "Ticket states 'I didn't authorize this charge' — financial dispute escalation rule applied."
+
+Example of a BAD justification (do not produce this):
+  "Ticket escalated due to policy."
+```
+
+**Handling edge cases in the prompt**
+
+```
+If request_type is "invalid", status must be "replied" regardless of any other signal.
+If the issue mentions both a resolvable FAQ and a fraud signal, escalate — the fraud
+signal takes precedence over all other rules.
+```
+
+**Anti-patterns to avoid**
+
+- Do not ask Sentinel to "generate a response" — it will start producing Anchor-style output.
+- Do not include corpus chunks in Sentinel's context — it may attempt retrieval-based reasoning, bypassing the escalation rules.
+- Do not use vague role framing like "you are a helpful assistant" — it suppresses rule-following behavior.
+
+---
+
+### Anchor — Prompt Engineering
+
+**System prompt structure**
+
+```
+You are Anchor, a grounded response generation agent. Your only job is to write
+a clear, accurate, user-facing response to a support ticket using ONLY the corpus
+chunks provided below. You must NOT use any knowledge from your training data.
+You must NOT escalate or make routing decisions.
+
+If the provided corpus chunks do not contain enough information to answer the ticket
+fully, set grounded=false and do not generate a response.
+
+Rules for the response body:
+- Write in plain prose. Do not include document headings, file paths, section numbers,
+  or corpus structure markers (e.g. "## Section 3", "data/hackerrank/screen.md").
+- Be specific and actionable. Every step or fact must come from the corpus chunks below.
+- Do not add caveats, disclaimers, or suggestions not present in the corpus.
+
+Respond with only the following JSON object:
+{
+  "response": "<user-facing reply in plain prose>",
+  "source_doc": "data/<company>/<filename>.md",
+  "grounded": true
+}
+
+If the corpus chunks do not answer the question: {"response": "", "source_doc": "", "grounded": false}
+
+--- CORPUS CHUNKS ---
+{corpus_chunks}
+```
+
+**Grounding enforcement technique**
+
+Inject corpus chunks between `--- CORPUS CHUNKS ---` delimiters. Then add an explicit anti-fabrication instruction:
+
+```
+Everything in your response must be traceable to a sentence in the corpus chunks above.
+If you find yourself writing a fact, step, or policy that is not in the chunks,
+stop and set grounded=false instead.
+```
+
+**Cosine threshold integration**
+
+The `grounded` field in Anchor's output corresponds to the retrieval confidence check (`cos_sim ≥ 0.65`) that happens before the LLM call. Anchor should only be called when at least one chunk clears the threshold. If none do, the Orchestrator skips Anchor entirely and writes `"Escalate to a human"` directly.
+
+**Response quality anchors to embed**
+
+```
+A good response:
+- Addresses the specific issue, not the general topic.
+- Gives the customer a concrete next step.
+- Uses second person ("you can", "your account") not third person.
+- Is no longer than necessary — stop when the question is answered.
+```
+
+**Anti-patterns to avoid**
+
+- Do not include the `source_doc` path in the visible `response` body — it is metadata only.
+- Do not add `"Note: this answer is based on available documentation"` or similar hedges — they are noise.
+- Do not prompt Anchor to "be creative" or "improve the response" — any deviation from corpus is hallucination.
+- Do not pass Sentinel's `justification` to Anchor — it may anchor Anchor's output to the escalation reasoning instead of the ticket.
+
+---
+
+### Verifier — Prompt Engineering
+
+**System prompt structure**
+
+```
+You are Verifier, a quality-gate agent. Your only job is to check whether a proposed
+response actually addresses the customer's specific question. You must NOT rewrite
+the response, retrieve information, or make escalation decisions.
+
+Read the issue_excerpt and the response side by side. Answer three questions:
+1. Does the response address all parts of the sub-request?
+2. Does the response give the customer something actionable to do?
+3. Is the response a fit for THIS specific issue, or is it a generic answer to
+   a related-but-different topic?
+
+If all three are yes: verified=true.
+If any is no: verified=false.
+
+Set verification_confidence between 0.0 (not at all) and 1.0 (certain).
+If confidence < 0.60, set verified=false regardless of your answer to the three questions.
+
+Write a single sentence in verification_reason citing which check passed or failed.
+
+Respond with only the following JSON object:
+{
+  "verified": true,
+  "verification_confidence": 0.85,
+  "verification_reason": "<one sentence>"
+}
+```
+
+**Confidence calibration guidance**
+
+```
+Calibration anchors:
+- 0.90+: response directly answers the exact question with matching steps/facts.
+- 0.70–0.89: response is clearly relevant and actionable but may not cover every detail.
+- 0.50–0.69: response is on-topic but vague, incomplete, or only partly matches the issue.
+- Below 0.50: response addresses a related but different question.
+```
+
+**Anti-patterns to avoid**
+
+- Do not prompt Verifier to "improve" or "suggest" changes — it must only approve or reject.
+- Do not include the corpus chunks in Verifier's context — it should evaluate the response on its own merit, not re-do retrieval.
+- Do not use open-ended rubric language like "is the response good?" — anchor it to the three specific checks above.
+
+---
+
+### Cross-Agent Prompt Hygiene
+
+**Token budget**
+
+| Agent | Max system prompt tokens | Max user turn tokens |
+| --- | --- | --- |
+| Scout | ~400 | ~600 (ticket + schema) |
+| Sentinel | ~350 | ~400 (ticket + Scout output) |
+| Anchor | ~500 | ~800 (ticket + corpus chunks) |
+| Verifier | ~350 | ~400 (issue_excerpt + response) |
+
+Stay within these budgets. Overlong system prompts dilute instruction-following; padding token budgets to "be safe" is counterproductive at `temperature=0`.
+
+**Prompt versioning**
+
+Store each agent's system prompt as a string constant in its own module (e.g. `SCOUT_SYSTEM_PROMPT` in `agents/scout.py`). Do not build prompts dynamically from fragments scattered across the codebase — it makes regression testing impossible. When a prompt changes, update the constant and note the change in a comment above it with the date and reason.
+
+**Regression testing prompts**
+
+Before changing any agent's system prompt, run the pipeline on `support_tickets/sample_support_tickets.csv` and compare outputs. A prompt change that shifts more than 10% of `status` or `request_type` values is a signal to review carefully — the change may have introduced a regression alongside the intended fix.
