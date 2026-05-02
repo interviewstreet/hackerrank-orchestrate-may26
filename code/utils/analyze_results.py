@@ -159,7 +159,7 @@ def save_charts(stats: dict, output_dir: Path) -> None:
     PAPER_COLOR = "#1E293B" # Slightly Lighter Slate
 
     # ── Chart 1: Status Distribution (Donut) ────────────────────────────────
-    fig, ax = plt.subplots(figsize=(8, 8))
+    fig, ax = plt.subplots(figsize=(8, 6))
     fig.patch.set_facecolor(BG_COLOR)
     ax.set_facecolor(BG_COLOR)
 
@@ -188,7 +188,7 @@ def save_charts(stats: dict, output_dir: Path) -> None:
     print(f"  ✅  Saved: {chart_path}")
 
     # ── Chart 2: Domain Breakdown (Horizontal Bar) ───────────────────────────
-    fig, ax = plt.subplots(figsize=(10, 6))
+    fig, ax = plt.subplots(figsize=(8, 6))
     fig.patch.set_facecolor(BG_COLOR)
     ax.set_facecolor(PAPER_COLOR)
 
@@ -217,7 +217,7 @@ def save_charts(stats: dict, output_dir: Path) -> None:
     print(f"  ✅  Saved: {chart_path}")
 
     # ── Chart 3: Request Type Breakdown (Horizontal Bar) ─────────────────────
-    fig, ax = plt.subplots(figsize=(10, 7))
+    fig, ax = plt.subplots(figsize=(8, 6))
     fig.patch.set_facecolor(BG_COLOR)
     ax.set_facecolor(PAPER_COLOR)
 
@@ -247,7 +247,7 @@ def save_charts(stats: dict, output_dir: Path) -> None:
 
     # ── Chart 4: Escalation by Domain (Grouped Bar) ───────────────────────────
     if len(stats["escalation_by_domain"]) > 0:
-        fig, ax = plt.subplots(figsize=(10, 6))
+        fig, ax = plt.subplots(figsize=(8, 6))
         fig.patch.set_facecolor(BG_COLOR)
         ax.set_facecolor(PAPER_COLOR)
 
