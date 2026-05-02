@@ -26,6 +26,8 @@ pip install -r requirements.txt
 cp .env.example .env  # set ANTHROPIC_API_KEY and/or OPENAI_API_KEY
 ```
 
+Recommended model: `OPENAI_MODEL=gpt-4o` (tuned against this) or `ANTHROPIC_MODEL=claude-sonnet-4-6`. `gpt-4o-mini` over-escalates sensitive-but-answerable tickets.
+
 ## Run
 
 ```bash
@@ -57,6 +59,7 @@ Reads input from `../support_tickets/support_tickets.csv` and writes to
 - **Grounding verifier.** Cited chunk IDs must come from retrieval; unsupported response sentences are stripped or the row is escalated.
 - **Determinism.** `temperature=0`, fixed `seed=42`, sorted tie-breaks, stable cosine sort, deterministic chunking.
 - **Secrets.** Read only from env (`ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, model/provider settings). Local `.env`, `.env.local`, `code/.env`, and `code/.env.local` are supported.
+- **`None`-company area handling.** When `company=None` and a pre-rule short-circuits the row, `product_area` is left blank for pleasantries and pure escalations, but `off_topic_trivia` is tagged `conversation_management` (Claude's catch-all for off-topic chat) since None-company invalid questions belong to that bucket.
 
 ## Files
 

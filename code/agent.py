@@ -151,7 +151,16 @@ class SupportAgent:
                              request_type=self._guess_request_type(ticket),
                              justification=f"Pre-rule:{pre.rule}")
         if pre.decision == "invalid_reply":
-            area = "" if ticket.company == "None" else self._default_area(ticket.company)
+            if ticket.company == "None":
+                inferred = self._infer_area_any_company(ticket)
+                if inferred:
+                    area = inferred
+                elif pre.rule == "off_topic_trivia":
+                    area = "conversation_management"
+                else:
+                    area = ""
+            else:
+                area = self._default_area(ticket.company)
             return self._row(ticket, status="replied",
                              response=pre.message,
                              product_area=area,
@@ -308,6 +317,16 @@ class SupportAgent:
 
         for area, terms in candidates:
             if area in allowed and any(term in text for term in terms):
+                return area
+        return None
+
+    def _infer_area_any_company(self, ticket: TicketInput) -> str | None:
+        for company in ("Claude", "HackerRank", "Visa"):
+            probe = TicketInput(issue=ticket.issue, subject=ticket.subject,
+                                company=company)
+            allowed = self._allowed_areas(company)
+            area = self._keyword_area(probe, allowed)
+            if area:
                 return area
         return None
 
