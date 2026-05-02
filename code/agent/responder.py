@@ -21,7 +21,7 @@ from utils.model_provider import call_llm
 # Configuration
 # ---------------------------------------------------------------------------
 
-_MODEL_NAME = "gemini-2.0-flash"
+_MODEL_NAME = "gemini-2.5-flash"
 
 # ---------------------------------------------------------------------------
 # Output data model

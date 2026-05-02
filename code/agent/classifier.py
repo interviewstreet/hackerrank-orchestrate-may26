@@ -36,7 +36,7 @@ _FALLBACK = Classification(
 # Configuration
 # ---------------------------------------------------------------------------
 
-_MODEL_NAME = "gemini-2.0-flash"
+_MODEL_NAME = "gemini-2.5-flash"
 
 _DOMAIN_VALUES = ("hackerrank", "claude", "visa", "unknown")
 _REQUEST_TYPE_VALUES = (
