@@ -1,0 +1,8 @@
+# Core dependencies
+anthropic>=0.25.0          # Claude API client
+scikit-learn>=1.4.0        # TF-IDF vectorizer + cosine similarity
+numpy>=1.26.0              # Numerical operations
+
+# Optional but recommended
+python-dotenv>=1.0.0       # Load .env file automatically
+tqdm>=4.66.0               # Progress bars (optional, graceful fallback)
