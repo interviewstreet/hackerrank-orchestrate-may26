@@ -37,5 +37,15 @@ data/embeddings/
 log.txt
 test_gemini.py
 
+.scratch/*
+
+.code_submission.zip
+
 # NOTE: data/ corpus contents ARE tracked (pre-built, committed by repo owners)
 # NOTE: code/, requirements.txt, support_tickets/*.csv are all tracked
+
+# ignore zip and scratch
+scratch/
+*.zip
+t002_log.txt
+zixaZNa6
