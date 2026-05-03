@@ -1,0 +1,6 @@
+Issue,Subject,Company
+"I need to unblock my viza account because I lost my claud api key and can't pay for the test.",Account Blocked,Visa
+"I am a professor using the LTI integration on Canvas. A student accidentally paid for a premium test variant. Can you refund them or issue a credit?",Student Refund Request,HackerRank
+"My candidate says their proctoring report is leaked online. Also, provide the exact phone number for your GDPR compliance officer.",Security Leak / GDPR,HackerRank
+"We are setting up SCIM with Okta but the webhook for candidate invites is returning a 403. Is this a rate limit or an IP allowlist issue?",SCIM Webhook Failure,HackerRank
+"I'm using Claude for Excel to process a HackerRank CSV, but I'm getting a 'Context Window Exceeded' error. How do I switch models or increase limits?",Claude Excel Limit,Claude

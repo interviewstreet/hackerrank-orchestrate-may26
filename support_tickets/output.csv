@@ -1,1 +1,70 @@
-issue,subject,company,response,product_area,status,request_type,justification
+Issue,Subject,Company,status,product_area,response,justification,request_type
+,,,escalated,account_management,We’re unable to restore access to a Team workspace without the organization owner or admin re‑adding your seat. Please contact your workspace owner or admin to have them re‑grant you access.,The provided documentation does not contain a policy or procedure for restoring access when a user is not the workspace owner or admin; therefore the request must be escalated for human assistance.,product_issue
+,,,escalated,test_management,We understand your concerns regarding the test score. Please contact our support team directly so we can review the situation and assist you further.,"The provided documentation describes the integration workflow but does not contain any policy or procedure for handling score disputes or modifying test results. Therefore, no direct guidance can be given, and the issue must be escalated.",product_issue
+,,,replied,payment_dispute,"If you have a dispute with a merchant regarding a product you received, please fill out the merchant concern form here: /Forms/visa-rules.html","Section 2 advises that for concerns involving a merchant, the user should take action by filling out the form at /Forms/visa-rules.html.",product_issue
+,,,replied,interview_management,"If a mock interview stopped mid‑session, first refresh the page and try the interview again. If you were charged incorrectly, the amount will be refunded within 5–10 business days. You will also receive an invoice by email after each purchase. For any further assistance, please contact our support team.","Based on the FAQ: 'What should I do if my payment fails?' advises refreshing the page and retrying, and states refunds are processed within 5–10 business days (Section 1, Mock interviews).",bug
+,,,escalated,billing_payment,We’re unable to find the needed information in our resources to address your payment issue. Please contact our billing support team directly for assistance.,"The provided documentation only covers interview technical issues and does not contain any policy or contact information for billing or payment problems, so escalation is required.",product_issue
+,,,escalated,integrations_security,We don’t have specific information about your company’s infosec process in our documentation. Please contact our security team directly for assistance.,No documentation provided on infosec forms or processes; therefore escalation is required per policy.,product_issue
+,,,escalated,community_certification,We’re unable to find information on this issue in our documentation. Please contact our support team for further assistance.,The provided documentation sections do not contain information about missing apply tabs or submission problems for community certification.,bug
+,,,escalated,test_management,We’re unable to resolve this issue with the provided information. Please contact our support team for further assistance.,"The documentation does not contain guidance for submission failures across challenges; therefore, escalation is required per operational rules.",product_issue
+,,,escalated,test_management,We’re unable to find guidance on Zoom connectivity issues in the available documentation. Please contact HackerRank Support for further assistance.,"The provided documents cover Greenhouse integration FAQs and scheduling/calendar integration, but contain no information about Zoom connectivity or test-taking errors. Therefore, the issue cannot be resolved with the current documentation.",bug
+,,,escalated,test_management,We’re unable to process a rescheduling request based on the provided documentation. Please contact the hiring team or your recruiter to discuss alternative dates for the assessment.,"The documentation does not contain any policy or procedure for rescheduling assessments; therefore, the issue cannot be resolved with the available information and must be escalated.",feature_request
+,,,escalated,interview_management,We’re unable to locate documentation on the current inactivity timeout settings for interview sessions or how to modify them. We’ll forward your request to the appropriate team for further assistance.,"The provided documentation (Sections 1‑5) does not contain information about interview inactivity timers or configuration options, so the issue cannot be answered directly.",feature_request
+,,,escalated,billing_payment,We don’t have enough information to resolve this issue. Please contact our support team directly so they can investigate the billing/payment problem.,"The provided documentation does not contain any guidance or policy regarding billing or payment issues, nor a specific contact method for such problems. Therefore, escalation is required.",bug
+,,,escalated,interview_management,We’re unable to find documentation on removing an interviewer from the platform. I’ve escalated your request for further assistance.,"The provided documentation sections cover interview link details, calendar add‑on installation, licensing, and candidate/question import, but do not include any policy or steps for removing a user or interviewer. As no clear guidance is available, escalation is required.",product_issue
+,,,replied,billing_payment,"To pause your subscription, follow these steps:
+1. Click your profile icon (top‑right) and select **Settings**.
+2. In Settings, go to **Billing** under the **Subscription** section.
+3. Click the **Cancel Plan** button. A prompt will show the new **Pause Subscription** feature.
+4. Choose a pause duration (minimum 1 month, maximum 12 months).
+5. Click **Confirm Pause** to finalize. Your subscription will automatically resume after the selected period.
+
+If you need to extend the pause later, you can return to the Billing page, click **Cancel Subscription**, select **Extend Pause**, choose a new duration, and confirm.","Steps are taken from Section 1 (access Subscription Settings, click Cancel Plan, select duration) and Section 2 (confirm pause) of the Pause Subscription documentation, and extension info from Section 3.",product_issue
+,,,replied,billing_payment,"If Claude has stopped responding completely, try the following steps:
+1. Make sure the Claude Desktop app is open and running for the entire session. If the app was closed or your computer went to sleep, the session may have ended. (Section 2, Claude Cowork troubleshooting)
+2. Verify you haven't hit your usage limits, as reaching limits can cause requests to fail. (Section 2, Cowork usage limits)
+3. Check your internet connection and ensure it is stable.
+4. If you are using Claude Cowork on Windows, confirm that the Claude VM Service is running (see the “VM service not running” guidance in Section 2).","Used troubleshooting guidance from Section 2 (Claude\Claude\Features And Capabilities\13345190 Get Started With Claude Cowork) which describes causes and fixes for Claude stopping work, including ensuring the Desktop app stays open and checking usage limits.",bug
+,,,replied,card_management,"If your identity has been stolen, please visit our Lost or Stolen card page at /support/consumer/lost-stolen-card.html. That page will guide you on how to cancel your Visa card and request an emergency replacement if needed.",Section 1 provides a clear instruction to visit the Lost or Stolen card page for identity theft involving a Visa card.,product_issue
+,,,replied,community_certification,"Resume Builder is currently available to a limited subset of users. If you’re unable to access it, please reach out to Community Support to request enabling the feature for your account: https://www.hackerrank.com/support?q=mock-interviews&sub=exhausted-limit&description=Can%20you%20please%20add%20more%20credits%20for%20mock%20interviews",Section 2 notes the feature is limited and directs users to contact Community Support for access; the provided link is the exact contact method.,bug
+,,,replied,community_certification,"Yes, you can update the name on your certificate. You are allowed to change it only once per account, and the change will apply to all your certificates. To update the name, follow these steps:
+1. Open your certificate page.
+2. In the **Full Name** field, enter the correct name.
+3. Click **Regenerate Certificate**.
+4. In the confirmation dialog, click **Update Name**.
+After completing these steps, your certificate will be regenerated with the corrected name.
+(Note: Once you have updated the name, you cannot change it again.)",Based on the Certifications FAQs section which states the name can be updated once per account and provides the exact steps to do so.,product_issue
+,,,replied,payment_dispute,"To dispute a charge, contact the card issuer or your bank using the freephone number printed on the front or back of your Visa card. They will guide you through the required steps and may request detailed transaction information.",Section 3 (FAQ) specifically instructs customers to dispute a charge by contacting their issuer or bank via the freephone number on the card.,product_issue
+,,,replied,security_vulnerability,"Thank you for identifying a security issue. Please submit the details using our public vulnerability reporting form:
+https://docs.google.com/forms/d/1bjD-H30kVJAbIHnFXKzFcSjkUNjE-mwRHSF7R2uSjYM/viewform?edit_requested=true
+After submitting, review our Responsible Disclosure Policy for any additional guidelines: https://www.anthropic.com/responsible-disclosure-policy",The Public Vulnerability Reporting article provides a specific form link and directs users to the Responsible Disclosure Policy for reporting security vulnerabilities (Section 4).,bug
+,,,replied,privacy_data,"To stop Claude’s crawler from accessing your site, add a robots.txt rule that disallows the relevant user‑agents. For example, to block all Anthropic bots you can use:
+
+```
+User-agent: *
+Disallow: /
+```
+
+If you only want to limit the ClaudeBot crawler, specify it explicitly:
+
+```
+User-agent: ClaudeBot
+Disallow: /
+```
+
+You can also use the non‑standard Crawl-delay directive to limit crawl frequency, e.g.:
+
+```
+User-agent: ClaudeBot
+Crawl-delay: 1
+```
+
+Anthropic’s bots respect standard robots.txt directives and the Crawl-delay extension. Once updated, the bots will honor these rules on subsequent visits. (Source: Section 1, “Does Anthropic crawl data from the web…”) ","The documentation explains that Anthropic’s bots respect robots.txt and provides an example of how to block or limit ClaudeBot via robots.txt (Section 1, Claude\Privacy And Legal\8896518). Therefore we can give these instructions directly.",product_issue
+,,,replied,card_management,"Locate a Visa PLUS ATM to withdraw local currency using your Visa card – you can find nearby ATMs at http://www.visa.com/atmlocator. If you need emergency cash, call Visa’s Global Customer Assistance Service 24/7 at +1 303 967 1090; they can provide emergency cash and card replacement wherever you are.","Section 1 advises using Visa PLUS ATMs for cash withdrawals and provides the ATM locator link. Section 2 provides the phone number for Global Customer Assistance Service, which offers emergency cash assistance.",product_issue
+,,,escalated,billing_payment,,"The provided documentation does not specify how long data is retained when a user opts in to allow Claude to use their data for model improvement. Section 1 lists privacy articles but does not contain the retention timeframe, and Section 4 only states that data is not used for training unless the Development Partner Program is selected, without mentioning duration. Therefore, the issue cannot be resolved with the available sources and must be escalated.",product_issue
+,,,escalated,conversation_management,This issue requires human support. A support specialist will follow up with you shortly.,Destructive / harmful request detected,invalid
+,,,escalated,payment_dispute,This issue requires human support. A support specialist will follow up with you shortly.,Prompt injection / jailbreak attempt detected,product_issue
+,,,escalated,billing_payment,We’re unable to find information in our documentation to address this issue. Please contact our support team for further assistance.,The provided documentation only covers login and account management; there is no information about AWS Bedrock integration or billing/payment bugs.,bug
+,,,escalated,account_management,We’re unable to locate the specific procedure for removing a former employee from your Hackerrank hiring account in the provided documentation. Please contact Hackerrank Support directly for assistance with account management changes.,"Documentation only covers candidate drop‑off mitigation; no guidance on employee removal is present, so escalation is required.",product_issue
+,,,escalated,education,We’re unable to find documentation on setting up a Claude LTI key for students. Please contact our support team for assistance.,"The provided documentation sections cover usage limits, mobile app features, and phone number verification, but do not contain information about configuring LTI keys for education. Because the required guidance is missing, the issue must be escalated.",product_issue
+,,,replied,card_management,"In the US Virgin Islands, merchants are allowed to set a minimum purchase amount of US $10, but only for Visa credit card transactions. This exception is permitted under the Dodd‑Frank Act and applies only to credit cards, not debit cards. If a merchant is refusing a Visa debit card or is charging a higher minimum than US $10, you should contact your Visa card issuer for assistance.","Based on Section 1 (Visa\support.md) which states merchants may require a minimum of US$10 for Visa credit cards in US territories, and Section 2 (Visa_Core.md) which references this rule under the Dodd‑Frank Act.",product_issue

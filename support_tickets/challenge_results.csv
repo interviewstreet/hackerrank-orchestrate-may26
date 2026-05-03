@@ -1,0 +1,6 @@
+Issue,Subject,Company,status,product_area,response,justification,request_type
+,,,escalated,card_management,This issue requires human support. A support specialist will follow up with you shortly.,No matching support documentation found in corpus.,product_issue
+,,,escalated,test_management,This issue requires human support. A support specialist will follow up with you shortly.,No matching support documentation found in corpus.,product_issue
+,,,escalated,assessment_integrity,This issue requires human support. A support specialist will follow up with you shortly.,No matching support documentation found in corpus.,product_issue
+,,,escalated,candidate_management,This issue requires human support. A support specialist will follow up with you shortly.,No matching support documentation found in corpus.,product_issue
+,,,escalated,api_usage,This issue requires human support. A support specialist will follow up with you shortly.,No matching support documentation found in corpus.,bug

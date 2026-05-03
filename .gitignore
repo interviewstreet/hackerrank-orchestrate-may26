@@ -31,3 +31,10 @@ data/index/
 data/embeddings/
 *.sqlite
 *.db
+
+# scratch / debug artifacts
+scratch/
+*.zip
+KNOWLEDGE_BASE.md
+CLAUDE.md
+.faiss_cache/

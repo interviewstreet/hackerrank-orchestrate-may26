@@ -1,0 +1,46 @@
+issue,subject,company,response,product_area,status,request_type,justification
+I notice that people I assigned the test in October of 2025 have not received new tests. How long do the tests stay active in the system.,Test Active in the system,HackerRank,"Unless you set a start and end time for the test, it remains active indefinitely. Tests only expire when an end time is defined in Test Settings > General > Start/End date.",test_management,replied,product_issue,"The policy is stated in Section 3 (golden_record) that tests stay active indefinitely unless a start and end time is set, and Sections 1 and 2 describe the expiration window when defined."
+site is down & none of the pages are accessible,,None,This issue requires human support. A support specialist will follow up with you shortly.,general,escalated,bug,Possible platform outage — requires engineering investigation
+"I'm noticing that you all have many default versions of roles. (e.g. front end developer for react, angular, vue.js, etc.) What do you consider best practice 
+for when to create a new test versus create a variant of the test? What are the advantages and disadvantages of using variants?","When should I create a variant versus
+ have a different test?",HackerRank,"Test variants let you use a single assessment and tailor it to different candidate profiles (e.g., front‑end roles such as React, Angular, Vue). Creating a variant is ideal when the core content and structure of the test remain the same but you need to adjust questions or weightings for specific roles. This approach reduces the overhead of managing many separate tests, ensures consistency across assessments, and streamlines maintenance.
+
+Create a completely new test when the role requires a substantially different set of skills, sections, or overall evaluation criteria that cannot be handled by simple adjustments within a variant. A new test gives you full independence over content, timing, and settings.
+
+**Advantages of using variants**
+- One base test to maintain, lower administrative effort.
+- Consistent branding and overall structure across roles.
+- Faster setup for new candidate profiles.
+
+**Disadvantages / limits**
+- A variant must share the same underlying test, so major structural changes aren’t possible.
+- You need at least two variants for the feature to be active (Section 4).
+
+In short, use variants for role‑specific tweaks; use separate tests for fundamentally different assessments.
+",test_management,replied,product_issue,"Used Section 2 and Section 4 which define test variants, their purpose, and the requirement of at least two variants, as well as Section 1 which describes creating tests for specific roles to infer when a separate test is appropriate."
+"Hi there
+
+We have sent a candidate a Hackerrank assessment already, but we have been informed that they require extra time. As the assessment is 105 minutes, they need an extra 50% extra time added (so around 53 minutes) in addition.
+
+Please can you provide step-by-step instruction on how we are to reinvite them.
+
+Do we find their profile in 'Candidates' , put in Add time 53 minutes and then click 'reinvite' and send the email? The email to the candidate says 105 minutes as the duration though still so not sure how we can check?
+
+Thanks","How to reinvite candidate to Hackerrank 
+assessment and add extra time",HackerRank,"To give the candidate additional time and then resend the invitation, follow these steps:
+1. Log in to your **HackerRank for Work** account (you need a Recruiter license)【1†source】.
+2. Navigate to **Candidates** and locate the candidate you have already invited.
+3. Open the candidate’s test entry and use the **Add Time Accommodation** or **Add Extra Time** option to increase the duration by the required amount (e.g., add 53 minutes, which is a 50 % increase)【4†source】.
+4. After the extra time is saved, choose **Reinvite** for that candidate.  Re‑inviting will delete the previous report and send a fresh invitation with the updated test duration【1†source】.
+5. The candidate will receive a new email reflecting the new total time (the updated duration is applied automatically to the test link you send). If the email still shows the old duration, ensure the extra time was saved before clicking Reinvite.
+If you need to recover the deleted report from the previous invitation, you must contact support@example.com as noted in the reinvite documentation.
+Feel free to let us know if you run into any issues.",candidate_management,replied,product_issue,"The response uses the reinvite procedure and prerequisite (Recruiter license, candidate already invited) from Section 1 and the methods for adding extra time from Section 4. No outside‑scope actions are required."
+"i signed up using google login on hackerrank community , so i do not have a separate hackerrank password. please delete my account",,HackerRank,"To delete your HackerRank Community account that was created with Google login, you first need to set a password for the account. Please use the **Forgot Password** option on the login page to create a password. Once a password is set, you can delete the account by going to **Settings > Delete Account** (Settings is accessible from the profile icon → Settings, then scroll to the Delete Accounts section). If you are unable to set a password, please contact our support team at help@hackerrank.com for further assistance.",account_management,replied,product_issue,Guidance is based on the requirement to set a password before deletion for Google login accounts (Section 1) and the steps to navigate to Delete Account in Settings (Section 2).
+"One of my claude conversations has some private info, i forgot to make a temporary chat, is there anything
+ else that can be done? like delete etc?",,Claude,"You can delete the conversation that contains the private information. Open the conversation, click the conversation name at the top, and select **Delete**. This will remove the chat from your history.
+
+If the chat was in incognito mode, it wouldn’t be saved to your history, but for a regular chat you’ll need to delete it as described.",conversation_management,replied,product_issue,Used Section 4 which provides the steps to delete a Claude conversation.
+What is the name of the actor in Iron Man?,"Urgent, please help",None,This issue requires human support. A support specialist will follow up with you shortly.,general,escalated,invalid,Out-of-scope request — not related to supported domains
+I bought Visa Traveller's Cheques from Citicorp and they were stolen in Lisbon last night. What do I do?,,Visa,"I'm sorry to hear that your Visa Traveller's Cheques were stolen. Please contact the issuing bank, Citicorp, immediately to report the theft. You can reach them at 1‑800‑645‑6556 or 1‑813‑623‑1709. Prompt reporting will allow them to start the replacement or refund process according to their terms and conditions.",card_management,replied,product_issue,"The user needs to report stolen traveller's cheques. Section 1 provides the phone numbers for Citicorp, and Sections 2‑4 advise calling the issuing bank immediately for lost or stolen cheques."
+Where can I report a lost or stolen Visa card from India?,Card stolen,Visa,You can report a lost or stolen Visa card in India by calling Visa India at 000‑800‑100‑1219.,card_management,replied,product_issue,Provided phone number for reporting lost/stolen cards in India from Section 1 and Section 4.
+Thank you for helping me,,None,,card_management,escalated,product_issue,The ticket content does not match any information in the provided context sections; no guidance on card_management product issues is available.

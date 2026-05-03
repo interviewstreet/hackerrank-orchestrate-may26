@@ -1,0 +1,28 @@
+# ==============================================================================
+# HackerRank Orchestrate — Support Triage Agent
+# Pinned dependencies for deterministic evaluation.
+# ==============================================================================
+
+# --- Core ---
+python-dotenv==1.1.0
+pandas==2.2.3
+
+# --- LLM & Embeddings (OpenRouter / OpenAI) ---
+openai==1.82.0
+anthropic==0.52.0
+langchain-openai==0.3.7
+
+# --- Hybrid RAG Engine (FAISS + BM25) ---
+faiss-cpu==1.11.0
+rank-bm25==0.2.2
+
+# --- LangChain Framework ---
+langchain==0.3.25
+langchain-core>=0.3.59
+langchain-community==0.3.24
+langchain-text-splitters==0.3.8
+
+# --- Terminal UI ---
+rich==14.0.0
+halo==0.0.31
+tqdm==4.67.1
