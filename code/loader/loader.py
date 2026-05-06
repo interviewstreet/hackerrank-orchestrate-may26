@@ -38,14 +38,14 @@ def open_ticket_file(filename: str) -> list[Query]:
     with open(filename, newline="") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            company = row["company"].lower()
+            company = row.get("comapny", "none").lower()
             if company not in ("hackerrank", "claude", "visa", "none"):
-                raise ValueError(f"Unknown company: {row['company']}")
+                raise ValueError(f"Unknown company: {row.get('company', 'none')}")
 
             query = {
-                    "issue": row["issue"],
+                    "issue": row.get("issue", "none"),
                     "company": company,
-                    "subject": row["subject"]
+                    "subject": row.get("subject", "")
                     }
             queries.append(query)
     return queries

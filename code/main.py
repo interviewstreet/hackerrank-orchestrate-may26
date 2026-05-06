@@ -62,6 +62,8 @@ def run():
         # get a response for each query from the llm
         query = f"{ticket.get('issue', '')} {ticket.get('company', '')} {ticket.get('subject', '')}"
         res = llm_class.get_response(template(query, data_string))
+        if res == "" or res is None:
+            continue
     #   # parse each response into a json object and push it into the responses
         responses.append(parse_response(res))
     # write responses to a csv file
