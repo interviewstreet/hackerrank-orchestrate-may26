@@ -12,10 +12,22 @@ def open_data_file(filename: str) -> Data:
 
     post = frontmatter.load(filename)
     return {
-            "title": post.metadata["title"],
+            "title": post.metadata.get("title", Path(filename).stem),
             "body": post.content,
             "id": filename
             }
+
+# walk over all the data folders - recursively to find the .md files
+def walk_data_files(folder_name: str) -> list[Data]:
+    path = Path(folder_name)
+    if not path.exists():
+        raise FileNotFoundError(f"data folder does not exist {folder_name}")
+    data_files = list(path.rglob("*.md"))      
+    data = []
+    for df in data_files:
+        d = open_data_file(str(df))
+        data.append(d)
+    return data
 
 # open ticket files (.csv)
 def open_ticket_file(filename: str) -> list[Query]:

@@ -1,13 +1,10 @@
-import os
-from dotenv import load_dotenv
 from google import genai
 
-load_dotenv()
+class LLM:
+    def __init__(self, api_key: str, model_name: str = "gemini-2.5-flash") -> None:
+        self.client = genai.Client(api_key=api_key)
+        self.model = model_name
 
-api_key = os.environ.get("GEMINI_API_KEY")
-client = genai.Client(api_key=api_key)
-model = "gemini-2.5-flash"  
-
-def gemini(prompt: str) -> str:
-    response = client.models.generate_content(model=model, contents=prompt)
-    return response.text     
+    def get_response(self, prompt: str) -> str | None:
+        res = self.client.models.generate_content(model=self.model, contents=prompt)
+        return res.text

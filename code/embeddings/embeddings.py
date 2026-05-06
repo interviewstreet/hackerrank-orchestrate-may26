@@ -64,7 +64,7 @@ class Embeddings:
         return self.build_embeddings(data)
 
     # match with support tickets
-    def match_support_ticket(self, query: Query):
+    def match_support_ticket(self, query: Query, limit: int = 10) -> list[tuple[float, Data]]:
         # check if there are data
         if self.data is None:
             raise ValueError("No data to map")
@@ -72,7 +72,7 @@ class Embeddings:
         if self.embeddings is None:
             raise ValueError("No embeddings are loaded!")
         # create embedding from the query
-        query_text = f"{query["issue"]} {query['company']} {query['subject']}"
+        query_text = f"{query["issue"]} {query['company']} {query.get('subject')}"
         query_embedding = self.generate_embeddings(query_text)
         
         # list to store similarities
@@ -82,7 +82,7 @@ class Embeddings:
             score = cosine_similarity(query_embedding, self.embeddings[i])
             similarities.append((score, self.data[i]))
         # sort the similarities and return the result
-        return sorted(similarities, key=lambda el: el[0], reverse=True)
+        return sorted(similarities, key=lambda el: el[0], reverse=True)[:limit]
 
 # function to calc cosine similarity between two vectors
 def cosine_similarity(vec1, vec2):
