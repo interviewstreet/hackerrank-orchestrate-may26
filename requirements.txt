@@ -1,0 +1,4 @@
+pandas
+scikit-learn
+python-dotenv
+google-generativeai
