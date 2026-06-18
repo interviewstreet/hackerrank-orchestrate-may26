@@ -44,6 +44,6 @@ class IoTests(unittest.TestCase):
 
         self.assertEqual(
             written[0],
-            "issue,subject,company,response,product_area,status,request_type,justification",
+            "status,product_area,response,justification,request_type",
         )
         self.assertEqual(len(written), 2)

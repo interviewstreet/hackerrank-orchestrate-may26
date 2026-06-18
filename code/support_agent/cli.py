@@ -1,3 +1,5 @@
+"""Command-line interface for generating or validating ticket predictions."""
+
 from __future__ import annotations
 
 import argparse
@@ -9,6 +11,7 @@ from support_agent.validation import validate_output_file
 
 
 def build_parser() -> argparse.ArgumentParser:
+    """Build the CLI parser for generation and validation modes."""
     parser = argparse.ArgumentParser(description="HackerRank Orchestrate support agent scaffold")
     parser.add_argument("--input", type=Path, default=Path("support_tickets/support_tickets.csv"))
     parser.add_argument("--output", type=Path, default=Path("support_tickets/output.csv"))
@@ -22,6 +25,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main(argv: list[str] | None = None) -> int:
+    """Run the agent or validate an existing output file from the command line."""
     parser = build_parser()
     args = parser.parse_args(argv)
 

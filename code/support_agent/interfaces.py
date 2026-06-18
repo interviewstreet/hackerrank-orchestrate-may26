@@ -1,3 +1,5 @@
+"""Protocols that define the pluggable parts of the support triage pipeline."""
+
 from __future__ import annotations
 
 from typing import Protocol, Sequence

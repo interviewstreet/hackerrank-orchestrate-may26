@@ -1,3 +1,5 @@
+"""Validation helpers for output schema and basic row-level sanity checks."""
+
 from __future__ import annotations
 
 import csv
@@ -17,12 +19,15 @@ from support_agent.models import TicketPrediction
 
 @dataclass(frozen=True)
 class ValidationIssue:
+    """A single validation problem discovered in an output file."""
+
     message: str
     row_index: int | None = None
     column: str | None = None
 
 
 def validate_predictions(predictions: list[TicketPrediction], expected_count: int) -> list[ValidationIssue]:
+    """Check row count, enum values, and required generated fields."""
     issues: list[ValidationIssue] = []
     if len(predictions) != expected_count:
         issues.append(
@@ -64,6 +69,7 @@ def validate_predictions(predictions: list[TicketPrediction], expected_count: in
 
 
 def read_predictions(path: Path) -> list[TicketPrediction]:
+    """Read an output CSV and map it into prediction records."""
     with path.open(newline="", encoding="utf-8") as handle:
         reader = csv.DictReader(handle)
         if reader.fieldnames is None:
@@ -78,11 +84,23 @@ def read_predictions(path: Path) -> list[TicketPrediction]:
         predictions: list[TicketPrediction] = []
         for row in reader:
             normalized_row = {normalize_header(key): (value or "") for key, value in row.items()}
-            predictions.append(TicketPrediction(**normalized_row))
+            predictions.append(
+                TicketPrediction(
+                    issue="",
+                    subject="",
+                    company="",
+                    response=normalized_row.get("response", ""),
+                    product_area=normalized_row.get("product_area", ""),
+                    status=normalized_row.get("status", ""),
+                    request_type=normalized_row.get("request_type", ""),
+                    justification=normalized_row.get("justification", ""),
+                )
+            )
     return predictions
 
 
 def validate_output_file(input_path: Path, output_path: Path) -> list[ValidationIssue]:
+    """Validate an output file against the number of rows in the input CSV."""
     tickets = read_tickets(input_path)
     predictions = read_predictions(output_path)
     return validate_predictions(predictions, expected_count=len(tickets))

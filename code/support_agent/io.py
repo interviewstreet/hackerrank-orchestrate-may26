@@ -1,3 +1,5 @@
+"""CSV input/output helpers for support ticket predictions."""
+
 from __future__ import annotations
 
 import csv
@@ -9,6 +11,7 @@ from support_agent.models import SupportTicket, TicketPrediction
 
 
 def read_tickets(path: Path) -> list[SupportTicket]:
+    """Read input tickets from CSV and normalize the required fields."""
     with path.open(newline="", encoding="utf-8") as handle:
         reader = csv.DictReader(handle)
         if reader.fieldnames is None:
@@ -32,13 +35,15 @@ def read_tickets(path: Path) -> list[SupportTicket]:
 
 
 def write_predictions(path: Path, predictions: Iterable[TicketPrediction]) -> None:
+    """Write predictions to CSV using the repository's output column order."""
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=OUTPUT_COLUMNS)
         writer.writeheader()
         for prediction in predictions:
-            writer.writerow(prediction.__dict__)
+            writer.writerow(generated_fields(prediction))
 
 
 def generated_fields(prediction: TicketPrediction) -> dict[str, str]:
+    """Extract only the generated output fields from a prediction record."""
     return {field: getattr(prediction, field) for field in GENERATED_COLUMNS}

@@ -1,2 +1,1 @@
-"""Support agent scaffold package."""
-
+"""Support triage agent package for HackerRank Orchestrate."""

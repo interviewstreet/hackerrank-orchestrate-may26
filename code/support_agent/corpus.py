@@ -1,3 +1,5 @@
+"""Load local Markdown support articles into structured corpus documents."""
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -7,6 +9,7 @@ from support_agent.models import CorpusDocument
 
 
 def infer_company_from_path(path: Path, corpus_root: Path) -> str:
+    """Infer the corpus owner from the first path segment under the corpus root."""
     try:
         relative = path.relative_to(corpus_root)
     except ValueError as exc:
@@ -18,6 +21,7 @@ def infer_company_from_path(path: Path, corpus_root: Path) -> str:
 
 
 def extract_title(markdown_text: str, fallback: str) -> str:
+    """Return the first Markdown heading, or a fallback title if none exists."""
     for line in markdown_text.splitlines():
         stripped = line.strip()
         if stripped.startswith("#"):
@@ -26,6 +30,7 @@ def extract_title(markdown_text: str, fallback: str) -> str:
 
 
 def load_corpus_documents(corpus_root: Path) -> list[CorpusDocument]:
+    """Discover every Markdown file under the corpus root and package it for retrieval."""
     documents: list[CorpusDocument] = []
     for path in sorted(corpus_root.rglob("*.md")):
         content = path.read_text(encoding="utf-8")
