@@ -1,0 +1,9 @@
+[project]
+name = "support-agent-scaffold"
+version = "0.1.0"
+description = "Scaffold for the HackerRank Orchestrate support triage agent."
+requires-python = ">=3.12"
+dependencies = []
+
+[tool.uv]
+package = false
